@@ -78,7 +78,7 @@ function CardsExpanding(): JSX.Element {
   }, []);
 
   return (
-    <div className="expanding">
+    <div className="expanding overflow-x-hidden">
       <section className="expanding-hero">
         <h1>Expande tu alcance</h1>
       </section>

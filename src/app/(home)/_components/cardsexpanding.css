@@ -1,5 +1,5 @@
 .expanding h1 {
-  color: #dac340;
+  color: #fff;
   font-size: 36px;
   font-weight: 500;
 }
@@ -7,7 +7,7 @@
 .expanding p {
   color: #fff;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 150%;
 }
 
@@ -109,6 +109,19 @@
   .expanding-service {
     display: flex;
     flex-direction: column;
+    min-height: 100px;
+    padding: 0.5em 0;
+  }
+
+  .expanding-service-img {
+    flex: 5;
+    width: 100%;
+    height: 100%;
+    padding: 0.5em;
+  }
+
+  .expanding-service-info {
+    padding: 0.5em;
   }
 
   .expanding-services-header {

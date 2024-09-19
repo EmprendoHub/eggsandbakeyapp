@@ -6,8 +6,6 @@ import Image from "next/image";
 import "./hero.css";
 import { animateTitle, animateImage, revealMenu } from "./animations";
 
-import Logo from "../LogoLoader/Logo";
-
 const Hero = () => {
   const timeline = useRef(gsap.timeline());
   const heroRef = useRef(null);
@@ -24,12 +22,6 @@ const Hero = () => {
 
   return (
     <section className={`hero`} ref={heroRef}>
-      <div className={`hero_top`}>
-        <div data-menu-item data-hidden>
-          <Logo />
-        </div>
-      </div>
-
       <h1 className={`hero_title flex flex-wrap`}>
         <span data-hidden data-title-first>
           Ultra

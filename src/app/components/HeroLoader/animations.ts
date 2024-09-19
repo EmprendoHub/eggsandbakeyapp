@@ -64,8 +64,8 @@ export const animateImage = () => {
     .from(
       "[data-image]",
       {
-        duration: 2,
-        scale: 1.3,
+        duration: 4,
+        scale: 1.2,
       },
       "<"
     );

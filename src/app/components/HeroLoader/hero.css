@@ -35,22 +35,20 @@
   display: inline-block;
   height: 0.4rem;
   width: 100%;
-  background-color: black;
+  background-color: rgb(196, 184, 19);
   transform: scaleX(0);
   transform-origin: center center;
 }
 
 .hero_image {
   overflow: hidden;
-  position: flex;
-  justify-content: center;
-  left: 0;
-  width: 100%;
+  position: absolute;
+  left: 30%;
+  width: 50%;
   transform-origin: top center;
 }
 
 .hero_imageOverlay {
-  position: flex;
   inset: 0;
   z-index: 3;
   background-color: black;
@@ -76,6 +74,7 @@
   .hero_title {
     font-size: 6rem;
     left: 1.5rem;
+    line-height: 0%;
   }
 }
 
@@ -86,6 +85,12 @@
     margin-bottom: 1rem;
     gap: 1.2rem;
     font-size: 6rem;
+    line-height: 70%;
+  }
+
+  .hero_image {
+    left: 0%;
+    width: 100%;
   }
 }
 

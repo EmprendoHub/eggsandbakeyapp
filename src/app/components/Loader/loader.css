@@ -72,11 +72,18 @@
 
 .loader_progressNumber {
   position: absolute;
-  left: -5vw;
+  left: -10vw;
   top: 50%;
   transform: translateY(-50%);
   z-index: 4;
   white-space: nowrap;
   color: white;
   font-size: 3.2rem;
+}
+
+@media (max-width: 900px) {
+  .loader_progressNumber {
+    left: -16vw;
+    font-size: 1.9rem;
+  }
 }

@@ -63,7 +63,7 @@ const Menu = (): JSX.Element => {
   }, [isMenuOpen]);
 
   return (
-    <div className="menu-container" ref={container}>
+    <div className={`menu-container`} ref={container}>
       <div className="menu-bar">
         <div className="menu-logo">
           <Link href={"/"}>Eggs & Bakey</Link>
@@ -73,7 +73,7 @@ const Menu = (): JSX.Element => {
         </div>
       </div>
 
-      <div className={`menu-overlay`}>
+      <div className={`menu-overlay  ${isMenuOpen ? "block" : "hidden"}`}>
         <div className="menu-overlay-bar">
           <div className="menu-logo">
             <Link href={"/"}>Eggs & Bakey</Link>

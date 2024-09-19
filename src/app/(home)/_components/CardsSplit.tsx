@@ -63,15 +63,15 @@ function CardsSplit(): JSX.Element {
 
     gsap.to(".splits-logo", {
       scale: 1,
-      duration: 0.5,
+      duration: 1.5,
       ease: "power1.out",
       scrollTrigger: scrollTriggerSetting,
     });
 
     gsap.to(".splits-line p", {
       y: 0,
-      stagger: 0.1,
-      duration: 0.5,
+      stagger: 0.2,
+      duration: 1.5,
       ease: "power1.out",
       scrollTrigger: scrollTriggerSetting,
     });
@@ -79,8 +79,8 @@ function CardsSplit(): JSX.Element {
     gsap.to("button", {
       y: 0,
       opacity: 1,
-      delay: 0.25,
-      duration: 0.5,
+      delay: 0.5,
+      duration: 1.5,
       ease: "power1.out",
       scrollTrigger: scrollTriggerSetting,
     });
@@ -89,7 +89,7 @@ function CardsSplit(): JSX.Element {
     gsap.to(".splits-footer p", {
       y: 0,
       opacity: 1,
-      duration: 2,
+      duration: 3,
       ease: "power1.out",
       scrollTrigger: {
         trigger: ".splits-footer",

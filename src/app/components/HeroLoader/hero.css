@@ -35,7 +35,7 @@
   display: inline-block;
   height: 0.4rem;
   width: 100%;
-  background-color: rgb(196, 184, 19);
+  background-color: #dac340;
   transform: scaleX(0);
   transform-origin: center center;
 }
@@ -89,8 +89,8 @@
   }
 
   .hero_image {
-    left: 0%;
-    width: 100%;
+    left: 20%;
+    width: 80%;
   }
 }
 
@@ -99,5 +99,10 @@
     left: 1rem;
     gap: 0.5rem;
     font-size: 4.5rem;
+  }
+
+  .hero_image {
+    left: 0%;
+    width: 100%;
   }
 }

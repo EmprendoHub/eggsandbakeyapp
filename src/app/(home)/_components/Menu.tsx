@@ -79,7 +79,7 @@ const Menu = (): JSX.Element => {
             <Link href={"/"}>Eggs & Bakey</Link>
           </div>
           <div className="menu-close" onClick={toggleMenu}>
-            <p>Close</p>
+            <p>Cerrar</p>
           </div>
         </div>
         <div className="menu-close-icon" onClick={toggleMenu}>

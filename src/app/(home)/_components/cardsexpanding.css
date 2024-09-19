@@ -113,6 +113,18 @@
     padding: 0.5em 0;
   }
 
+  .expanding-hero h1 {
+    line-height: 80%;
+    font-size: 70px;
+    margin-left: 1rem;
+  }
+
+  .expanding-footer h1 {
+    line-height: 80%;
+    font-size: 70px;
+    margin-left: 1rem;
+  }
+
   .expanding-service-img {
     flex: 5;
     width: 100%;

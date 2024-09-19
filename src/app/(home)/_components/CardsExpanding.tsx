@@ -86,7 +86,7 @@ function CardsExpanding(): JSX.Element {
         <div className="expanding-services-header">
           <div className="expanding-col"></div>
           <div className="expanding-col">
-            <h1>Todos nuestros servicios</h1>
+            <h1>Nuestros servicios</h1>
           </div>
         </div>
 

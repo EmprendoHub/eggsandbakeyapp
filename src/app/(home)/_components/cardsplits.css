@@ -121,4 +121,7 @@
     width: 50%;
     height: 240px;
   }
+  .splits-main {
+    height: 100vh;
+  }
 }

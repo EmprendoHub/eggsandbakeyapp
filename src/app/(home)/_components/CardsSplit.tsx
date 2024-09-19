@@ -135,16 +135,6 @@ function CardsSplit(): JSX.Element {
   return (
     <>
       <div className="splits">
-        <section className="splits-hero">
-          <div className="img">
-            <Image
-              width={850}
-              height={850}
-              src="/logos/LOGO-BLANCO.webp"
-              alt="Eggs & Bakey"
-            />
-          </div>
-        </section>
         <section className="splits-main">
           <div className="splits-main-content">
             <div className="splits-logo">

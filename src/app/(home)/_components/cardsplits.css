@@ -1,0 +1,120 @@
+.splits img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.splits section {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Specific Layout Styles */
+.splits-hero {
+  height: 100vh;
+}
+
+.splits-hero .img {
+  width: 50%;
+  aspect-ratio: 1;
+}
+
+.splits-footer {
+  height: 100vh;
+  align-items: flex-start;
+}
+
+.splits-footer a {
+  font-size: 4vw;
+  color: #000000;
+}
+
+.splits-main {
+  width: 100vw;
+  height: 150vh;
+  flex-direction: column;
+}
+
+.splits-row {
+  position: relative;
+  width: 100vw;
+  margin: 1em 0;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.splits-card {
+  position: relative;
+  width: 40%;
+  height: 360px;
+  border-radius: 0.75em;
+  overflow: hidden;
+  will-change: transform; /* Performance optimization */
+}
+
+.splits-main-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splits-logo {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #1a1a1a;
+  border-radius: 100%;
+  overflow: hidden;
+  transform: scale(0); /* Initial scale set to 0 for animation */
+}
+
+.splits-copy {
+  color: #1a1a1a;
+  margin: 2em 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.splits-line {
+  position: relative;
+  margin: 0.5em 0;
+  width: max-content;
+  height: 28px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.splits-line p {
+  position: relative;
+  font-size: 24px;
+  transform: translateY(30px); /* Animation initial state */
+}
+
+.splits button {
+  position: relative;
+  padding: 1em 2em;
+  font-size: 18px;
+  color: #1f1f1f;
+  border: 2px solid #202020;
+  border-radius: 8em;
+  background: none;
+  outline: none;
+  transform: translateY(30px); /* Animation initial state */
+  opacity: 0; /* Animation initial state */
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .splits-card {
+    width: 50%;
+    height: 240px;
+  }
+}

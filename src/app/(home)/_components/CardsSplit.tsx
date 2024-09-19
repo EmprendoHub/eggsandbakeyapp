@@ -85,6 +85,20 @@ function CardsSplit(): JSX.Element {
       scrollTrigger: scrollTriggerSetting,
     });
 
+    // Animation for the footer Link
+    gsap.to(".splits-footer p", {
+      y: 0,
+      opacity: 1,
+      duration: 2,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: ".splits-footer",
+        start: "top bottom", // Start animation when footer enters the viewport
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+
     return () => {
       // Clean up ScrollTrigger instances
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -158,9 +172,11 @@ function CardsSplit(): JSX.Element {
 
           {generateRows()}
         </section>
-        <section className="splits-footer">
-          <Link href={"/"}>Link in description</Link>
-        </section>
+        <div className="splits-footer">
+          <Link href={"/"}>
+            <p>Link in description</p>
+          </Link>
+        </div>
       </div>
     </>
   );

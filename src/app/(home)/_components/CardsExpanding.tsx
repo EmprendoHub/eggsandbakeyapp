@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./cardsexpanding.css";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,7 +101,7 @@ function CardsExpanding(): JSX.Element {
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <img src="./images/img-1.jpg" alt="" />
+              <Image width={850} height={850} src="/images/img-1.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -115,7 +116,7 @@ function CardsExpanding(): JSX.Element {
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <img src="./images/img-2.jpg" alt="" />
+              <Image width={850} height={850} src="/images/img-2.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -130,7 +131,7 @@ function CardsExpanding(): JSX.Element {
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <img src="./images/img-3.jpg" alt="" />
+              <Image width={850} height={850} src="/images/img-3.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -145,7 +146,7 @@ function CardsExpanding(): JSX.Element {
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <img src="./images/img-4.jpg" alt="" />
+              <Image width={850} height={850} src="/images/img-4.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -160,7 +161,7 @@ function CardsExpanding(): JSX.Element {
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <img src="./images/img-5.jpg" alt="" />
+              <Image width={850} height={850} src="/images/img-5.jpg" alt="" />
             </div>
           </div>
         </div>
@@ -175,7 +176,7 @@ function CardsExpanding(): JSX.Element {
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <img src="./images/img-6.jpg" alt="" />
+              <Image width={850} height={850} src="/images/img-6.jpg" alt="" />
             </div>
           </div>
         </div>

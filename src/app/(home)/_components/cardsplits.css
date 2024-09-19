@@ -67,16 +67,16 @@
 }
 
 .splits-logo {
-  width: 150px;
-  height: 150px;
-  border: 2px solid #1a1a1a;
+  width: 250px;
+  height: 250px;
+  border: 2px solid #dac340;
   border-radius: 100%;
   overflow: hidden;
   transform: scale(0); /* Initial scale set to 0 for animation */
 }
 
 .splits-copy {
-  color: #1a1a1a;
+  color: #e9e9e9;
   margin: 2em 0;
   display: flex;
   flex-direction: column;
@@ -102,8 +102,8 @@
   position: relative;
   padding: 1em 2em;
   font-size: 18px;
-  color: #1f1f1f;
-  border: 2px solid #202020;
+  color: #dac340;
+  border: 2px solid #dac340;
   border-radius: 8em;
   background: none;
   outline: none;

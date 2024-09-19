@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./cardsplits.css";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,10 +97,20 @@ function CardsSplit(): JSX.Element {
       rows.push(
         <div className="splits-row" key={i}>
           <div className="splits-card card-left">
-            <img src={`/images/img-${2 * i - 1}.jpg`} alt="" />
+            <Image
+              width={850}
+              height={850}
+              src={`/images/img-${2 * i - 1}.jpg`}
+              alt=""
+            />
           </div>
           <div className="splits-card card-right">
-            <img src={`/images/img-${2 * i}.jpg`} alt="" />
+            <Image
+              width={850}
+              height={850}
+              src={`/images/img-${2 * i}.jpg`}
+              alt=""
+            />
           </div>
         </div>
       );
@@ -112,13 +123,23 @@ function CardsSplit(): JSX.Element {
       <div className="splits">
         <section className="splits-hero">
           <div className="img">
-            <img src="/logos/LOGO2.png" alt="Eggs & Bakey" />
+            <Image
+              width={850}
+              height={850}
+              src="/logos/LOGO-BLANCO.webp"
+              alt="Eggs & Bakey"
+            />
           </div>
         </section>
         <section className="splits-main">
           <div className="splits-main-content">
             <div className="splits-logo">
-              <img src="/logos/LOGO2.png" alt="Eggs & Bakey" />
+              <Image
+                width={850}
+                height={850}
+                src="/logos/LOGO-BLANCO.webp"
+                alt="Eggs & Bakey"
+              />
             </div>
             <div className="splits-copy">
               <div className="splits-line">

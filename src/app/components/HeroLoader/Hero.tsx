@@ -31,8 +31,13 @@ const Hero = () => {
       </div>
 
       <h1 className={`hero_title flex flex-wrap`}>
-        <span data-hidden>Ultra</span>
-        <span data-hidden>agencia</span>
+        <span data-hidden data-title-first>
+          Ultra
+        </span>
+        <span data-hero-line className={`hero_line`}></span>
+        <span data-hidden data-title-last>
+          agencia
+        </span>
       </h1>
 
       <div className={`hero_image`}>

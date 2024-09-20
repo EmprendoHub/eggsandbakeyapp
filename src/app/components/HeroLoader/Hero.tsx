@@ -22,13 +22,13 @@ const Hero = () => {
 
   return (
     <section className={`hero`} ref={heroRef}>
-      <h1 className={`hero_title flex flex-wrap`}>
+      <h1 className={`hero_title flex flex-wrap gap-1`}>
         <span data-hidden data-title-first>
-          Ultra
+          Agencia
         </span>
         <span data-hero-line className={`hero_line`}></span>
         <span data-hidden data-title-last>
-          agencia
+          Creativa
         </span>
       </h1>
 
@@ -36,7 +36,7 @@ const Hero = () => {
         <div data-image-overlay className={`hero_imageOverlay`}></div>
         <Image
           data-image
-          src="/logos/LOGO-BLANCO.webp"
+          src="/logos/EggsandBakeyLOGO-BLANCO.webp"
           width={550}
           height={550}
           alt="Blob"

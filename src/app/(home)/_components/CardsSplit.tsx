@@ -5,10 +5,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./cardsplits.css";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import Modal from "react-modal";
+import MovieModal from "./MovieModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function CardsSplit(): JSX.Element {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const handleWatchNow = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+  useEffect(() => {
+    // Set the app element for React Modal, this is usually the root div in Next.js
+    Modal.setAppElement(".splits"); // For Next.js
+  }, []);
+
   useGSAP(() => {
     // Setup ScrollTrigger and GSAP animations
     const scrollTriggerSetting = {
@@ -63,7 +81,7 @@ function CardsSplit(): JSX.Element {
 
     gsap.to(".splits-logo", {
       scale: 1,
-      duration: 1.5,
+      duration: 1.1,
       ease: "power1.out",
       scrollTrigger: scrollTriggerSetting,
     });
@@ -71,7 +89,7 @@ function CardsSplit(): JSX.Element {
     gsap.to(".splits-line p", {
       y: 0,
       stagger: 0.2,
-      duration: 1.5,
+      duration: 1.1,
       ease: "power1.out",
       scrollTrigger: scrollTriggerSetting,
     });
@@ -80,7 +98,7 @@ function CardsSplit(): JSX.Element {
       y: 0,
       opacity: 1,
       delay: 0.5,
-      duration: 1.5,
+      duration: 1.1,
       ease: "power1.out",
       scrollTrigger: scrollTriggerSetting,
     });
@@ -109,13 +127,14 @@ function CardsSplit(): JSX.Element {
     const rows: JSX.Element[] = [];
     for (let i = 1; i <= 3; i++) {
       rows.push(
-        <div className="splits-row" key={i}>
+        <div className="splits-row -z-1" key={i}>
           <div className="splits-card card-left">
             <Image
               width={850}
               height={850}
               src={`/images/img-${2 * i - 1}.jpg`}
               alt=""
+              className="splits-img"
             />
           </div>
           <div className="splits-card card-right">
@@ -124,6 +143,7 @@ function CardsSplit(): JSX.Element {
               height={850}
               src={`/images/img-${2 * i}.jpg`}
               alt=""
+              className="splits-img"
             />
           </div>
         </div>
@@ -139,10 +159,12 @@ function CardsSplit(): JSX.Element {
           <div className="splits-main-content">
             <div className="splits-logo">
               <Image
-                width={850}
-                height={850}
-                src="/logos/LOGO-BLANCO.webp"
+                width={100}
+                height={100}
+                src="/icons/play-svgrepo-com.svg"
                 alt="Eggs & Bakey"
+                className="cursor-pointer hover:scale-125 sc ease-in-out duration-300  play-button "
+                onClick={() => handleWatchNow()}
               />
             </div>
             <div className="splits-copy">
@@ -157,7 +179,9 @@ function CardsSplit(): JSX.Element {
               </div>
             </div>
 
-            <button>Get PRO</button>
+            <button>
+              <Link href={"/contacto"}>Contacto</Link>
+            </button>
           </div>
 
           {generateRows()}
@@ -168,6 +192,11 @@ function CardsSplit(): JSX.Element {
           </Link>
         </div>
       </div>
+      <MovieModal
+        isOpen={modalIsOpen}
+        onClose={closeModal}
+        videoUrl="/videos/Reel_Letras_Grunge_Pagina_Eggs.webm"
+      />
     </>
   );
 }

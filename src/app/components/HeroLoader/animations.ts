@@ -76,20 +76,5 @@ export const animateImage = () => {
 export const revealMenu = () => {
   const tl = gsap.timeline();
 
-  tl.fromTo(
-    "[data-menu-item]",
-    {
-      autoAlpha: 0,
-      y: 32,
-    },
-    {
-      autoAlpha: 1,
-      y: 0,
-      stagger: 0.2,
-      ease: "expo.out",
-      duration: 2,
-    }
-  );
-
   return tl;
 };

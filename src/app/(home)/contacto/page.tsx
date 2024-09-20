@@ -1,7 +1,7 @@
 import React from "react";
 import PageHeader from "../_components/PageHeader";
 import ContactComponent from "@/app/components/contact/ContactComponent";
-import PageTransition from "@/app/components/transitions/PageTransition";
+import PixelTransition from "@/app/components/transitions/PixelTransition";
 const Contacto = () => {
   const maskText: string =
     "Desarrollamos tu marca - implementando las estrategias de marketing mas efectivas en base a tu publico ideal.";
@@ -12,7 +12,7 @@ const Contacto = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <PageTransition />
+      <PixelTransition />
 
       <PageHeader
         maskText={maskText}

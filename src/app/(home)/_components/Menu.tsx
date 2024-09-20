@@ -30,7 +30,8 @@ const Menu = (): JSX.Element => {
         opacity: 0,
         display: "none",
       });
-      gsap.set(".menu-link-item-holder", { y: 75 });
+
+      gsap.set(".menu-link-item-holder", { y: 175 });
 
       tl.current = gsap
         .timeline({ paused: true })
@@ -65,8 +66,8 @@ const Menu = (): JSX.Element => {
   }, [isMenuOpen]);
 
   return (
-    <div className={`menu-container`} ref={container}>
-      <div className="menu-bar">
+    <div className={`menu-container relative`} ref={container}>
+      <div className="menu-bar bg-black bg-opacity-50">
         <div className="menu-logo">
           <Link href={"/"}>
             <WhiteLogoComponent />

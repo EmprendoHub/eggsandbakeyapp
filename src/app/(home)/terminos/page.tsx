@@ -1,5 +1,5 @@
 import React from "react";
-import PageTransition from "@/app/components/transitions/PageTransition";
+import PixelTransition from "@/app/components/transitions/PixelTransition";
 export const metadata = {
   title: "Términos de servicio de Eggs & Bakey",
   description: "Explora los Términos de servicio de Eggs & Bakey",
@@ -8,9 +8,9 @@ export const metadata = {
 const TerminosPage = () => {
   return (
     <div className="p-6 px-20 maxmd:px-5 text-card-foreground">
-      <PageTransition />
+      <PixelTransition />
 
-      <section className="hero mb-5 bg-card rounded-lg text-center pt-20 pb-5 border border-muted drop-shadow-md h-auto">
+      <section className="hero mb-5 bg-card rounded-lg text-center pt-20 pb-5 border border-muted drop-shadow-md">
         <div className="container mx-auto">
           <h1 className="text-4xl font-extrabold ">Términos de servicio</h1>
           <p className="text-sm  mt-4 font-raleway  ">

@@ -24,7 +24,7 @@ const BoxesSectionTitle = ({
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="text-base pb-3 text-slate-700"
+        className="text-base pb-3 text-stone-800"
       >
         {subtitle}
       </motion.p>

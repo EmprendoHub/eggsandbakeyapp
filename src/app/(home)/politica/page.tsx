@@ -1,5 +1,5 @@
 import React from "react";
-import PageTransition from "@/app/components/transitions/PageTransition";
+import PixelTransition from "@/app/components/transitions/PixelTransition";
 export const metadata = {
   title: "Política de privacidad de Eggs & Bakey",
   description: "Explora la Política de privacidad de Eggs & Bakey",
@@ -8,7 +8,7 @@ export const metadata = {
 const PoliticaPage = () => {
   return (
     <div className="bg-background p-6 px-20 maxmd:px-5">
-      <PageTransition />
+      <PixelTransition />
 
       <section className="hero text-center pt-20 pb-5 border border-slate-400 drop-shadow-md mb-10">
         <div className="container mx-auto">

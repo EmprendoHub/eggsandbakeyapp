@@ -2,7 +2,7 @@
 import React from "react";
 import PageHeader from "../_components/PageHeader";
 import AboutUsComponent from "./_components/AboutUsComponent";
-import PageTransition from "@/app/components/transitions/PageTransition";
+import PixelTransition from "@/app/components/transitions/PixelTransition";
 
 const Acerca = () => {
   const maskText: string =
@@ -12,16 +12,18 @@ const Acerca = () => {
   const mainTextTwo: string =
     ",creamos el contenido que tus seguidores quieren ver.";
   return (
-    <div className="min-h-screen flex flex-col">
-      <PageTransition />
-      <PageHeader
-        maskText={maskText}
-        mainTextOne={mainTextOne}
-        mainTextSpan={mainTextSpan}
-        mainTextTwo={mainTextTwo}
-      />
-      <AboutUsComponent />
-    </div>
+    <>
+      <PixelTransition />
+      <div className="min-h-screen flex flex-col">
+        <PageHeader
+          maskText={maskText}
+          mainTextOne={mainTextOne}
+          mainTextSpan={mainTextSpan}
+          mainTextTwo={mainTextTwo}
+        />
+        <AboutUsComponent />
+      </div>
+    </>
   );
 };
 

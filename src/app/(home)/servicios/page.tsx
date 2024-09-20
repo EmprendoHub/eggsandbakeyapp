@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import PageHeader from "../_components/PageHeader";
-import PageTransition from "@/app/components/transitions/PageTransition";
+import PixelTransition from "@/app/components/transitions/PixelTransition";
 const Servicios = () => {
   const maskText: string =
     "Desarrollamos tu marca - implementando las estrategias de marketing mas efectivas en base a tu publico ideal.";
@@ -11,7 +11,7 @@ const Servicios = () => {
     ",creamos el contenido que tus seguidores quieren ver.";
   return (
     <div className="min-h-screen flex flex-col">
-      <PageTransition />
+      <PixelTransition />
 
       <PageHeader
         maskText={maskText}

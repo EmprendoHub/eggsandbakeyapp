@@ -1,15 +1,14 @@
+"use client";
 import React from "react";
 import PageHeader from "../_components/PageHeader";
-import ContactComponent from "@/app/components/contact/ContactComponent";
 import PageTransition from "@/app/components/transitions/PageTransition";
-const Contacto = () => {
+const Servicios = () => {
   const maskText: string =
     "Desarrollamos tu marca - implementando las estrategias de marketing mas efectivas en base a tu publico ideal.";
   const mainTextOne: string = "Nuestra agencia se";
   const mainTextSpan: string = " especializada en marketing digital";
   const mainTextTwo: string =
     ",creamos el contenido que tus seguidores quieren ver.";
-
   return (
     <div className="min-h-screen flex flex-col">
       <PageTransition />
@@ -20,9 +19,8 @@ const Contacto = () => {
         mainTextSpan={mainTextSpan}
         mainTextTwo={mainTextTwo}
       />
-      <ContactComponent />
     </div>
   );
 };
 
-export default Contacto;
+export default Servicios;

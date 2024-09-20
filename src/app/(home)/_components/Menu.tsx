@@ -5,6 +5,8 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import "./menu.css";
+import WhiteLogoComponent from "@/app/components/Logos/WhiteLogoComponent";
+import DarkLogoComponent from "@/app/components/Logos/DarkLogoComponent";
 
 gsap.registerPlugin(useGSAP);
 
@@ -13,7 +15,7 @@ const menuLinks = [
   { path: "/trabajos", label: "Trabajos" },
   { path: "/acerca", label: "Acerca" },
   { path: "/contacto", label: "Contacto" },
-  { path: "/contacto", label: "Lab" },
+  { path: "/servicios", label: "Servicios" },
 ];
 
 const Menu = (): JSX.Element => {
@@ -66,7 +68,9 @@ const Menu = (): JSX.Element => {
     <div className={`menu-container`} ref={container}>
       <div className="menu-bar">
         <div className="menu-logo">
-          <Link href={"/"}>Eggs & Bakey</Link>
+          <Link href={"/"}>
+            <WhiteLogoComponent />
+          </Link>
         </div>
         <div className="menu-open" onClick={toggleMenu}>
           <p>Menu</p>
@@ -76,7 +80,9 @@ const Menu = (): JSX.Element => {
       <div className={`menu-overlay  ${isMenuOpen ? "block" : "hidden"}`}>
         <div className="menu-overlay-bar">
           <div className="menu-logo">
-            <Link href={"/"}>Eggs & Bakey</Link>
+            <Link href={"/"}>
+              <DarkLogoComponent />
+            </Link>
           </div>
           <div className="menu-close" onClick={toggleMenu}>
             <p>Cerrar</p>

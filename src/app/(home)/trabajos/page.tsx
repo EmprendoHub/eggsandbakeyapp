@@ -5,6 +5,7 @@ import Image from "next/image";
 import { TransitionContext } from "@/context/TransitionContext";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import PageTransition from "@/app/components/transitions/PageTransition";
 
 const Trabajos = () => {
   const context = useContext(TransitionContext);
@@ -35,6 +36,8 @@ const Trabajos = () => {
 
   return (
     <div className="page">
+      <PageTransition />
+
       <div ref={container} className="h-[100vh] flex">
         <div className="h-[100vh] w-full flex flex-col justify-center items-center gap-5">
           <p className="text-[5vw]">Trabajos</p>

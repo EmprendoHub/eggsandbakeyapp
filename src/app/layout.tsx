@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Menu from "./(home)/_components/Menu";
 import { TransitionProvider } from "@/context/TransitionContext";
+import FooterComponent from "./components/footer/FooterComponent";
 
 export const metadata: Metadata = {
   title: "Eggs & Bakey Marketing Agency",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <TransitionProvider>
           <Menu />
           {children}
+          <FooterComponent />
         </TransitionProvider>
       </body>
     </html>

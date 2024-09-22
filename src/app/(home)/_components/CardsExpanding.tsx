@@ -53,11 +53,10 @@ function CardsExpanding(): JSX.Element {
             onUpdate: (self) => {
               const progress = self.progress;
               const newHeight = 150 + 300 * progress;
-
               gsap.to(service, {
                 height: `${newHeight}%`,
                 duration: 0.1,
-                ease: "none",
+                ease: "power1.inOut",
               });
             },
           });

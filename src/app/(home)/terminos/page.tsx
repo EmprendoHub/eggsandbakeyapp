@@ -10,8 +10,8 @@ const TerminosPage = () => {
     <div className="p-6 px-20 maxmd:px-5 text-card-foreground">
       <PixelTransition />
 
-      <section className="hero mb-5 bg-card rounded-lg text-center pt-20 pb-5 border border-muted drop-shadow-md">
-        <div className="container mx-auto">
+      <section className="mb-5 rounded-lg text-center  mt-20  pt-20 pb-5 border border-muted drop-shadow-md">
+        <div className=" mx-auto">
           <h1 className="text-4xl font-extrabold ">Términos de servicio</h1>
           <p className="text-sm  mt-4 font-raleway  ">
             Este sitio web es operado por Eggs & Bakey. En todo el sitio, los

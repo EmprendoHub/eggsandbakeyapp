@@ -19,26 +19,26 @@ const SectionTextColorComponent = ({
   return (
     <div className="text-center">
       <motion.p
-        initial={{ y: 30, opacity: 0 }}
+        initial={{ y: 60, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-base text-greenLight sm:text-sm tracking-widest uppercase"
+        transition={{ duration: 1.6 }}
+        className="text-base sm:text-sm tracking-wide uppercase"
       >
         {pretitle}
       </motion.p>
       <motion.h2
-        initial={{ y: 30, opacity: 0 }}
+        initial={{ y: 60, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7 }}
-        className="text-6xl text-blueDark maxmd:text-4xl font-raleway font-black tracking-normal uppercase"
+        transition={{ duration: 1.8 }}
+        className="text-6xl maxmd:text-4xl font-raleway font-black tracking-normal uppercase"
       >
         {title}{" "}
       </motion.h2>
       <motion.p
-        initial={{ y: 30, opacity: 0 }}
+        initial={{ y: 60, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="text-lg maxmd:text-sm pt-3 tracking-widest text-blueDark"
+        transition={{ duration: 2 }}
+        className="text-base maxmd:text-sm pt-3 tracking-wide "
       >
         {subtitle}
       </motion.p>

@@ -24,37 +24,35 @@ const AboutUsComponent = () => {
           />
         </div>
       </section>
-      <section className=" text-center py-12 mt-20 w-[70%] maxmd:w-[90%] p-5 mx-auto">
+
+      <section className=" text-center py-12 my-20 mx-auto">
         <div className="container mx-auto">
           <InnerSectionTextComponent
-            title={"Experiencia Personalizada"}
-            paraOne={
-              "En OFERTAZOSMX, nos especializamos en crear sillas, bancos y mesas que personifican la elegancia minimalista, combinando funcionalidad pura con un estilo sofisticado. Cada pieza es una obra de arte, diseñada para enriquecer tu espacio con líneas limpias y una estética atemporal."
-            }
+            title={"Por Qué Elegir Eggs and Bakey?"}
+            paraOne={"En Eggs & Bakey nos dedicamos a brindar:"}
             paraTwo={""}
             btnText={""}
             btnUrl={""}
           />
-        </div>
-      </section>
-      <section className=" text-center py-12 mb-20 mx-auto">
-        <div className="container mx-auto">
-          <h3 className="text-4xl maxmd:text-2xl font-semibold font-raleway  mb-5">
-            {"¿Por Qué Elegir OFERTAZOSMX?"}
-          </h3>
-          <p className="text-gray-500 font-raleway ">
-            {"En Eggs & Bakey nos dedicamos a brindar:"}
-          </p>
+
+          <p className="text-gray-500 font-raleway ">{""}</p>
 
           <div className="flex maxmd:flex-col items-center justify-center gap-4 mt-5">
             <div className="w-full bg-foreground rounded-lg px-3 py-4 shadow-md">
-              <Image
-                src={"/images/img-2.jpg"}
-                width={800}
-                height={800}
-                alt="Icon"
-                className="mx-auto mb-4 w-40 h-40 rounded-sm "
-              />
+              <motion.div
+                initial={{ y: 60, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.4 }}
+                className="relative"
+              >
+                <Image
+                  src={"/images/img-2.jpg"}
+                  width={800}
+                  height={800}
+                  alt="Icon"
+                  className="mx-auto mb-4 w-40 h-40 rounded-sm "
+                />
+              </motion.div>
 
               <CardTextComponent
                 title={"Diseño Minimalista"}
@@ -69,14 +67,20 @@ const AboutUsComponent = () => {
             </div>
 
             <div className="w-full bg-foreground  rounded-sm px-3 py-4  shadow-md">
-              <Image
-                src={"/images/img-3.jpg"}
-                width={800}
-                height={800}
-                alt="Icon"
-                className="mx-auto mb-4 w-40 h-40 rounded-sm"
-              />
-
+              <motion.div
+                initial={{ y: 60, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.4 }}
+                className="relative"
+              >
+                <Image
+                  src={"/images/img-3.jpg"}
+                  width={800}
+                  height={800}
+                  alt="Icon"
+                  className="mx-auto mb-4 w-40 h-40 rounded-sm"
+                />
+              </motion.div>
               <CardTextComponent
                 title={"Atención Personalizada"}
                 paraOne={
@@ -90,14 +94,20 @@ const AboutUsComponent = () => {
             </div>
 
             <div className="w-full bg-foreground  rounded-sm  px-3 py-4  shadow-md">
-              <Image
-                src={"/images/img-4.jpg"}
-                width={800}
-                height={800}
-                alt="Icon"
-                className="mx-auto mb-4 w-40 h-40 rounded-sm"
-              />
-
+              <motion.div
+                initial={{ y: 60, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1.4 }}
+                className="relative"
+              >
+                <Image
+                  src={"/images/img-4.jpg"}
+                  width={800}
+                  height={800}
+                  alt="Icon"
+                  className="mx-auto mb-4 w-40 h-40 rounded-sm"
+                />
+              </motion.div>
               <CardTextComponent
                 title={"Calidad Superior"}
                 paraOne={

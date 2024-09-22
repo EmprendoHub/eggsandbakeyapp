@@ -5,6 +5,8 @@ import { useLayoutEffect, useState } from "react";
 import { gsap } from "gsap";
 import Hero from "./components/HeroLoader/Hero";
 import Loader from "./components/Loader/Loader";
+import Marquee from "./components/marquees/Marquee";
+import TestimonialComponent from "./(home)/_components/TestimonialComponent";
 
 const CardsExpanding = dynamic(
   () => import("./(home)/_components/CardsExpanding"),
@@ -42,6 +44,9 @@ export default function Home() {
           {loaderFinished ? <Hero /> : <Loader timeline={timeline} />}
         </div>
         <CardsSplit />
+        <Marquee />
+        <TestimonialComponent />
+
         <CardsExpanding />
       </ReactLenis>
     </>

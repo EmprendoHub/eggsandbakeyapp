@@ -54,7 +54,7 @@ function CardsSplit(): JSX.Element {
             x: leftXValues[index],
             scrollTrigger: {
               trigger: ".splits-main",
-              start: "top center",
+              start: "top 70%",
               end: "bottom bottom", // Change this to allow scrolling past the component
               scrub: true,
               onUpdate: (self): void => {
@@ -101,20 +101,6 @@ function CardsSplit(): JSX.Element {
       duration: 1.1,
       ease: "power1.out",
       scrollTrigger: scrollTriggerSetting,
-    });
-
-    // Animation for the footer Link
-    gsap.to(".splits-footer p", {
-      y: 0,
-      opacity: 1,
-      duration: 3,
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: ".splits-footer",
-        start: "top bottom", // Start animation when footer enters the viewport
-        end: "bottom bottom",
-        scrub: true,
-      },
     });
 
     return () => {
@@ -169,28 +155,23 @@ function CardsSplit(): JSX.Element {
             </div>
             <div className="splits-copy">
               <div className="splits-line">
-                <p>Desarrolla código estructurado</p>
+                <p>Influencer Marketing</p>
               </div>
               <div className="splits-line">
-                <p>Desarrolla código estructurado</p>
+                <p>Gestión de Redes Sociales</p>
               </div>
               <div className="splits-line">
-                <p>Desarrolla código estructurado</p>
+                <p>Desarrollo de Marca</p>
               </div>
             </div>
 
             <button>
-              <Link href={"/contacto"}>Contacto</Link>
+              <Link href={"/contacto"}>y Mucho Mas +</Link>
             </button>
           </div>
 
           {generateRows()}
         </section>
-        <div className="splits-footer">
-          <Link href={"/"}>
-            <p>Link in description</p>
-          </Link>
-        </div>
       </div>
       <MovieModal
         isOpen={modalIsOpen}

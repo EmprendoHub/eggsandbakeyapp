@@ -21,11 +21,11 @@ const anim: Anim = {
   },
   open: (delay) => ({
     opacity: 0,
-    transition: { duration: 0, delay: 0.12 * delay[1] },
+    transition: { duration: 0, delay: 0.07 * delay[1] },
   }),
   closed: (delay) => ({
     opacity: 0,
-    transition: { duration: 0, delay: 0.12 * delay[0] },
+    transition: { duration: 0, delay: 0.07 * delay[0] },
   }),
 };
 

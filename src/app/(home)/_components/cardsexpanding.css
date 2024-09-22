@@ -70,8 +70,9 @@
   display: flex;
   gap: 2em;
   min-height: 150px;
+  height: 150px;
   border-top: 1px solid rgba(177, 177, 177, 0.377);
-  padding: 2em 0;
+  padding: 1em 0;
 }
 
 .expanding-service-info {

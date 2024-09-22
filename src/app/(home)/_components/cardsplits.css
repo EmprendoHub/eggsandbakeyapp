@@ -1,6 +1,5 @@
 .splits {
   z-index: -1;
-  background-color: black;
 }
 
 .splits-img {
@@ -28,21 +27,9 @@
   aspect-ratio: 1;
 }
 
-.splits-footer {
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: start;
-}
-
-.splits-footer a {
-  font-size: 4vw;
-  color: #e9e9e9;
-}
-
 .splits-main {
   width: 100vw;
-  height: 150vh;
+  height: 130vh;
   flex-direction: column;
 }
 

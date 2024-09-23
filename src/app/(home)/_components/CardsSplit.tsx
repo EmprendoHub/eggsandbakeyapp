@@ -36,8 +36,8 @@ function CardsSplit(): JSX.Element {
       toggleActions: "play reverse play reverse",
     };
 
-    const leftXValues: number[] = [-800, -900, -400];
-    const rightXValues: number[] = [800, 900, 400];
+    const leftXValues: number[] = [-600, -700, -200];
+    const rightXValues: number[] = [600, 700, 200];
     const leftRotationValues: number[] = [-30, -20, -35];
     const rightRotationValues: number[] = [30, 20, 35];
     const yValues: number[] = [100, -150, -400];
@@ -54,7 +54,6 @@ function CardsSplit(): JSX.Element {
             x: leftXValues[index],
             scrollTrigger: {
               trigger: ".splits-main",
-              markers: true,
               start: "top 40%",
               end: "bottom bottom", // Change this to allow scrolling past the component
               scrub: true,

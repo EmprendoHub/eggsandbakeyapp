@@ -1,7 +1,12 @@
 .expanding h1 {
   color: #fff;
-  font-size: 36px;
-  font-weight: 500;
+
+  text-transform: uppercase;
+}
+
+.expanding-col h1 {
+  font-size: 50px;
+  font-weight: 700;
 }
 
 .expanding p {
@@ -64,6 +69,7 @@
 .expanding-services-header .expanding-col:nth-child(2) {
   flex: 5;
   padding: 1em;
+  line-height: 2em;
 }
 
 .expanding-service {
@@ -107,6 +113,10 @@
 }
 
 @media (max-width: 900px) {
+  .expanding h1 {
+    font-size: 48px;
+  }
+
   .expanding-service {
     display: flex;
     flex-direction: column;
@@ -116,7 +126,7 @@
 
   .expanding-hero h1 {
     line-height: 80%;
-    font-size: 70px;
+    font-size: 80px;
     margin-left: 1rem;
   }
 
@@ -137,11 +147,15 @@
     padding: 0.5em;
   }
 
+  .expanding-service-info h1 {
+    font-size: 36px;
+  }
+
   .expanding-services-header {
     gap: 1em;
   }
 
   .expanding-services-header .expanding-col:nth-child(1) {
-    flex: 1;
+    flex: 0;
   }
 }

@@ -78,9 +78,6 @@ function CardsExpanding(): JSX.Element {
 
   return (
     <div className="expanding overflow-x-hidden">
-      <section className="expanding-hero">
-        <h1>Expande tu alcance</h1>
-      </section>
       <section className="expanding-services">
         <div className="expanding-services-header">
           <div className="expanding-col"></div>
@@ -179,9 +176,6 @@ function CardsExpanding(): JSX.Element {
             </div>
           </div>
         </div>
-      </section>
-      <section className="expanding-footer">
-        <h1>Crece tu presencia</h1>
       </section>
     </div>
   );

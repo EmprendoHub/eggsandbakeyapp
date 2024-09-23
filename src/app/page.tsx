@@ -7,6 +7,7 @@ import Hero from "./components/HeroLoader/Hero";
 import Loader from "./components/Loader/Loader";
 import Marquee from "./components/marquees/Marquee";
 import TestimonialComponent from "./(home)/_components/TestimonialComponent";
+import { TextSplitter } from "./(home)/_components/TextSplitter";
 
 const CardsExpanding = dynamic(
   () => import("./(home)/_components/CardsExpanding"),
@@ -16,6 +17,10 @@ const CardsExpanding = dynamic(
 );
 
 const CardsSplit = dynamic(() => import("./(home)/_components/CardsSplit"), {
+  ssr: false,
+});
+
+const BigText = dynamic(() => import("./(home)/_components/BigText"), {
   ssr: false,
 });
 
@@ -43,11 +48,15 @@ export default function Home() {
         <div className="h-[100vh]">
           {loaderFinished ? <Hero /> : <Loader timeline={timeline} />}
         </div>
+        <BigText />
         <CardsSplit />
         <Marquee />
         <TestimonialComponent />
 
         <CardsExpanding />
+        <section className="flex flex-wrap bg-[#dac340] text-[#000000] font-black py-20 px-2 leading-[0.8]">
+          <TextSplitter text="WAKE UP YOUR BRAND" />
+        </section>
       </ReactLenis>
     </>
   );

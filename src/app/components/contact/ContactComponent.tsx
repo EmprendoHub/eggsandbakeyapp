@@ -1,5 +1,6 @@
+"use client";
 import React from "react";
-import ContactUsComponent from "./ContactUsComponent";
+import { motion } from "framer-motion";
 import IconListSectionComponent from "./IconListSectionComponent";
 import HeroColTextComponent from "../texts/HeroColTextComponent";
 
@@ -40,7 +41,12 @@ const ContactComponent = () => {
               />
             </div>
 
-            <div className="w-2/3 maxmd:w-full pb-10 pl-5 maxmd:pl-1  flex flex-col justify-start items-start">
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 1.1 }}
+              className="w-2/3 maxmd:w-full pb-10 pl-5 maxmd:pl-1  flex flex-col justify-start items-start"
+            >
               <div className="w-[100%] px-3map-class pt-5">
                 <iframe
                   className="border-none"
@@ -52,16 +58,9 @@ const ContactComponent = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
-
-        <ContactUsComponent
-          contactTitle={"Mándanos un breve mensaje"}
-          contactSubTitle={
-            "En breve uno de nuestros representantes se comunicara."
-          }
-        />
       </div>
     </>
   );

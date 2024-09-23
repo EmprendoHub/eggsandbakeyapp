@@ -16,7 +16,7 @@ const BoxesSectionTitle = ({
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className=" mb-2 text-7xl maxlg:text-5xl font-black uppercase pb-3 text-foreground font-EB_Garamond"
+        className=" mb-2 text-7xl maxlg:text-5xl maxmd:text-4xl font-black uppercase text-foreground font-EB_Garamond"
       >
         {title}
       </motion.h2>

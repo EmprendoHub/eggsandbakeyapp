@@ -1,7 +1,7 @@
 .main {
   height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .mask,
@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #afa18f;
+  color: #cfcecb;
   font-size: 64px;
   line-height: 66px;
   cursor: default;
@@ -36,4 +36,16 @@
   background: #dac340;
   position: absolute;
   color: black;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .mask,
+  .body {
+    width: 100%;
+    height: 100vh;
+    font-size: 48px;
+    line-height: 46px;
+    padding: 0 20px;
+  }
 }

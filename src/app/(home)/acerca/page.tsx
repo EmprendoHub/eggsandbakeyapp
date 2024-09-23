@@ -7,8 +7,8 @@ import PixelTransition from "@/app/components/transitions/PixelTransition";
 const Acerca = () => {
   const maskText: string =
     "Desarrollamos tu marca - implementando las estrategias de marketing mas efectivas en base a tu publico ideal.";
-  const mainTextOne: string = "Nuestra agencia se";
-  const mainTextSpan: string = " especializada en marketing digital";
+  const mainTextOne: string = "Cuenta con una agencia se especializada en";
+  const mainTextSpan: string = " marketing digital";
   const mainTextTwo: string =
     ",creamos el contenido que tus seguidores quieren ver.";
   return (

@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 const FooterMenu = () => {
   return (
-    <div className="relative w-full text-foreground  bg-background px-20 maxmd:px-5 py-24">
+    <div className="relative w-full text-foreground  bg-background px-20 maxmd:px-5 py-24 overflow-x-hidden">
       <div className="grid maxxsm:grid-cols-1 maxmd:grid-cols-2 grid-cols-4 gap-10">
         <div className=" gap-y-4">
           <WhiteLogoComponent />

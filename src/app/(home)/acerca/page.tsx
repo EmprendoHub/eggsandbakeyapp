@@ -12,7 +12,7 @@ const Acerca = () => {
   const mainTextTwo: string =
     ",creamos el contenido que tus seguidores quieren ver.";
   return (
-    <>
+    <div>
       <PixelTransition />
       <div className="min-h-screen flex flex-col">
         <PageHeader
@@ -23,7 +23,7 @@ const Acerca = () => {
         />
         <AboutUsComponent />
       </div>
-    </>
+    </div>
   );
 };
 

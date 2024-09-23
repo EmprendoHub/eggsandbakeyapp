@@ -30,7 +30,7 @@ function CardsSplit(): JSX.Element {
   useGSAP(() => {
     // Setup ScrollTrigger and GSAP animations
     const scrollTriggerSetting = {
-      trigger: ".splits-main",
+      trigger: ".splits",
       start: "top 25%",
       end: "bottom bottom", // Change this to allow scrolling past the component
       toggleActions: "play reverse play reverse",
@@ -54,7 +54,8 @@ function CardsSplit(): JSX.Element {
             x: leftXValues[index],
             scrollTrigger: {
               trigger: ".splits-main",
-              start: "top 70%",
+              markers: true,
+              start: "top 40%",
               end: "bottom bottom", // Change this to allow scrolling past the component
               scrub: true,
               onUpdate: (self): void => {
@@ -139,7 +140,7 @@ function CardsSplit(): JSX.Element {
   };
 
   return (
-    <>
+    <div className="relative">
       <div className="splits">
         <section className="splits-main">
           <div className="splits-main-content">
@@ -178,7 +179,7 @@ function CardsSplit(): JSX.Element {
         onClose={closeModal}
         videoUrl="/videos/Reel_Letras_Grunge_Pagina_Eggs.webm"
       />
-    </>
+    </div>
   );
 }
 

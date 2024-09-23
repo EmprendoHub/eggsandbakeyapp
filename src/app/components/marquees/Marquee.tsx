@@ -31,7 +31,7 @@ const Marquee = () => {
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="pl-20 font-bold text-6xl tracking-wider uppercase"
+        className="pl-20 maxmd:pl-5 font-bold text-6xl tracking-wider uppercase"
       >
         Clientes
       </motion.h2>
@@ -39,7 +39,7 @@ const Marquee = () => {
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.3 }}
-        className="pl-20 pb-10 text-xs "
+        className="pl-20 maxmd:pl-5 pb-10 text-xs "
       >
         Nos enorgullese saber que pudimos ayudar a cada uno nuestros clientes.
       </motion.p>

@@ -34,9 +34,9 @@ const ContactComponent = () => {
                 linkTwo={"mailto:eggsandbakey01@gmail.com"}
                 linkThree={"https://maps.app.goo.gl/8122sB7xggByVweT8"}
                 linkTwoText={"eggsandbakey01@gmail.com"}
-                textAddressThree={"Calle Via Láctea 715"}
+                textAddressThree={"Blvd. Lázaro Cárdenas Nte. 175"}
                 textAddressBThree={"Col. La Gloria del Colli"}
-                textAddressCThree={"Zapopan, Jalisco  45010"}
+                textAddressCThree={"Sahuayo de Morelos, Michoacan 59000"}
                 linkThreeText={"Ver en mapa"}
               />
             </div>

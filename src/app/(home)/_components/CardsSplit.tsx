@@ -31,7 +31,7 @@ function CardsSplit(): JSX.Element {
     // Setup ScrollTrigger and GSAP animations
     const scrollTriggerSetting = {
       trigger: ".splits",
-      start: "top 25%",
+      start: "center 50%",
       end: "bottom bottom", // Change this to allow scrolling past the component
       toggleActions: "play reverse play reverse",
     };
@@ -82,6 +82,7 @@ function CardsSplit(): JSX.Element {
     gsap.to(".splits-logo", {
       scale: 1,
       duration: 1.1,
+      zIndex: 10,
       ease: "power1.out",
       scrollTrigger: scrollTriggerSetting,
     });
@@ -113,7 +114,7 @@ function CardsSplit(): JSX.Element {
     const rows: JSX.Element[] = [];
     for (let i = 1; i <= 3; i++) {
       rows.push(
-        <div className="splits-row -z-1" key={i}>
+        <div className="splits-row " key={i}>
           <div className="splits-card card-left">
             <Image
               width={850}
@@ -141,6 +142,9 @@ function CardsSplit(): JSX.Element {
   return (
     <div className="relative">
       <div className="splits">
+        <section className="splits-hero">
+          <h2>Los Profesionales en Marketing</h2>
+        </section>
         <section className="splits-main">
           <div className="splits-main-content">
             <div className="splits-logo">

@@ -40,7 +40,7 @@ const MovieModal: React.FC<CustomModalProps> = ({
             onClick={(e) => e.stopPropagation()}
             style={{
               width: "85%",
-              maxWidth: "850px",
+              maxWidth: "1920px",
               height: "auto",
               maxHeight: "80vh",
               backgroundColor: "black",

@@ -20,12 +20,14 @@
 
 /* Specific Layout Styles */
 .splits-hero {
-  height: 100vh;
+  height: 50vh;
 }
 
-.splits-hero .img {
+.splits-hero {
   width: 50%;
-  aspect-ratio: 1;
+  text-align: center;
+  font-size: 5rem;
+  line-height: 80%;
 }
 
 .splits-main {
@@ -35,13 +37,13 @@
 }
 
 .splits-row {
-  position: relative;
   width: 100vw;
   margin: 1em 0;
   display: flex;
   justify-content: center;
   gap: 2em;
-  z-index: 0;
+  z-index: 1; /* Lower z-index than the play-button */
+  position: relative;
 }
 
 .splits-card {
@@ -61,7 +63,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1;
+  z-index: 10; /* Increase z-index to ensure it's above other elements */
 }
 
 .splits-logo {
@@ -114,8 +116,8 @@
 }
 
 .play-button {
-  z-index: 10;
-  position: absolute;
+  z-index: 9999; /* Increase z-index to ensure it's above other elements */
+  position: relative; /* Ensure proper stacking context */
 }
 
 /* Responsive Styles */
@@ -134,5 +136,9 @@
   .splits-logo img {
     width: 50px;
     height: 50px;
+  }
+  .splits-hero {
+    width: 50%;
+    font-size: 3rem;
   }
 }

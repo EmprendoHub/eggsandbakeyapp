@@ -29,9 +29,12 @@ export function TextSplitter({
           if (char === " ") return ` `;
           return (
             <motion.span
-              initial={{ y: -180, opacity: 0 }}
+              initial={{ y: 80, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: charIndex * 0.18 }}
+              transition={{
+                duration: 0.8,
+                delay: wordIndex * 0.2 + charIndex * 0.05,
+              }}
               key={charIndex}
               className={`split-char inline-block split-char--${wordIndex}-${charIndex} text-[20vw] maxsm:text-[30vw] text-black`}
             >

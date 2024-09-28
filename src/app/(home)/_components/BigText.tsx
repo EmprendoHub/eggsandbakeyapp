@@ -17,11 +17,11 @@ const BigText = (): JSX.Element => {
           initial={{ x: -120, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1.3 }}
-          className="grid gap-[3vw] text-[34vw] maxmd:text-[11.5vw] maxmd:flex "
+          className="flex gap-[3vw] text-[12vw] maxmd:text-[11.5vw] maxmd:flex "
         >
           <span className="inline-block">YOUR </span>
-          <span className="inline-block max-md:text-[27vw]">DREAM</span>
-          <span className="inline-block max-md:text-[38vw]">AND </span>
+          <span className="inline-block">DREAM</span>
+          <span className="inline-block">AND </span>
         </motion.div>
         <motion.div
           initial={{ y: 120, opacity: 0 }}

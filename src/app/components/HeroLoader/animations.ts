@@ -4,7 +4,7 @@ export const animateTitle = () => {
   const tl = gsap.timeline({
     defaults: {
       ease: "expo.out",
-      duration: 2,
+      duration: 3,
     },
   });
 
@@ -30,7 +30,7 @@ export const animateTitle = () => {
         autoAlpha: 0,
       },
       {
-        x: 0,
+        x: 40,
         autoAlpha: 1,
       },
       "<"
@@ -43,7 +43,7 @@ export const animateImage = () => {
   const tl = gsap.timeline({
     defaults: {
       ease: "expo.out",
-      duration: 1.5,
+      duration: 3.5,
     },
   });
 
@@ -65,7 +65,7 @@ export const animateImage = () => {
       "[data-image]",
       {
         duration: 4,
-        scale: 1.2,
+        scale: 1.1,
       },
       "<"
     );

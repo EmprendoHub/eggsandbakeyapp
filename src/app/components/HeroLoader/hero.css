@@ -18,17 +18,15 @@
   position: absolute;
   top: 50%;
   left: 4rem;
-
   width: calc(100% - 10rem);
   transform: translateY(-50%);
-
   margin-bottom: 8rem;
   display: flex;
   grid-template-columns: max-content 1fr max-content;
   align-items: center;
-  gap: 3.2rem;
+  gap: 3.4rem;
   line-height: 50%;
-  font-size: 12rem;
+  font-size: 10rem;
 }
 
 .hero_line {
@@ -44,9 +42,10 @@
   overflow: hidden;
   position: absolute;
   left: 50%;
-  top: 18%;
+  top: 23%;
   width: 50%;
   transform-origin: top center;
+  overflow: visible;
 }
 
 .hero_imageOverlay {
@@ -59,14 +58,14 @@
 
 @media (max-width: 1600px) {
   .hero_title {
-    font-size: 10rem;
-    left: 1.5rem;
+    font-size: 8rem;
+    left: 2rem;
   }
 }
 
 @media (max-width: 1400px) {
   .hero_title {
-    font-size: 8rem;
+    font-size: 7rem;
     left: 1.5rem;
   }
 }
@@ -90,8 +89,9 @@
   }
 
   .hero_image {
-    left: 10%;
-    width: 40%;
+    width: 50%;
+    top: 70%;
+    left: 2rem;
   }
 }
 
@@ -100,10 +100,10 @@
     left: 1rem;
     gap: 1.1rem;
     font-size: 4.5rem;
+    width: 90%;
   }
-
   .hero_image {
-    left: 8%;
     width: 70%;
+    top: 70%;
   }
 }

@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Image from "next/image";
-
 import "./hero.css";
 import { animateTitle, animateImage, revealMenu } from "./animations";
 
@@ -23,11 +22,11 @@ const Hero = () => {
   return (
     <section className={`hero`} ref={heroRef}>
       <h1 className={`hero_title flex flex-wrap gap-1`}>
-        <span data-hidden data-title-first>
+        <span data-hidden data-title-first style={{ visibility: "hidden" }}>
           Agencia
         </span>
         <span data-hero-line className={`hero_line`}></span>
-        <span data-hidden data-title-last>
+        <span data-hidden data-title-last style={{ visibility: "hidden" }}>
           Creativa
         </span>
       </h1>
@@ -37,9 +36,10 @@ const Hero = () => {
         <Image
           data-image
           src="/logos/EggsandBakeyLOGO-BLANCO.webp"
-          width={550}
-          height={550}
-          alt="Blob"
+          width={350}
+          height={350}
+          alt="Eggs & Bakey"
+          className="w-auto h-auto"
         />
       </div>
     </section>

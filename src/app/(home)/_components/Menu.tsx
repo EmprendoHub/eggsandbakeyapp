@@ -12,7 +12,7 @@ gsap.registerPlugin(useGSAP);
 
 const menuLinks = [
   { path: "/", label: "Inicio" },
-  { path: "/trabajos", label: "Trabajos" },
+  { path: "/proyectos", label: "Proyectos" },
   { path: "/acerca", label: "Acerca" },
   { path: "/contacto", label: "Contacto" },
   { path: "/servicios", label: "Servicios" },

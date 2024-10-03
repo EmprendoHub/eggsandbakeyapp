@@ -12,14 +12,12 @@ import HeroColTextComponent from "@/app/components/texts/HeroColTextComponent";
 const AboutUsComponent = () => {
   return (
     <div>
-      <section className="min-h-[700px] bg-[#dac340] flex flex-row maxsm:flex-col justify-center items-center relative overflow-hidden">
+      <section className="min-h-[400px] bg-[#dac340] flex flex-row maxsm:flex-col justify-center items-center relative overflow-hidden">
         <div className="container mx-auto flex justify-center items-center text-center p-5 sm:py-20 text-black z-10">
           <HeroColTextComponent
-            pretitle={"CONOCE A"}
-            title={"Eggs & Bakey"}
-            subtitle={
-              "Obten resultados con la mejor agencia digital en la cienega."
-            }
+            pretitle={"Eggs & Bakey"}
+            title={"CONÓCENOS"}
+            subtitle={"Obten resultados con la mejor agencia digital."}
             word={""}
           />
         </div>
@@ -163,12 +161,12 @@ const AboutUsComponent = () => {
       <section className="min-h-[900px] flex flex-row maxsm:flex-col justify-center items-center relative bg-[#dac340] text-black">
         <div className="container mx-auto flex justify-center items-center text-center p-5 sm:py-20 bg-foreground z-10">
           <HeroTextComponent
-            title={"Una Experiencia de Compra Excepcional"}
+            title={"Creando Una Marca Espectacular un Proyecto a la Vez."}
             subtitle={
-              "En Eggs & Bakey, valoramos la importancia de una experiencia de compra sin complicaciones."
+              "En Eggs & Bakey, nos enfocamos en desarrollar una marca unica que resalte de tu competencia."
             }
-            btnText={"Visitar Tienda"}
-            btnUrl={`/tienda`}
+            btnText={"Platiquemos"}
+            btnUrl={`/contacto`}
           />
         </div>
       </section>

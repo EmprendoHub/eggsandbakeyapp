@@ -6,7 +6,8 @@
   width: 100vw;
   padding-left: 1em;
   padding-right: 2em;
-  padding-top: 1.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -132,7 +133,7 @@
   justify-content: space-between;
   font-size: 14px;
   position: absolute;
-  top: 55px;
+  top: 15px;
 }
 
 .menu-close-icon {
@@ -166,9 +167,9 @@
   }
 
   .menu-bar {
-    padding: 1em;
     width: 100vw;
-    padding-top: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     padding-right: 2em;
   }
 

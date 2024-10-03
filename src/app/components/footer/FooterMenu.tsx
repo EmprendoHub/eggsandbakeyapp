@@ -55,16 +55,16 @@ const FooterMenu = () => {
           </div>
         </div>
         <div>
-          <p className="text-sm">Explora por Categoría</p>
+          <p className="text-sm">Explorar Proyectos</p>
           <ul className="text-xs font-base mt-2 flex flex-col gap-y-2">
-            <Link href={`/tienda?keyword=accesorios`}>
+            <Link href={`/proyecto/0`}>
               <motion.li
                 whileHover={{ y: -4 }}
                 whileTap={{ y: 1 }}
                 transition={{ duration: 0.15 }}
                 className="hover:text-primary  cursor-pointer duration-200"
               >
-                {"Accesorios"}
+                {"Brazza"}
               </motion.li>
             </Link>
             <motion.li
@@ -74,10 +74,10 @@ const FooterMenu = () => {
               className="flex flex-col"
             >
               <a
-                href={`/tienda?keyword=bolsas`}
+                href={`/proyecto/1`}
                 className="text-slate hover:text-primary cursor-pointer duration-200"
               >
-                {"Bolsos"}
+                {"Super 24"}
               </a>
             </motion.li>
             <motion.li
@@ -87,10 +87,10 @@ const FooterMenu = () => {
               className="flex flex-col"
             >
               <a
-                href={`/tienda?keyword=calzado`}
+                href={`/proyecto/2`}
                 className="text-slate hover:text-primary cursor-pointer duration-200"
               >
-                {"Calzado"}
+                {"Cloe MTV"}
               </a>
             </motion.li>
 
@@ -101,10 +101,10 @@ const FooterMenu = () => {
               className="flex flex-col"
             >
               <a
-                href={`/tienda?keyword=prenda`}
+                href={`/proyecto/3`}
                 className="text-slate hover:text-primary cursor-pointer duration-200"
               >
-                {"Prendas"}
+                {"La Cochera"}
               </a>
             </motion.li>
           </ul>
@@ -142,14 +142,14 @@ const FooterMenu = () => {
                 {"Contacto"}
               </motion.li>
             </Link>
-            <Link href={`/trabajos`}>
+            <Link href={`/proyectos`}>
               <motion.li
                 whileHover={{ y: -4 }}
                 whileTap={{ y: 1 }}
                 transition={{ duration: 0.15 }}
                 className="hover:text-primary  cursor-pointer duration-200"
               >
-                {"Trabajos"}
+                {"Proyectos"}
               </motion.li>
             </Link>
           </ul>

@@ -119,18 +119,18 @@ function CardsSplit(): JSX.Element {
             <Image
               width={850}
               height={850}
-              src={`/images/img-${2 * i - 1}.jpg`}
+              src={`/images/split-${2 * i - 1}.webp`}
               alt=""
-              className="splits-img"
+              className="splits-img grayscale"
             />
           </div>
           <div className="splits-card card-right">
             <Image
               width={850}
               height={850}
-              src={`/images/img-${2 * i}.jpg`}
+              src={`/images/split-${2 * i}.webp`}
               alt=""
-              className="splits-img"
+              className="splits-img grayscale"
             />
           </div>
         </div>

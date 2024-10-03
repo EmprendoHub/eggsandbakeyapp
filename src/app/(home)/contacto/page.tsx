@@ -5,11 +5,11 @@ import PixelTransition from "@/app/components/transitions/PixelTransition";
 import ContactUsComponent from "@/app/components/contact/ContactUsComponent";
 const Contacto = () => {
   const maskText: string =
-    "Desarrollamos tu marca - implementando las estrategias de marketing mas efectivas en base a tu publico ideal.";
-  const mainTextOne: string = "Nuestra agencia se";
-  const mainTextSpan: string = " especializada en marketing digital";
+    "Queremos saber sobre tu negocio - trabajemos en implementar una estrategia digital personalizada.";
+  const mainTextOne: string = "Platiquemos sobre ";
+  const mainTextSpan: string = "tu marca";
   const mainTextTwo: string =
-    ",creamos el contenido que tus seguidores quieren ver.";
+    ", descubramos como podemos ayudarte a impulsar tu alcance al máximo.";
 
   return (
     <div className="min-h-screen flex flex-col">

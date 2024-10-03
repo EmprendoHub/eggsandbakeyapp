@@ -8,11 +8,11 @@ const ContactComponent = () => {
   return (
     <>
       <div>
-        <section className="relative min-h-[700px] flex flex-row maxsm:flex-col justify-center items-center  bg-[#dac340] text-black">
-          <div className="relative container mx-auto flex justify-center items-center text-center p-5 sm:py-20 z-10">
+        <section className="relative min-h-[400px] flex flex-row maxsm:flex-col justify-center items-center bg-[#dac340] text-black">
+          <div className="relative mx-auto flex justify-center items-center text-center p-5 z-10">
             <HeroColTextComponent
-              pretitle={"CONTACTO"}
-              title={"Eggs & Bakey"}
+              pretitle={"Eggs & Bakey"}
+              title={"CONTACTO"}
               subtitle={"Tienes una duda o propuesta? ponte en contacto."}
               word={""}
             />

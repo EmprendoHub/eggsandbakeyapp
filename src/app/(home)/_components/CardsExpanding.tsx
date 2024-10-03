@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import "./cardsexpanding.css";
 import Image from "next/image";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -88,91 +89,141 @@ function CardsExpanding(): JSX.Element {
 
         <div className="expanding-service">
           <div className="expanding-service-info">
-            <h1>Lorem Ipsum</h1>
+            <h1>BRAZZA GRILL HOUSE</h1>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-              ducimus rem optio.
+              A través de nuestras sesiones fotográficas, hemos dado vida a cada
+              plato con imágenes que despiertan el apetito de los clientes,
+              siguiendo al pie de la letra lo que nuestro socio nos solicitó.
             </p>
+            <Link href={"/proyecto/0"}>
+              <button className="bg-[#dac340] text-black text-xs py-3 mt-2 px-6 rounded-xl">
+                Explorar proyecto
+              </button>
+            </Link>
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <Image width={850} height={850} src="/images/img-1.jpg" alt="" />
+              <Link href={"/proyecto/0"}>
+                <Image
+                  width={850}
+                  height={850}
+                  src="/images/img-1.jpg"
+                  alt="BRAZZA GRILL HOUSE"
+                />
+              </Link>
             </div>
           </div>
         </div>
         <div className="expanding-service">
           <div className="expanding-service-info">
-            <h1>Lorem Ipsum 2</h1>
+            <h1>SUPER 24</h1>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-              ducimus rem optio.
+              Mediante la implementación de grabaciones profesionales,
+              fotografías creativas, y reels dinámicos en Instagram, hemos
+              fortalecido la presencia de SUPER 24 en redes sociales.
             </p>
+            <Link href={"/proyecto/1"}>
+              <button className="bg-[#dac340] text-black text-xs py-3 mt-2 px-6 rounded-xl">
+                Explorar proyecto
+              </button>
+            </Link>
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <Image width={850} height={850} src="/images/img-2.jpg" alt="" />
+              <Link href={"/proyecto/1"}>
+                <Image
+                  width={850}
+                  height={850}
+                  src="/images/img-2.jpg"
+                  alt="SUPER 24"
+                />
+              </Link>
             </div>
           </div>
         </div>
         <div className="expanding-service">
           <div className="expanding-service-info">
-            <h1>Lorem Ipsum 3</h1>
+            <h1>CLOE MTV</h1>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-              ducimus rem optio.
+              En colaboración con la marca de bolsas y accesorios CLOE X MTV,
+              desarrollamos una campaña creativa para expandir la presencia de
+              CLOE en el mercado juvenil Internacional, publicidad que se
+              presentó en los aeropuertos.
             </p>
+            <Link href={"/proyecto/2"}>
+              <button className="bg-[#dac340] text-black text-xs py-3 mt-2 px-6 rounded-xl">
+                Explorar proyecto
+              </button>
+            </Link>
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <Image width={850} height={850} src="/images/img-3.jpg" alt="" />
+              <Link href={"/proyecto/2"}>
+                <Image
+                  width={850}
+                  height={850}
+                  src="/images/img-3.jpg"
+                  alt=""
+                />
+              </Link>
             </div>
           </div>
         </div>
         <div className="expanding-service">
           <div className="expanding-service-info">
-            <h1>Lorem Ipsum 4</h1>
+            <h1>LA COCHERA</h1>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-              ducimus rem optio.
+              Nos enorgullece presentar el proyecto La Cochera, donde hemos
+              trabajado incansablemente para capturar la esencia única de sus
+              productos y llevarlos al mundo digital.
             </p>
+            <Link href={"/proyecto/3"}>
+              <button className="bg-[#dac340] text-black text-xs py-3 mt-2 px-6 rounded-xl">
+                Explorar proyecto
+              </button>
+            </Link>
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <Image width={850} height={850} src="/images/img-4.jpg" alt="" />
+              <Link href={"/proyecto/3"}>
+                <Image
+                  width={850}
+                  height={850}
+                  src="/images/img-4.jpg"
+                  alt="LA COCHERA"
+                />
+              </Link>
             </div>
           </div>
         </div>
         <div className="expanding-service">
           <div className="expanding-service-info">
-            <h1>Lorem Ipsum 5</h1>
+            <h1>POLÍTICA</h1>
 
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-              ducimus rem optio.
+              Nos especializamos en marketing ATL (above the line) y BTL (below
+              the line) para clientes del ámbito político.
             </p>
+            <Link href={"/proyecto/4"}>
+              <button className="bg-[#dac340] text-black text-xs py-3 mt-2 px-6 rounded-xl">
+                Explorar proyecto
+              </button>
+            </Link>
           </div>
           <div className="expanding-service-img">
             <div className="expanding-img">
-              <Image width={850} height={850} src="/images/img-5.jpg" alt="" />
-            </div>
-          </div>
-        </div>
-        <div className="expanding-service">
-          <div className="expanding-service-info">
-            <h1>Lorem Ipsum 6</h1>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-              ducimus rem optio.
-            </p>
-          </div>
-          <div className="expanding-service-img">
-            <div className="expanding-img">
-              <Image width={850} height={850} src="/images/img-6.jpg" alt="" />
+              <Link href={"/proyecto/4"}>
+                <Image
+                  width={850}
+                  height={850}
+                  src="/images/img-5.jpg"
+                  alt="POLÍTICA"
+                />
+              </Link>
             </div>
           </div>
         </div>

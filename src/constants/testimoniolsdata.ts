@@ -6,7 +6,7 @@ export const testimonials = [
     rating: 5,
     position: "Cliente Satisfecho",
     message:
-      "Estoy encantada con mi experiencia en Super Collectibles Mx. Compré una tarjeta Pokémon muy rara y llegó en perfectas condiciones. El servicio al cliente fue excelente, definitivamente volveré a comprar aquí. ¡Gracias por todo!",
+      "Trabajar con Eggs & Bakey fue una experiencia excepcional. Mejoraron la visibilidad de mi marca de una manera increíble. Su equipo es muy profesional y siempre estuvo disponible para cualquier consulta. ¡Definitivamente seguiré trabajando con ellos!",
   },
   {
     _id: 2,
@@ -15,7 +15,7 @@ export const testimonials = [
     rating: 4,
     position: "Cliente Satisfecho",
     message:
-      "Super Collectibles Mx tiene una increíble selección de tarjetas de colección. Pude intercambiar varias de mis tarjetas deportivas y el proceso fue muy sencillo. Solo me gustaría que el envío fuera un poco más rápido. ¡Pero en general, excelente!",
+      "Eggs & Bakey transformó mi estrategia de marketing digital. Pudimos ver un aumento significativo en tráfico web y conversiones. Me gustaría que el proceso de implementación fuera un poco más rápido, pero estoy muy satisfecho con los resultados.",
   },
   {
     _id: 3,
@@ -24,7 +24,7 @@ export const testimonials = [
     rating: 5,
     position: "Cliente Satisfecho",
     message:
-      "Mi experiencia con Super Collectibles Mx fue fantástica. Compré una figura de edición limitada y llegó en excelentes condiciones. Además, me ayudaron con algunas preguntas que tenía sobre las subastas. ¡Super recomendado!",
+      "El equipo de Eggs & Bakey hizo maravillas con mi campaña de publicidad. Mis ventas aumentaron más del 30% en solo un mes. Además, la comunicación fue excelente durante todo el proceso. ¡Totalmente recomendable!",
   },
   {
     _id: 4,
@@ -33,7 +33,7 @@ export const testimonials = [
     rating: 4,
     position: "Cliente Satisfecho",
     message:
-      "Super Collectibles Mx tiene una gran variedad de tarjetas. Pude vender algunas de mis cartas más valiosas a un buen precio. El proceso de venta fue un poco largo, pero valió la pena. ¡Gracias por el excelente servicio!",
+      "Estoy muy contento con los servicios de Eggs & Bakey. Me ayudaron a reestructurar toda mi presencia digital. Aunque la estrategia tomó un poco más de tiempo del esperado, los resultados fueron increíbles. ¡Gracias por su gran trabajo!",
   },
   {
     _id: 5,
@@ -42,7 +42,7 @@ export const testimonials = [
     rating: 5,
     position: "Cliente Satisfecho",
     message:
-      "Estoy muy satisfecha con la atención que recibí en Super Collectibles Mx. Encontré la tarjeta de colección que buscaba desde hace años. Me la enviaron rápidamente y en perfectas condiciones. ¡Sin duda volveré a comprar aquí!",
+      "Eggs & Bakey me ayudó a lanzar mi primera campaña digital y no puedo estar más contenta. Todo el proceso fue claro y bien ejecutado. Recibí un montón de clientes nuevos gracias a sus estrategias. ¡Volveré a trabajar con ellos sin duda!",
   },
   {
     _id: 6,
@@ -51,7 +51,7 @@ export const testimonials = [
     rating: 4.5,
     position: "Cliente Satisfecho",
     message:
-      "El servicio de intercambio en Super Collectibles Mx es excepcional. Pude intercambiar varias de mis cartas raras por otras que quería, todo el proceso fue muy claro y rápido. ¡Muy recomendable!",
+      "El equipo de Eggs & Bakey realmente conoce el marketing digital. Lograron optimizar nuestras campañas de Google Ads, lo que resultó en una mayor conversión. Todo fue claro y directo, solo me gustaría que hubiera más actualizaciones durante el proceso.",
   },
   {
     _id: 7,
@@ -60,7 +60,7 @@ export const testimonials = [
     rating: 5,
     position: "Cliente Satisfecho",
     message:
-      "Compré varias tarjetas deportivas en Super Collectibles Mx y no puedo estar más contenta con la calidad del servicio. El embalaje fue perfecto y la atención al cliente increíble. ¡Definitivamente recomiendo esta tienda!",
+      "Estoy encantada con el servicio que me brindó Eggs & Bakey. Mi sitio web nunca había tenido tanto tráfico y la estrategia de SEO que implementaron fue perfecta. ¡Altamente recomendados para cualquier negocio que quiera crecer!",
   },
   {
     _id: 8,
@@ -69,7 +69,7 @@ export const testimonials = [
     rating: 4,
     position: "Cliente Satisfecho",
     message:
-      "Super Collectibles Mx tiene una selección impresionante de cartas coleccionables. Compré algunas cartas raras de Pokémon y me encantó la atención. El único punto a mejorar sería el tiempo de respuesta, pero en general, muy satisfecho.",
+      "Eggs & Bakey tiene un equipo increíble. Me ayudaron a mejorar mi presencia en redes sociales y ya he visto un aumento significativo en el engagement. El único detalle sería mejorar los tiempos de respuesta, pero estoy muy contento con los resultados.",
   },
   {
     _id: 9,
@@ -78,7 +78,7 @@ export const testimonials = [
     rating: 5,
     position: "Cliente Satisfecho",
     message:
-      "Encontré una tarjeta de colección muy difícil de conseguir gracias a Super Collectibles Mx. El equipo fue muy profesional y me mantuvieron informada durante todo el proceso de compra. ¡Estoy muy feliz con mi compra!",
+      "Gracias a Eggs & Bakey, mi pequeña empresa está viendo más clientes que nunca. El equipo me guió a través de todo el proceso y me ayudaron a crear una estrategia digital efectiva. ¡Estoy muy agradecida por todo el apoyo!",
   },
   {
     _id: 10,
@@ -87,6 +87,6 @@ export const testimonials = [
     rating: 4,
     position: "Cliente Satisfecho",
     message:
-      "Vender mis cartas de colección en Super Collectibles Mx fue una gran experiencia. Obtuve un buen precio por mis tarjetas raras. El proceso fue simple, aunque me gustaría que la valoración fuera un poco más rápida. ¡Gracias por el gran servicio!",
+      "Trabajar con Eggs & Bakey fue una experiencia muy positiva. Me ayudaron a aumentar las ventas de mi tienda online. El único aspecto a mejorar sería la velocidad en las respuestas, pero sin duda es un servicio altamente recomendable. ¡Gracias por su gran trabajo!",
   },
 ];

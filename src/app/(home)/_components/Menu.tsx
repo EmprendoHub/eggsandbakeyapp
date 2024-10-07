@@ -108,10 +108,12 @@ const Menu = (): JSX.Element => {
           </div>
           <div className="menu-info">
             <div className="menu-info-col">
-              <Link href={"#"}>X &#8599;</Link>
-              <Link href={"#"}>Facebook &#8599;</Link>
-              <Link href={"#"}>Instagram &#8599;</Link>
-              <Link href={"#"}>TikTok &#8599;</Link>
+              <Link href={"https://www.facebook.com/HuevitosRevueltos"}>
+                Facebook &#8599;
+              </Link>
+              <Link href={"https://www.instagram.com/eggs.bakey.publicidad/"}>
+                Instagram &#8599;
+              </Link>
             </div>
             <div className="menu-info-col">
               <p>huevitos@hotmail.com</p>

@@ -35,7 +35,7 @@ const FooterMenu = () => {
             <motion.a
               whileHover={{ scale: 1.3 }}
               whileTap={{ scale: 0.9 }}
-              href="https://www.instagram.com/eggsandbakey"
+              href="https://www.instagram.com/eggs.bakey.publicidad/"
               target="_blank"
             >
               <span className="socialLink">
@@ -45,7 +45,7 @@ const FooterMenu = () => {
             <motion.a
               whileHover={{ scale: 1.3 }}
               whileTap={{ scale: 0.9 }}
-              href="https://www.facebook.com/eggsandbakey"
+              href="https://www.facebook.com/HuevitosRevueltos"
               target="_blank"
             >
               <span className="socialLink">

@@ -44,18 +44,18 @@ const AboutUsComponent = () => {
                 className="relative"
               >
                 <Image
-                  src={"/images/img-2.jpg"}
-                  width={800}
-                  height={800}
+                  src={"/icons/group-team.svg"}
+                  width={400}
+                  height={400}
                   alt="Icon"
-                  className="mx-auto mb-4 w-40 h-40 rounded-sm "
+                  className="mx-auto mb-4 w-20 h-20 rounded-sm "
                 />
               </motion.div>
 
               <CardTextComponent
-                title={"Diseño Minimalista"}
+                title={"Equipo Profesional"}
                 paraOne={
-                  "Nuestros productos están diseñados con un enfoque minimalista, asegurando que cada pieza no solo sea funcional sino también estéticamente agradable. Con OFERTAZOSMX, menos es definitivamente más."
+                  "Nuestros equipo de profesionales está enfocado, asegurando que tu proyecto no solo sea funcional sino también estéticamente agradable."
                 }
                 paraTwo={""}
                 btnText={""}
@@ -72,17 +72,17 @@ const AboutUsComponent = () => {
                 className="relative"
               >
                 <Image
-                  src={"/images/img-3.jpg"}
-                  width={800}
-                  height={800}
+                  src={"/icons/customer-service.svg"}
+                  width={400}
+                  height={400}
                   alt="Icon"
-                  className="mx-auto mb-4 w-40 h-40 rounded-sm"
+                  className="mx-auto mb-4 w-20 h-20 rounded-sm"
                 />
               </motion.div>
               <CardTextComponent
                 title={"Atención Personalizada"}
                 paraOne={
-                  "Entendemos que cada espacio es único. Por eso, estamos aquí para ayudarte a seleccionar los muebles perfectos que se adapten a tu estilo. Nuestro equipo está dedicado a brindarte una experiencia inigualable."
+                  "Entendemos que cada proyecto es único. Por eso, estamos aquí para proponer la estrategia que mejor se adapten a tu empresa. Nuestro equipo está dedicado a brindarte una experiencia inigualable."
                 }
                 paraTwo={""}
                 btnText={""}
@@ -99,17 +99,17 @@ const AboutUsComponent = () => {
                 className="relative"
               >
                 <Image
-                  src={"/images/img-4.jpg"}
-                  width={800}
-                  height={800}
+                  src={"/icons/camera.svg"}
+                  width={400}
+                  height={400}
                   alt="Icon"
-                  className="mx-auto mb-4 w-40 h-40 rounded-sm"
+                  className="mx-auto mb-4 w-20 h-20 rounded-sm"
                 />
               </motion.div>
               <CardTextComponent
                 title={"Calidad Superior"}
                 paraOne={
-                  "Comprometidos con la excelencia, cada artículo de nuestro catálogo está fabricado con materiales de alta calidad, asegurando durabilidad y resistencia. Nuestros muebles están construidos para durar."
+                  "Comprometidos con la excelencia, cada servicio de nuestro catálogo está diseñado para ofrecer los mejores resultados para nuestros clientes, asegurando exposición y resistencia."
                 }
                 paraTwo={""}
                 btnText={""}
@@ -126,11 +126,9 @@ const AboutUsComponent = () => {
             <SectionTextComponent
               title={"Nuestra Misión"}
               paraOne={
-                "Nuestra misión en Eggs & Bakey es simple: transformar espacios con muebles minimistas que inspiren serenidad y belleza."
+                "Nuestra misión en Eggs & Bakey es simple: transformar la presencia con estrategias comprobadas que impulsen las marcas de nuestros clientes al siguiente nivel."
               }
-              paraTwo={
-                "Creemos en el poder del diseño minimalista para crear ambientes que reflejen tranquilidad y simplicidad elegante."
-              }
+              paraTwo={""}
               btnText={"Contactar"}
               btnUrl={`/contacto`}
             />

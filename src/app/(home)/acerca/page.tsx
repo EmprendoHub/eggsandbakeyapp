@@ -6,11 +6,12 @@ import PixelTransition from "@/app/components/transitions/PixelTransition";
 
 const Acerca = () => {
   const maskText: string =
-    "Desarrollamos tu marca - implementando las estrategias de marketing mas efectivas en base a tu publico ideal.";
-  const mainTextOne: string = "Cuenta con una agencia se especializada en";
-  const mainTextSpan: string = " marketing digital";
+    "TRABAJAMOS DE LA MANO CON NUESTROS CLIENTES, PARA BRINDAR EL MEJOR SERVICIO INTEGRAL EN PUBLICIDAD DESDE MEDIANAS EMPRESAS HASTA AYUNTAMIENTOS DEL ESTADO.";
+  const mainTextOne: string =
+    "EGGS&BAKEY ES UNA EMPRESA DEDICADA A LA REALIZACIÓN DE PROYECTOS";
+  const mainTextSpan: string = " AUDIOVISAULES Y GRÁFICOS ";
   const mainTextTwo: string =
-    ",creamos el contenido que tus seguidores quieren ver.";
+    "COMPROMETIDA CON LA CALIDAD ENTREGADA A NUESTROS CLIENTES.";
   return (
     <div>
       <PixelTransition />

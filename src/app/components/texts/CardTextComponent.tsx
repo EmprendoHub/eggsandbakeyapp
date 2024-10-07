@@ -22,7 +22,7 @@ const CardTextComponent = ({
           initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl maxmd:text-2xl font-bold font-EB_Garamond text-background "
+          className="text-2xl maxmd:text-xl font-bold text-background "
         >
           {title}
         </motion.h2>
@@ -30,7 +30,7 @@ const CardTextComponent = ({
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9 }}
-          className="text-xs text-gray-500"
+          className="text-xs text-gray-300"
         >
           {paraOne}
         </motion.p>
@@ -38,7 +38,7 @@ const CardTextComponent = ({
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.0 }}
-          className="text-xs text-gray-500"
+          className="text-xs text-gray-300"
         >
           {paraTwo}
         </motion.p>

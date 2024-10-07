@@ -126,7 +126,7 @@ const AboutUsComponent = () => {
             <SectionTextComponent
               title={"Nuestra Misión"}
               paraOne={
-                "Nuestra misión en Eggs & Bakey es simple: transformar la presencia con estrategias comprobadas que impulsen las marcas de nuestros clientes al siguiente nivel."
+                "Nuestra misión en Eggs & Bakey es simple: transformar la presencia con estrategias comprobadas que impulsen las marcas de nuestros clientes al siguiente nivel. "
               }
               paraTwo={""}
               btnText={"Contactar"}

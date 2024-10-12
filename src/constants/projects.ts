@@ -45,7 +45,7 @@ export const projects = [
   {
     title: "POLÍTICA",
     description: [
-      "Nos especializamos en marketing ATL (above the line) y BTL (below the line) para clientes del ámbito político. Nuestros servicios abarcan desde el diseño de espectaculares y volantes hasta la creación de guiones y edición de videos, así como la producción de audios para perifoneo de campaña.",
+      "Nos especializamos en marketing ATL (above the line) y BTL (below the line) para clientes del ámbito político. Nuestros servicios abarcan desde el diseño de espectaculares y volantes hasta la creación de guiones y edición de videos, así como la producción de audios para perifoneo de campaña",
       "Gracias a nuestra labor integral, logramos aumentar significativamente la visibilidad y llevar al triunfo a nuestros candidatos, capturando autenticidad y esencia de manera impactante mediante estrategias publicitarias y un equipo especializado en fotografía, video y estrategia.",
     ],
     src: "/images/img-5.jpg",

@@ -1,26 +1,16 @@
 "use client";
-import dynamic from "next/dynamic";
-import { ReactLenis } from "lenis/react";
 import { useLayoutEffect, useState } from "react";
 import { gsap } from "gsap";
-import Hero from "./components/HeroLoader/Hero";
 import Loader from "./components/Loader/Loader";
 import Marquee from "./components/marquees/Marquee";
 import TestimonialComponent from "./(home)/_components/TestimonialComponent";
 import { TextSplitter } from "./(home)/_components/TextSplitter";
+import CardParalaxComponent from "./(home)/_components/CardParalaxComponent";
+import BigText from "./(home)/_components/BigText";
+import FooterComponent from "./components/footer/FooterComponent";
+import dynamic from "next/dynamic";
 
-const CardsExpanding = dynamic(
-  () => import("./(home)/_components/CardsExpanding"),
-  {
-    ssr: false,
-  }
-);
-
-const CardsSplit = dynamic(() => import("./(home)/_components/CardsSplit"), {
-  ssr: false,
-});
-
-const BigText = dynamic(() => import("./(home)/_components/BigText"), {
+const Hero = dynamic(() => import("./components/HeroLoader/Hero"), {
   ssr: false,
 });
 
@@ -40,24 +30,20 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <ReactLenis
-        root
-        options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}
-      >
-        <div className="h-[100vh]">
-          {loaderFinished ? <Hero /> : <Loader timeline={timeline} />}
-        </div>
-        <BigText />
-        <CardsSplit />
-        <Marquee />
-        <TestimonialComponent />
-
-        <CardsExpanding />
-        <section className="flex flex-wrap bg-[#dac340] text-[#000000] font-black py-20 px-2 leading-[0.8]">
+    <div className="relative">
+      <div className="h-[100vh]">
+        {loaderFinished ? <Hero /> : <Loader timeline={timeline} />}
+      </div>
+      {loaderFinished && <BigText />}
+      {loaderFinished && <CardParalaxComponent />}
+      {loaderFinished && <Marquee />}
+      {loaderFinished && <TestimonialComponent />}
+      {loaderFinished && (
+        <section className="flex flex-wrap bg-[#dac340] text-[#000000] font-black py-20 px-2 leading-[0.8] overflow-hidden">
           <TextSplitter text="WAKE UP YOUR BRAND" />
         </section>
-      </ReactLenis>
-    </>
+      )}
+      {loaderFinished && <FooterComponent />}
+    </div>
   );
 }

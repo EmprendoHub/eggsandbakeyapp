@@ -23,7 +23,7 @@ const Loader: React.FC<LoaderProps> = ({ timeline }) => {
   }, [timeline]);
 
   return (
-    <div className={`loader_wrapper`}>
+    <div className={`loader_wrapper overflow-hidden`}>
       <div className={`loader_progressWrapper`}>
         <div className={`loader_progress`} ref={progressRef}></div>
         <span className={`loader_progressNumber`} ref={progressNumberRef}>

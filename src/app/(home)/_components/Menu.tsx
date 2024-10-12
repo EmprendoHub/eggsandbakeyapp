@@ -15,7 +15,6 @@ const menuLinks = [
   { path: "/proyectos", label: "Proyectos" },
   { path: "/acerca", label: "Acerca" },
   { path: "/contacto", label: "Contacto" },
-  { path: "/servicios", label: "Servicios" },
 ];
 
 const Menu = (): JSX.Element => {

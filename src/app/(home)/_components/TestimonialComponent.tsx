@@ -30,7 +30,7 @@ const TestimonialComponent = () => {
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 5000,
-    arrows: false,
+    arrows: true,
     responsive: [
       {
         breakpoint: 1150,
@@ -57,7 +57,7 @@ const TestimonialComponent = () => {
     ],
   };
   return (
-    <div className="testimonial-class my-10 maxmd:my-10 px-5">
+    <div className="testimonial-class my-10 maxmd:my-10 px-5 overflow-hidden">
       <SectionTextColorComponent
         pretitle={"Que dicen nuestros clientes"}
         title={"Testimonios"}

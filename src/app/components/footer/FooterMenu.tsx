@@ -122,16 +122,7 @@ const FooterMenu = () => {
                 {"Acerca de Nosotros"}
               </motion.li>
             </Link>
-            <Link href={`/servicios`}>
-              <motion.li
-                whileHover={{ y: -4 }}
-                whileTap={{ y: 1 }}
-                transition={{ duration: 0.15 }}
-                className="hover:text-primary  cursor-pointer duration-200"
-              >
-                {"Servicios"}
-              </motion.li>
-            </Link>
+
             <Link href={`/contacto`}>
               <motion.li
                 whileHover={{ y: -4 }}

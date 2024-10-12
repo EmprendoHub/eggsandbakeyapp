@@ -26,7 +26,7 @@ const Marquee = () => {
   ];
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <motion.h2
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}

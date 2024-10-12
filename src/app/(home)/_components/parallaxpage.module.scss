@@ -1,0 +1,94 @@
+.main {
+  position: relative;
+  margin-top: 50vh;
+  height: 100vh * 5; /* Make sure the page is tall enough for scroll */
+}
+
+.cardContainer {
+  height: 100vh; /* Each card takes full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0; /* Sticky effect starts here */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 500px;
+  width: 1000px;
+  border-radius: 25px;
+  padding: 50px;
+  transform-origin: top;
+  h2 {
+    text-align: center;
+    margin: 0;
+    font-size: 28px;
+  }
+
+  .body {
+    display: flex;
+    height: 100%;
+    margin-top: 50px;
+    gap: 50px;
+
+    .description {
+      width: 40%;
+      position: relative;
+      top: 10%;
+      p {
+        font-size: 14px;
+        &::first-letter {
+          font-size: 28px;
+          font-family: "Title";
+        }
+      }
+      span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        a {
+          font-size: 18px;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .imageContainer {
+      position: relative;
+      width: 60%;
+      height: 100%;
+      border-radius: 25px;
+      overflow: hidden;
+      .inner {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .card {
+    height: 600px;
+    .body {
+      flex-direction: column;
+      justify-items: start;
+      .description {
+        top: 1%;
+        width: 100%;
+      }
+      .imageContainer {
+        width: 100%;
+        height: 50%;
+      }
+    }
+  }
+}

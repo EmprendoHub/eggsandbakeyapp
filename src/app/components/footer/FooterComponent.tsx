@@ -1,6 +1,6 @@
 import FooterMenu from "./FooterMenu";
 
-const FooterComponent = async () => {
+const FooterComponent = () => {
   return (
     <div className="relative">
       <FooterMenu />

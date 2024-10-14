@@ -34,7 +34,7 @@ const ProyectoSingle = ({ params }: { params: { id: number } }) => {
         initial={{ y: 180, opacity: 0.5 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 1.1 }}
-        className="relative w-full flex items-center justify-center"
+        className="relative w-[80%] maxsm:w-full flex items-center justify-center"
       >
         {projectId > 0 ? (
           <div className="absolute left-0 top-[calc(50%-80px)] transform">

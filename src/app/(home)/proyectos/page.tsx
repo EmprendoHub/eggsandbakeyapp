@@ -10,7 +10,6 @@ const Proyectos = () => {
     <div className="relative">
       <PixelTransition />
       <BigText />
-
       <CardParalaxComponent />
       <FooterComponent />
     </div>

@@ -3,7 +3,10 @@ import { motion } from "framer-motion";
 
 const BigText = (): JSX.Element => {
   return (
-    <section className="h-auto w-full overflow-hidden bg-[#dac340] text-[#000000]">
+    <section
+      className="h-auto w-full overflow-hidden bg-[#dac340] text-[#000000]"
+      id="start"
+    >
       <div className="w-full py-20 text-left font-black uppercase leading-[.8] px-1">
         <motion.div
           initial={{ y: -180, opacity: 0 }}

@@ -61,18 +61,18 @@ const FooterMenu = () => {
           <ul className="text-xs font-base mt-2 flex flex-col gap-y-2">
             <Link href={`/proyecto/0`}>
               <motion.li
-                whileHover={{ y: -4 }}
+                whileHover={{ y: -2 }}
                 whileTap={{ y: 1 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.22 }}
                 className="hover:text-primary  cursor-pointer duration-200"
               >
                 {"Brazza"}
               </motion.li>
             </Link>
             <motion.li
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -2 }}
               whileTap={{ y: 1 }}
-              transition={{ duration: 0.15 }}
+              transition={{ duration: 0.22 }}
               className="flex flex-col"
             >
               <a
@@ -83,9 +83,9 @@ const FooterMenu = () => {
               </a>
             </motion.li>
             <motion.li
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -2 }}
               whileTap={{ y: 1 }}
-              transition={{ duration: 0.15 }}
+              transition={{ duration: 0.22 }}
               className="flex flex-col"
             >
               <a
@@ -97,9 +97,9 @@ const FooterMenu = () => {
             </motion.li>
 
             <motion.li
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -2 }}
               whileTap={{ y: 1 }}
-              transition={{ duration: 0.15 }}
+              transition={{ duration: 0.22 }}
               className="flex flex-col"
             >
               <a
@@ -109,11 +109,34 @@ const FooterMenu = () => {
                 {"La Cochera"}
               </a>
             </motion.li>
+            <motion.li
+              whileHover={{ y: -2 }}
+              whileTap={{ y: 1 }}
+              transition={{ duration: 0.22 }}
+              className="flex flex-col"
+            >
+              <a
+                href={`/proyecto/4`}
+                className="text-slate hover:text-primary cursor-pointer duration-200"
+              >
+                {"Política"}
+              </a>
+            </motion.li>
           </ul>
         </div>
         <div>
           <p className="text-sm">{"Mapa del Sitio"}</p>
           <ul className="text-xs font-base mt-2 flex flex-col gap-y-2">
+            <Link href={`/`}>
+              <motion.li
+                whileHover={{ y: -4 }}
+                whileTap={{ y: 1 }}
+                transition={{ duration: 0.15 }}
+                className="hover:text-primary cursor-pointer duration-200"
+              >
+                {"Inicio"}
+              </motion.li>
+            </Link>
             <Link href={`/acerca`}>
               <motion.li
                 whileHover={{ y: -4 }}
@@ -142,7 +165,7 @@ const FooterMenu = () => {
                 transition={{ duration: 0.15 }}
                 className="hover:text-primary  cursor-pointer duration-200"
               >
-                {"Proyectos"}
+                {"Casos de Éxito"}
               </motion.li>
             </Link>
           </ul>

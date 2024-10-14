@@ -1,13 +1,38 @@
 "use client";
 import React from "react";
-import Slider from "react-slick";
+import Slider, { CustomArrowProps } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { testimonials } from "@/constants/testimoniolsdata";
-import { Star } from "lucide-react";
-import SectionTextColorComponent from "@/app/components/texts/SectionTextColorComponent";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { motion } from "framer-motion";
+
+// Custom Next Arrow
+const NextArrow: React.FC<CustomArrowProps> = (props) => {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute right-0 maxsm:right-[-25px] top-[50%] z-10 cursor-pointer transform -translate-y-1/2 text-white p-2 rounded-full shadow-md"
+      onClick={onClick}
+    >
+      <ChevronRight className="text-gray-100 w-10 h-10" />
+    </div>
+  );
+};
+
+// Custom Prev Arrow
+const PrevArrow: React.FC<CustomArrowProps> = (props) => {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute left-0 maxsm:left-[-25px] top-[50%] z-10 cursor-pointer transform -translate-y-1/2 text-white p-2 rounded-full shadow-md"
+      onClick={onClick}
+    >
+      <ChevronLeft className="text-gray-100 w-10 h-10" />
+    </div>
+  );
+};
 
 const TestimonialComponent = () => {
   const starRating = (props: number) => {
@@ -30,7 +55,8 @@ const TestimonialComponent = () => {
     autoplay: true,
     speed: 1000,
     autoplaySpeed: 5000,
-    arrows: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1150,
@@ -58,13 +84,22 @@ const TestimonialComponent = () => {
   };
   return (
     <div className="testimonial-class my-10 maxmd:my-10 px-5 overflow-hidden">
-      <SectionTextColorComponent
-        pretitle={"Que dicen nuestros clientes"}
-        title={"Testimonios"}
-        subtitle={""}
-        btnText={""}
-        btnUrl={""}
-      />
+      <motion.h2
+        initial={{ x: -180, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.2 }}
+        className="pl-5 maxmd:pl-2 font-bold text-6xl maxsm:text-4xl tracking-wider uppercase"
+      >
+        Testimonios
+      </motion.h2>
+      <motion.p
+        initial={{ x: -180, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 1.3 }}
+        className="pl-8 maxmd:pl-3 pb-10 text-xs "
+      >
+        Que dicen nuestros clientes
+      </motion.p>
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

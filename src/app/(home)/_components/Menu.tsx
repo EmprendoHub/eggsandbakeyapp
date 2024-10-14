@@ -65,7 +65,7 @@ const Menu = (): JSX.Element => {
   }, [isMenuOpen]);
 
   return (
-    <div className={`menu-container relative`} ref={container}>
+    <div className={`menu-container relative overflow-hidden`} ref={container}>
       <div className="menu-bar bg-black bg-opacity-50">
         <div className="menu-logo">
           <Link href={"/"}>

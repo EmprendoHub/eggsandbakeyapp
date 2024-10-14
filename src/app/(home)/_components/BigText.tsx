@@ -9,7 +9,7 @@ const BigText = (): JSX.Element => {
           initial={{ y: -180, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.1 }}
-          className="text-[34vw] maxmd:text-[32vw]"
+          className="text-[30vw]"
         >
           WAKE
         </motion.div>

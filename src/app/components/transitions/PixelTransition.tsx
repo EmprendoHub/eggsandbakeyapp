@@ -61,7 +61,7 @@ export default function PixelTransition(): JSX.Element {
       return (
         <motion.div
           key={index}
-          className={`block`}
+          className={`block overflow-hidden`}
           variants={anim}
           initial="initial"
           animate={"open"}

@@ -32,12 +32,16 @@ export default function Home() {
   return (
     <div className="relative">
       <div className="h-[100vh]">
-        {loaderFinished ? <Hero /> : <Loader timeline={timeline} />}
+        {/* Start preloading the video immediately, but it will only play once the loader is finished */}
+        <Hero shouldPlay={loaderFinished} />
+        {!loaderFinished && <Loader timeline={timeline} />}
       </div>
+
       {loaderFinished && <BigText />}
-      {loaderFinished && <CardParalaxComponent />}
       {loaderFinished && <Marquee />}
       {loaderFinished && <TestimonialComponent />}
+      {loaderFinished && <CardParalaxComponent />}
+
       {loaderFinished && (
         <section className="flex flex-wrap bg-[#dac340] text-[#000000] font-black py-20 px-2 leading-[0.8] overflow-hidden">
           <TextSplitter text="WAKE UP YOUR BRAND" />

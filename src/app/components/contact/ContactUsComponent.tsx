@@ -18,7 +18,7 @@ const ContactUsComponent = ({
   const nextAuthSessionToken = nextCookies.get(cookieName);
   const cookie = `${cookieName}=${nextAuthSessionToken?.value}`;
   return (
-    <div className="bg-[#dac340] flex flex-row maxmd:flex-col p-10 maxmd:p-5 w-[90%] justify-center items-center mx-auto ">
+    <div className="bg-[#dac340] flex flex-row maxmd:flex-col p-10 maxmd:p-5 w-[90%] justify-center items-center mx-auto mt-20">
       <div className="w-full maxmd:w-full z-10  maxmd:px-5 maxsm:px-1">
         <div className=" pb-20 w-full">
           <h2>

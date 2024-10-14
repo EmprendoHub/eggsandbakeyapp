@@ -17,7 +17,6 @@ const IconListSectionComponent = ({
   linkTwoText,
   linkThreeText,
   textAddressThree,
-  textAddressBThree,
   textAddressCThree,
 }: {
   mainTitle: string;
@@ -33,7 +32,6 @@ const IconListSectionComponent = ({
   linkTwoText: string;
   linkThreeText: string;
   textAddressThree: string;
-  textAddressBThree: string;
   textAddressCThree: string;
 }) => {
   return (
@@ -121,13 +119,7 @@ const IconListSectionComponent = ({
                 >
                   {textAddressThree}
                 </motion.p>
-                <motion.p
-                  initial={{ y: 30, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 1.7 }}
-                >
-                  {textAddressBThree}
-                </motion.p>
+
                 <motion.p
                   initial={{ y: 30, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}

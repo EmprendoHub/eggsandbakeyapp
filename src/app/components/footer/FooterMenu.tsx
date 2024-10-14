@@ -17,9 +17,11 @@ const FooterMenu = () => {
       <div className="grid maxxsm:grid-cols-1 maxmd:grid-cols-2 grid-cols-4 gap-10">
         <div className=" gap-y-4">
           <WhiteLogoComponent />
-          <p className="text-xs mt-2">{"Blvd. Lázaro Cárdenas Nte. 175"}</p>
-          <p className="text-xs">{"Sahuayo de Morelos,"}</p>
-          <p className="text-xs mb-10">{"Michoacan 59000"}</p>
+          <p className="text-xs mt-2">
+            {"Plaza Roma Piso 2, Blvd. Lázaro Cárdenas Nte. 175-interior L9"}
+          </p>
+          <p className="text-xs">{"Sahuayo de Morelos, Michoacan,"}</p>
+          <p className="text-xs mb-10">{"Centro Uno 59000"}</p>
           <div className="flex items-center gap-x-4">
             <motion.a
               whileHover={{ scale: 1.3 }}

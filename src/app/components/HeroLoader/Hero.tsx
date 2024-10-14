@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import "./hero.css";
 import ReactPlayer from "react-player";
 
-const Hero = () => {
+const Hero = ({ shouldPlay }: { shouldPlay: boolean }) => {
   const titleVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { duration: 1 } },
@@ -22,8 +22,9 @@ const Hero = () => {
           width="100%"
           height="100%"
           controls={false}
-          playing={true}
-          muted={true} // Add this line
+          playing={shouldPlay} // Only play when loader finishes
+          muted={true}
+          preload="auto" // Preload the video
         />
       </motion.div>
     </section>

@@ -13,6 +13,7 @@ export const proyectos = [
       "/projects/braza_08.webp",
     ],
     videos: [],
+    color: ["#531B0C", "#FD8963"],
     name: "BRAZZA GRILL HOUSE",
     paragraphs: [
       "A través de nuestras sesiones fotográficas, hemos dado vida a cada plato con imágenes que despiertan el apetito de los clientes, siguiendo al pie de la letra lo que nuestro socio nos solicitó. ",
@@ -51,6 +52,7 @@ export const proyectos = [
       "/projects/super24_025.webp",
     ],
     videos: [],
+    color: ["#00235C", "#FD673D"],
     name: "SUPER 24",
     paragraphs: [
       "Mediante la implementación de grabaciones profesionales, fotografías creativas, y reels dinámicos en Instagram, hemos fortalecido la presencia de SUPER 24 en redes sociales.",
@@ -63,6 +65,7 @@ export const proyectos = [
     cover: "/images/img-3.jpg",
     images: ["/projects/cloe_01.webp", "/projects/cloe_02.webp"],
     videos: [],
+    color: ["#501B53", "#973274"],
     name: "CLOE MTV",
     paragraphs: [
       "En colaboración con la marca de bolsas y accesorios CLOE X MTV, desarrollamos una campaña creativa para expandir la presencia de CLOE en el mercado juvenil Internacional, publicidad que se presentó en los aeropuertos.",
@@ -82,6 +85,7 @@ export const proyectos = [
       "/projects/la_cochera_06.webp",
     ],
     videos: [],
+    color: ["#53371F", "#FD9F77"],
     name: "LA COCHERA",
     paragraphs: [
       "Nos enorgullece presentar el proyecto La Cochera, donde hemos trabajado incansablemente para capturar la esencia única de sus productos y llevarlos al mundo digital.",
@@ -98,6 +102,7 @@ export const proyectos = [
       "/projects/politica_04.webp",
     ],
     videos: ["/projects/politica_05.webm"],
+    color: ["#FD673D", "#DBC200"],
     name: "POLÍTICA",
     paragraphs: [
       "Nos especializamos en marketing ATL (above the line) y BTL (below the line) para clientes del ámbito político. Nuestros servicios abarcan desde el diseño de espectaculares y volantes hasta la creación de guiones y edición de videos, así como la producción de audios para perifoneo de campaña.",

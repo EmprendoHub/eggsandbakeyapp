@@ -1,33 +1,21 @@
 import React from "react";
-import PageHeader from "../_components/PageHeader";
 import ContactComponent from "@/app/components/contact/ContactComponent";
 import PixelTransition from "@/app/components/transitions/PixelTransition";
 import ContactUsComponent from "@/app/components/contact/ContactUsComponent";
+import FooterComponent from "@/app/components/footer/FooterComponent";
 const Contacto = () => {
-  const maskText: string =
-    "Queremos saber sobre tu negocio - trabajemos en implementar una estrategia digital personalizada.";
-  const mainTextOne: string = "Platiquemos sobre ";
-  const mainTextSpan: string = "tu marca";
-  const mainTextTwo: string =
-    ", descubramos como podemos ayudarte a impulsar tu alcance al máximo.";
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-hidden">
       <PixelTransition />
-
-      <PageHeader
-        maskText={maskText}
-        mainTextOne={mainTextOne}
-        mainTextSpan={mainTextSpan}
-        mainTextTwo={mainTextTwo}
-      />
-      <ContactComponent />
       <ContactUsComponent
-        contactTitle={"Mándanos un breve mensaje"}
+        contactTitle={"Platiquemos sobre tu marca y su potencial alcance."}
         contactSubTitle={
-          "En breve uno de nuestros representantes se comunicara."
+          "Queremos saber mas sobre tu negocio - trabajemos en implementar una estrategia digital personalizada."
         }
       />
+      <ContactComponent />
+
+      <FooterComponent />
     </div>
   );
 };

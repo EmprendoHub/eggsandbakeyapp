@@ -31,7 +31,7 @@ const PageHeader = ({
   const container = useRef<HTMLDivElement>(null);
 
   return (
-    <div className={`main`} ref={container}>
+    <div className={`main overflow-hidden`} ref={container}>
       <motion.div
         className={`mask`}
         animate={{

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const BigText = (): JSX.Element => {
   return (
     <section
-      className="h-[60vh] flex flex-col justify-center items-center w-full overflow-hidden bg-[#dac340] text-[#000000]"
+      className="h-[100vh] maxsm:h-[60vh] flex flex-col justify-center items-center w-full overflow-hidden bg-[#dac340] text-[#000000]"
       id="start"
     >
       <div className="w-full py-20 text-left font-black uppercase leading-[.8] px-1">

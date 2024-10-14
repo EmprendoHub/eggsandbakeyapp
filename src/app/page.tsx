@@ -9,6 +9,7 @@ import CardParalaxComponent from "./(home)/_components/CardParalaxComponent";
 import BigText from "./(home)/_components/BigText";
 import FooterComponent from "./components/footer/FooterComponent";
 import dynamic from "next/dynamic";
+import StoriesComponent from "./(home)/_components/StoriesComponent";
 
 const Hero = dynamic(() => import("./components/HeroLoader/Hero"), {
   ssr: false,
@@ -42,7 +43,7 @@ export default function Home() {
       {loaderFinished && <Marquee />}
       {loaderFinished && <TestimonialComponent />}
       {loaderFinished && <CardParalaxComponent />}
-
+      {loaderFinished && <StoriesComponent />}
       {loaderFinished && (
         <section className="flex flex-wrap bg-[#dac340] text-[#000000] font-black py-20 px-2 leading-[0.8] overflow-hidden">
           <TextSplitter text="WAKE UP YOUR BRAND" />

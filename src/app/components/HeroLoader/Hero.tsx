@@ -42,7 +42,7 @@ const Hero = ({ shouldPlay }: { shouldPlay: boolean }) => {
           preload="auto" // Preload the video
         />
       </motion.div>
-      <Link href={"#start"} className="absolute z-50 bottom-0">
+      <Link href={"#start"} className="absolute z-30 bottom-0">
         <motion.div variants={chevronVariants} animate="pulse">
           <ChevronDown size={100} />
         </motion.div>

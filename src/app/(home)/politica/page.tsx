@@ -1,5 +1,6 @@
 import React from "react";
 import PixelTransition from "@/app/components/transitions/PixelTransition";
+import FooterComponent from "@/app/components/footer/FooterComponent";
 export const metadata = {
   title: "Política de privacidad de Eggs & Bakey",
   description: "Explora la Política de privacidad de Eggs & Bakey",
@@ -349,6 +350,7 @@ const PoliticaPage = () => {
           </address>
         </section>
       </div>
+      <FooterComponent />
     </div>
   );
 };

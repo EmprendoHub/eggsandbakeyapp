@@ -12,13 +12,15 @@ import HeroColTextComponent from "@/app/components/texts/HeroColTextComponent";
 const AboutUsComponent = () => {
   return (
     <div>
-      <section className="min-h-[400px] bg-[#dac340] flex flex-row maxsm:flex-col justify-center items-center relative overflow-hidden">
-        <div className="container mx-auto flex justify-center items-center text-center p-5 sm:py-20 text-black z-10">
-          <HeroColTextComponent
-            pretitle={"Eggs & Bakey"}
-            title={"CONÓCENOS"}
-            subtitle={"Obten resultados con la mejor agencia digital."}
-            word={""}
+      <section className="min-h-[900px] flex flex-row maxsm:flex-col justify-center items-center relative bg-[#dac340] text-black">
+        <div className="container mx-auto flex justify-center items-center text-center p-5 sm:py-20 bg-foreground z-10">
+          <HeroTextComponent
+            title={"Impulsando Una Marca Espectacular un Proyecto a la Vez."}
+            subtitle={
+              "En Eggs & Bakey, nos enfocamos en desarrollar una marca unica que resalte de tu competencia."
+            }
+            btnText={"Platiquemos"}
+            btnUrl={`/contacto`}
           />
         </div>
       </section>
@@ -120,6 +122,17 @@ const AboutUsComponent = () => {
           </div>
         </div>
       </section>
+
+      <section className="min-h-[400px] bg-[#dac340] flex flex-row maxsm:flex-col justify-center items-center relative overflow-hidden">
+        <div className="container mx-auto flex justify-center items-center text-center p-5 sm:py-20 text-black z-10">
+          <HeroColTextComponent
+            pretitle={"Eggs & Bakey"}
+            title={"CONÓCENOS"}
+            subtitle={"Obten resultados con la mejor agencia digital."}
+            word={""}
+          />
+        </div>
+      </section>
       <div className="flex flex-row w-[80%] maxmd:w-full maxmd:flex-col items-center mx-auto my-20 px-1">
         <section className="text-center w-1/2 maxmd:w-full">
           <div className="container mx-auto px-6 maxsm:px-3">
@@ -155,19 +168,6 @@ const AboutUsComponent = () => {
           </motion.div>
         </section>
       </div>
-
-      <section className="min-h-[900px] flex flex-row maxsm:flex-col justify-center items-center relative bg-[#dac340] text-black">
-        <div className="container mx-auto flex justify-center items-center text-center p-5 sm:py-20 bg-foreground z-10">
-          <HeroTextComponent
-            title={"Creando Una Marca Espectacular un Proyecto a la Vez."}
-            subtitle={
-              "En Eggs & Bakey, nos enfocamos en desarrollar una marca unica que resalte de tu competencia."
-            }
-            btnText={"Platiquemos"}
-            btnUrl={`/contacto`}
-          />
-        </div>
-      </section>
     </div>
   );
 };

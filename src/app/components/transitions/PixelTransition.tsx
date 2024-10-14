@@ -21,11 +21,11 @@ const anim: Anim = {
   },
   open: (delay) => ({
     opacity: 0,
-    transition: { duration: 0, delay: 0.07 * delay[1] },
+    transition: { duration: 0, delay: 0.11 * delay[1] },
   }),
   closed: (delay) => ({
     opacity: 0,
-    transition: { duration: 0, delay: 0.07 * delay[0] },
+    transition: { duration: 0, delay: 0.11 * delay[0] },
   }),
 };
 
@@ -61,7 +61,7 @@ export default function PixelTransition(): JSX.Element {
       return (
         <motion.div
           key={index}
-          className={`block overflow-hidden`}
+          className={`block `}
           variants={anim}
           initial="initial"
           animate={"open"}

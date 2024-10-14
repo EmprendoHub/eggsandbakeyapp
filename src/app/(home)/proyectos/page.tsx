@@ -1,15 +1,18 @@
 "use client";
 import React from "react";
 import PixelTransition from "@/app/components/transitions/PixelTransition";
-import CardsExpanding from "../_components/CardsExpanding";
 import BigText from "../_components/BigText";
+import CardParalaxComponent from "../_components/CardParalaxComponent";
+import FooterComponent from "@/app/components/footer/FooterComponent";
 
 const Proyectos = () => {
   return (
-    <div className="min-h-[100vh]">
-      <BigText />
+    <div className="relative">
       <PixelTransition />
-      <CardsExpanding />
+      <BigText />
+
+      <CardParalaxComponent />
+      <FooterComponent />
     </div>
   );
 };

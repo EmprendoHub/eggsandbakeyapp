@@ -1,5 +1,6 @@
 import React from "react";
 import PixelTransition from "@/app/components/transitions/PixelTransition";
+import FooterComponent from "@/app/components/footer/FooterComponent";
 export const metadata = {
   title: "Términos de servicio de Eggs & Bakey",
   description: "Explora los Términos de servicio de Eggs & Bakey",
@@ -594,6 +595,7 @@ const TerminosPage = () => {
           </p>
         </section>
       </div>
+      <FooterComponent />
     </div>
   );
 };

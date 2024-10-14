@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 const BigText = (): JSX.Element => {
   return (
     <section
-      className="h-auto w-full overflow-hidden bg-[#dac340] text-[#000000]"
+      className="h-[60vh] flex flex-col justify-center items-center w-full overflow-hidden bg-[#dac340] text-[#000000]"
       id="start"
     >
       <div className="w-full py-20 text-left font-black uppercase leading-[.8] px-1">
         <motion.div
-          initial={{ y: -180, opacity: 0 }}
+          initial={{ y: -120, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.1 }}
           className="text-[30vw]"

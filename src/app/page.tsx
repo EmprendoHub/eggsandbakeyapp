@@ -38,6 +38,7 @@ export default function Home() {
       </div>
 
       {loaderFinished && <BigText />}
+
       {loaderFinished && <Marquee />}
       {loaderFinished && <TestimonialComponent />}
       {loaderFinished && <CardParalaxComponent />}

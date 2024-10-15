@@ -33,12 +33,13 @@ const Hero = ({ shouldPlay }: { shouldPlay: boolean }) => {
         variants={titleVariants}
       >
         <ReactPlayer
-          url="/videos/Reel_Letras_Grunge_Pagina_Eggs.webm"
+          url="/videos/EggsBakeyIntro.mp4"
           width="100%"
           height="100%"
           controls={false}
           playing={shouldPlay} // Only play when loader finishes
           muted={true}
+          playsInline={true}
           preload="auto" // Preload the video
         />
       </motion.div>

@@ -33,6 +33,7 @@ const StoriesComponent = () => {
             muted={true}
             preload="auto" // Preload the video
             loop={true}
+            playsInline={true}
             style={{ borderRadius: "40px", overflow: "hidden" }}
           />
           <ReactPlayer
@@ -44,6 +45,7 @@ const StoriesComponent = () => {
             muted={true}
             preload="auto" // Preload the video
             loop={true}
+            playsInline={true}
             style={{ borderRadius: "40px", overflow: "hidden" }}
           />
         </div>
@@ -57,6 +59,7 @@ const StoriesComponent = () => {
             muted={true}
             preload="auto" // Preload the video
             loop={true}
+            playsInline={true}
             style={{ borderRadius: "40px", overflow: "hidden" }}
           />
           <ReactPlayer
@@ -68,6 +71,7 @@ const StoriesComponent = () => {
             muted={true}
             preload="auto" // Preload the video
             loop={true}
+            playsInline={true}
             style={{ borderRadius: "40px", overflow: "hidden" }}
           />
         </div>

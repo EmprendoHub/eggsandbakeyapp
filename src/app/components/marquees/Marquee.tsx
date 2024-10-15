@@ -26,12 +26,12 @@ const Marquee = () => {
   ];
 
   return (
-    <div className="overflow-hidden mt-20">
+    <div className="overflow-hidden mt-20  px-5">
       <motion.h2
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="pl-5 maxmd:pl-2 font-bold text-6xl tracking-wider uppercase"
+        className="pl-5 maxmd:pl-2 font-bold text-6xl maxsm:text-4xl tracking-wider uppercase"
       >
         Clientes
       </motion.h2>
@@ -41,7 +41,7 @@ const Marquee = () => {
         transition={{ duration: 1.3 }}
         className="pl-8 maxmd:pl-3 pb-10 text-xs "
       >
-        Nos enorgullese saber que pudimos ayudar a cada uno nuestros clientes.
+        Orgullosos que pudimos ayudar a cada uno de nuestros clientes.
       </motion.p>
 
       <div className="container mx-auto h-60">

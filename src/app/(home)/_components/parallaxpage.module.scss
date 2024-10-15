@@ -23,26 +23,32 @@
   padding: 50px;
   transform-origin: top;
   h2 {
-    text-align: center;
+    text-align: left;
     margin: 0;
-    font-size: 28px;
+    font-size: 36px;
+    color: black;
+    font-weight: 700;
+    letter-spacing: 2px;
+    width: 30%;
+    line-height: 90%;
   }
 
   .body {
     display: flex;
     height: 100%;
-    margin-top: 50px;
+    margin-top: 10px;
     gap: 50px;
 
     .description {
       width: 40%;
       position: relative;
-      top: 10%;
+      top: 0%;
+      color: black;
       p {
-        font-size: 14px;
+        font-size: 16px;
         &::first-letter {
           font-size: 28px;
-          font-family: "Title";
+          color: black;
         }
       }
       span {
@@ -78,6 +84,11 @@
 @media (max-width: 900px) {
   .card {
     height: 600px;
+    width: 420px;
+    padding: 40px;
+    h2 {
+      width: 100%;
+    }
     .body {
       flex-direction: column;
       justify-items: start;

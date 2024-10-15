@@ -45,7 +45,7 @@ export default function Home() {
       {loaderFinished && <CardParalaxComponent />}
       {loaderFinished && <StoriesComponent />}
       {loaderFinished && (
-        <section className="flex flex-wrap bg-[#dac340] text-[#000000] font-black py-20 px-2 leading-[0.8] overflow-hidden">
+        <section className="flex flex-wrap bg-[#dac340] text-[#c9c9c9] font-black py-20 px-2 leading-[0.8] overflow-hidden">
           <TextSplitter text="WAKE UP YOUR BRAND" />
         </section>
       )}

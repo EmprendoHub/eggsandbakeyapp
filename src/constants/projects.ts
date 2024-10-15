@@ -8,7 +8,7 @@ export const projects = [
     ],
     src: "/images/img-1.jpg",
     url: "/proyecto/0",
-    color: ["#531B0C", "#FD8963"],
+    color: ["#C9C9C9", "#C9C9C9"],
   },
   {
     title: "SUPER 24",
@@ -19,7 +19,7 @@ export const projects = [
     ],
     src: "/images/img-2.jpg",
     url: "/proyecto/1",
-    color: ["#00235C", "#FD673D"],
+    color: ["#dac340", "#dac340"],
   },
   {
     title: "CLOE MTV",
@@ -30,7 +30,7 @@ export const projects = [
     ],
     src: "/images/img-3.jpg",
     url: "/proyecto/2",
-    color: ["#501B53", "#973274"],
+    color: ["#C9C9C9", "#C9C9C9"],
   },
   {
     title: "LA COCHERA",
@@ -40,7 +40,7 @@ export const projects = [
     ],
     src: "/images/img-4.jpg",
     url: "/proyecto/3",
-    color: ["#53371F", "#FD9F77"],
+    color: ["#dac340", "#dac340"],
   },
   {
     title: "POLÍTICA",
@@ -50,6 +50,6 @@ export const projects = [
     ],
     src: "/images/img-5.jpg",
     url: "/proyecto/4",
-    color: ["#FD673D", "#DBC200"],
+    color: ["#C9C9C9", "#C9C9C9"],
   },
 ];

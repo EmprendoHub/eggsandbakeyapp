@@ -36,7 +36,7 @@ export function TextSplitter({
                 delay: wordIndex * 0.2 + charIndex * 0.05,
               }}
               key={charIndex}
-              className={`split-char inline-block split-char--${wordIndex}-${charIndex} text-[20vw] maxsm:text-[30vw] text-black`}
+              className={`split-char inline-block split-char--${wordIndex}-${charIndex} text-[20vw] maxsm:text-[25vw] text-black`}
             >
               {char}
             </motion.span>

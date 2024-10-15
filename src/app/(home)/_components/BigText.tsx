@@ -30,7 +30,7 @@ const BigText = (): JSX.Element => {
           initial={{ y: 120, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 1.1 }}
-          className="text-[30vw]"
+          className="text-[30vw] maxsm:w-[20vw]"
         >
           BRAND
         </motion.div>

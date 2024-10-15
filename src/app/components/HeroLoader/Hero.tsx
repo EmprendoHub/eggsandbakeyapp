@@ -6,11 +6,6 @@ import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
 const Hero = ({ shouldPlay }: { shouldPlay: boolean }) => {
-  const titleVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 1 } },
-  };
-
   // Pulsating animation for the ChevronDown
   const chevronVariants = {
     pulse: {

@@ -22,7 +22,7 @@ const StoriesComponent = () => {
       >
         7 años creando Campañas Personalizadas
       </motion.p>
-      <div className="flex gap-5 justify-center items-center  px-20">
+      <div className="flex gap-5 justify-center items-center  px-20 maxsm:px-5">
         <div className="flex maxsm:flex-col gap-5 justify-center items-center">
           <ReactPlayer
             url="/videos/gif1.mp4"
@@ -34,6 +34,7 @@ const StoriesComponent = () => {
             preload="auto" // Preload the video
             loop={true}
             playsInline={true}
+            disableRemotePlayback={true}
             style={{ borderRadius: "40px", overflow: "hidden" }}
           />
           <ReactPlayer
@@ -46,6 +47,7 @@ const StoriesComponent = () => {
             preload="auto" // Preload the video
             loop={true}
             playsInline={true}
+            disableRemotePlayback={true}
             style={{ borderRadius: "40px", overflow: "hidden" }}
           />
         </div>
@@ -60,6 +62,7 @@ const StoriesComponent = () => {
             preload="auto" // Preload the video
             loop={true}
             playsInline={true}
+            disableRemotePlayback={true}
             style={{ borderRadius: "40px", overflow: "hidden" }}
           />
           <ReactPlayer
@@ -72,6 +75,7 @@ const StoriesComponent = () => {
             preload="auto" // Preload the video
             loop={true}
             playsInline={true}
+            disableRemotePlayback={true}
             style={{ borderRadius: "40px", overflow: "hidden" }}
           />
         </div>

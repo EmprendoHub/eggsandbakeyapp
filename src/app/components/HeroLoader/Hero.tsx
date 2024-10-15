@@ -40,6 +40,7 @@ const Hero = ({ shouldPlay }: { shouldPlay: boolean }) => {
           playing={shouldPlay} // Only play when loader finishes
           muted={true}
           playsInline={true}
+          disableRemotePlayback={true}
           preload="auto" // Preload the video
         />
       </motion.div>

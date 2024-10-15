@@ -1,10 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
 import "./hero.css";
+import ReactPlayer from "react-player";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
 const Hero = ({ shouldPlay }: { shouldPlay: boolean }) => {
+  const titleVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 1 } },
+  };
+
   // Pulsating animation for the ChevronDown
   const chevronVariants = {
     pulse: {
@@ -21,16 +27,17 @@ const Hero = ({ shouldPlay }: { shouldPlay: boolean }) => {
   return (
     <section className="hero overflow-hidden flex flex-col justify-center items-center bg-[#0e0f0e]">
       <div className="flex mt-20 items-center justify-center h-full w-full">
-        <video
+        <ReactPlayer
+          url="/videos/EggsBakeyIntro.mp4"
           width="100%"
           height="100%"
           controls={false}
-          autoPlay={shouldPlay} // Only play when loader finishes
+          playing={shouldPlay} // Only play when loader finishes
           muted={true}
           playsInline={true}
-        >
-          <source src="/videos/EggsBakeyIntro.mp4" type="video/mp4" />
-        </video>
+          disableRemotePlayback={true}
+          preload="auto" // Preload the video
+        />
       </div>
       <Link href={"#start"} className="absolute z-30 bottom-0">
         <motion.div variants={chevronVariants} animate="pulse">

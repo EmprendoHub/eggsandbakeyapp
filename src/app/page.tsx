@@ -5,11 +5,12 @@ import Loader from "./components/Loader/Loader";
 import Marquee from "./components/marquees/Marquee";
 import TestimonialComponent from "./(home)/_components/TestimonialComponent";
 import { TextSplitter } from "./(home)/_components/TextSplitter";
-import CardParalaxComponent from "./(home)/_components/CardParalaxComponent";
 import BigText from "./(home)/_components/BigText";
 import FooterComponent from "./components/footer/FooterComponent";
 import dynamic from "next/dynamic";
 import StoriesComponent from "./(home)/_components/StoriesComponent";
+import ImageCard from "./(home)/_components/ImageCard";
+import WorkBoxes from "./(home)/_components/WorkBoxes";
 
 const Hero = dynamic(() => import("./components/HeroLoader/Hero"), {
   ssr: false,
@@ -37,12 +38,11 @@ export default function Home() {
         <Hero shouldPlay={loaderFinished} />
         {!loaderFinished && <Loader timeline={timeline} />}
       </div>
-
       {loaderFinished && <BigText />}
-
       {loaderFinished && <Marquee />}
+      {loaderFinished && <ImageCard />}
       {loaderFinished && <TestimonialComponent />}
-      {loaderFinished && <CardParalaxComponent />}
+      {loaderFinished && <WorkBoxes />}
       {loaderFinished && <StoriesComponent />}
       {loaderFinished && (
         <section className="flex flex-wrap bg-[#dac340] text-[#c9c9c9] font-black py-20 px-2 leading-[0.8] overflow-hidden">

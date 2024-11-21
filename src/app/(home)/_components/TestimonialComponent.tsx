@@ -83,12 +83,12 @@ const TestimonialComponent = () => {
     ],
   };
   return (
-    <div className="testimonial-class my-10 maxmd:my-10 px-5 overflow-hidden">
+    <div className="testimonial-class my-10 maxmd:my-10 px-40 maxmd:px-10 overflow-hidden">
       <motion.h2
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="pl-5 maxmd:pl-2 font-bold text-6xl maxsm:text-4xl tracking-wider uppercase"
+        className=" font-bold text-6xl maxsm:text-4xl tracking-wider uppercase"
       >
         Testimonios
       </motion.h2>
@@ -96,7 +96,7 @@ const TestimonialComponent = () => {
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.3 }}
-        className="pl-8 maxmd:pl-3 pb-10 text-xs "
+        className=" pb-10 text-xs "
       >
         Que dicen nuestros clientes
       </motion.p>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const StoriesComponent = () => {
   return (
-    <div className="flex flex-col my-40">
+    <div className="flex flex-col my-40 px-20 maxmd:px-5">
       <motion.h2
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}

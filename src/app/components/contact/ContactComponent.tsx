@@ -35,7 +35,7 @@ const ContactComponent = () => {
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.1 }}
-            className="w-2/3 maxmd:w-full pb-10 pl-5 maxmd:pl-1  flex flex-col justify-start items-start"
+            className="w-full pb-10 pl-5 maxmd:pl-1  flex flex-col justify-start items-start"
           >
             <div className="w-[100%] px-3map-class pt-5">
               <iframe

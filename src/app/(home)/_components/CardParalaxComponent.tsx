@@ -10,7 +10,7 @@ export default function CardParalaxComponent() {
   const container = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ["start start", "end end"],
+    offset: ["start start", "start end"],
   });
 
   useEffect(() => {

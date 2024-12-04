@@ -18,11 +18,11 @@ const StoriesComponent = () => {
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.3 }}
-        className="pl-20 maxmd:pl-3 pb-10 text-xs "
+        className="pl-20 maxmd:pl-3 pb-10 text-sm "
       >
         7 años creando Campañas Personalizadas
       </motion.p>
-      <div className="flex gap-5 justify-center items-center  px-20 maxsm:px-5">
+      <div className="flex gap-5 justify-center items-center  px-40 maxlg:px-20 maxmd:px-5">
         <div className="flex maxsm:flex-col gap-5 justify-center items-center">
           <ReactPlayer
             url="/videos/gif1.mp4"

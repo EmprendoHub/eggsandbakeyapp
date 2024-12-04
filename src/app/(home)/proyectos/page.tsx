@@ -1,16 +1,15 @@
 "use client";
 import React from "react";
-import PixelTransition from "@/app/components/transitions/PixelTransition";
 import BigText from "../_components/BigText";
-import CardParalaxComponent from "../_components/CardParalaxComponent";
 import FooterComponent from "@/app/components/footer/FooterComponent";
+import WorkBoxes from "../_components/WorkBoxes";
 
 const Proyectos = () => {
   return (
     <div className="relative">
-      <PixelTransition />
       <BigText />
-      <CardParalaxComponent />
+      <hr className="my-20" />
+      <WorkBoxes />
       <FooterComponent />
     </div>
   );

@@ -12,7 +12,7 @@ const WorkCard = ({ src, url }: CardParalaxProps) => {
   return (
     <div>
       <motion.div>
-        <div className="max-w-[450px] relative">
+        <div className="w-[450px] maxlg:w-[350px] maxmd:w-[250px] relative">
           <motion.div>
             <Link href={url}>
               <Image

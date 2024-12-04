@@ -83,7 +83,7 @@ const TestimonialComponent = () => {
     ],
   };
   return (
-    <div className="testimonial-class my-10 maxmd:my-10 px-40 maxmd:px-10 overflow-hidden">
+    <div className="testimonial-class my-40 maxmd:my-10 px-40 maxlg:px-24 maxmd:px-10 overflow-hidden">
       <motion.h2
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
@@ -109,7 +109,7 @@ const TestimonialComponent = () => {
           {testimonials.map((testimonial, index) => {
             return (
               <div key={index} className="px-2">
-                <div className="p-5 flex flex-col relative top-[30.34px] drop-shadow-md rounded-lgi bg-nackground text-gray-500 w-[90%] maxmd:w-[100%] h-[380px] maxsm:max-h-[380px] text-dimgray-200">
+                <div className="p-5 flex flex-col relative top-[30.34px] drop-shadow-md rounded-lgi bg-background text-gray-500 w-[100%] h-[380px] maxsm:max-h-[380px] text-dimgray-200">
                   <div className="rate flex-row">
                     <div className="stars flex items-center gap-x-1">
                       {starRating(testimonial.rating)}
@@ -137,7 +137,7 @@ const TestimonialComponent = () => {
                       <div className="leading-[146%] text-[12px] font-medium  inline-block">
                         {testimonial.position}
                       </div>
-                      <div className="leading-[123%] maxsm:text-xs maxmd:text-xs font-medium text-foreground inline-block ">
+                      <div className="leading-[123%] maxsm:text-xs text-sm font-medium text-foreground inline-block ">
                         {testimonial.name}
                       </div>
                     </div>

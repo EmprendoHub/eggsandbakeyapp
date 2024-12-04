@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 const BigText = (): JSX.Element => {
   return (
     <section
-      className="h-[120vh] maxsm:h-[45vh] flex flex-col justify-center items-center w-full overflow-hidden bg-[#dac340] text-[#000000]"
+      className="h-full flex flex-col justify-center items-center w-full overflow-hidden bg-[#dac340] text-[#000000]"
       id="start"
     >
-      <div className="w-full py-5 h-full text-left font-black uppercase leading-[.8] px-1">
+      <div className="w-full py-5 h-auto text-left font-black uppercase leading-[.8] px-1">
         <motion.div
           initial={{ y: -120, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}

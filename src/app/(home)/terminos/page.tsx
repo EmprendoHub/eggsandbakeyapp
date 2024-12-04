@@ -1,5 +1,4 @@
 import React from "react";
-import PixelTransition from "@/app/components/transitions/PixelTransition";
 import FooterComponent from "@/app/components/footer/FooterComponent";
 export const metadata = {
   title: "Términos de servicio de Eggs & Bakey",
@@ -9,8 +8,6 @@ export const metadata = {
 const TerminosPage = () => {
   return (
     <div className="p-6 px-20 maxmd:px-5 text-card-foreground">
-      <PixelTransition />
-
       <section className="mb-5 rounded-lg text-center  mt-20  pt-20 pb-5 border border-muted drop-shadow-md">
         <div className=" mx-auto">
           <h1 className="text-4xl font-extrabold ">Términos de servicio</h1>

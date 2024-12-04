@@ -10,7 +10,7 @@ const StoriesComponent = () => {
         initial={{ x: -180, opacity: 0 }}
         whileInView={{ x: 0, opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="pl-20 maxmd:pl-2 font-bold text-6xl maxsm:text-4xl tracking-wider uppercase"
+        className="pl-20 maxmd:pl-2 font-bold text-6xl  maxsm:text-4xl tracking-wider uppercase"
       >
         Estrategias Creativas
       </motion.h2>

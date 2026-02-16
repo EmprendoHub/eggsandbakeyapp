@@ -1,11 +1,13 @@
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import AdminShell from "../../_components/AdminShell";
-import { authOptions } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
 
 async function createClient(formData: FormData) {
   "use server";
+
+  const { prisma } = await import("@/lib/prisma");
 
   const name = String(formData.get("name") ?? "").trim();
   const contactEmail = String(formData.get("contactEmail") ?? "").trim();
@@ -29,6 +31,7 @@ async function createClient(formData: FormData) {
 }
 
 export default async function NewClientPage() {
+  const { authOptions } = await import("@/lib/auth");
   const session = await getServerSession(authOptions);
   if (!session) {
     redirect("/admin/login");

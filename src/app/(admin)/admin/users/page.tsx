@@ -2,11 +2,13 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
 import AdminShell from "../_components/AdminShell";
-import { authOptions } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
 
 async function createUser(formData: FormData) {
   "use server";
+
+  const { prisma } = await import("@/lib/prisma");
 
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "")
@@ -34,6 +36,11 @@ async function createUser(formData: FormData) {
 }
 
 export default async function AdminUsersPage() {
+  const [{ authOptions }, { prisma }] = await Promise.all([
+    import("@/lib/auth"),
+    import("@/lib/prisma"),
+  ]);
+
   const session = await getServerSession(authOptions);
   if (!session) {
     redirect("/admin/login");

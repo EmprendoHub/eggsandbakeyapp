@@ -3,8 +3,6 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { Cadencia, PublicacionTipo } from "@prisma/client";
 import AdminShell from "../../_components/AdminShell";
-import { authOptions } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
 import { generateSchedule } from "@/lib/schedule";
 import DraggableCalendar from "./_components/DraggableCalendar";
 import DeleteOldPlansButton from "./_components/DeleteOldPlansButton";
@@ -18,6 +16,8 @@ interface PageProps {
 const dateFormatter = new Intl.DateTimeFormat("es-ES", {
   dateStyle: "medium",
 });
+
+export const dynamic = "force-dynamic";
 
 function getCadenciaLabel(cadencia: Cadencia) {
   switch (cadencia) {
@@ -34,6 +34,8 @@ function getCadenciaLabel(cadencia: Cadencia) {
 
 async function createPlan(clientId: string, formData: FormData) {
   "use server";
+
+  const { prisma } = await import("@/lib/prisma");
 
   const cadence = String(formData.get("cadence") ?? "MENSUAL") as Cadencia;
   const startDateValue = String(formData.get("startDate") ?? "");
@@ -130,6 +132,8 @@ async function createPlan(clientId: string, formData: FormData) {
 async function toggleClientActive(clientId: string, currentActive: boolean) {
   "use server";
 
+  const { prisma } = await import("@/lib/prisma");
+
   await prisma.client.update({
     where: { id: clientId },
     data: { active: !currentActive },
@@ -142,6 +146,11 @@ export default async function ClientDetailPage({
   params,
   searchParams,
 }: PageProps) {
+  const [{ authOptions }, { prisma }] = await Promise.all([
+    import("@/lib/auth"),
+    import("@/lib/prisma"),
+  ]);
+
   const session = await getServerSession(authOptions);
   if (!session) {
     redirect("/admin/login");

@@ -1,11 +1,16 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
 
 const dateFormatter = new Intl.DateTimeFormat("es-ES", { dateStyle: "medium" });
 
+export const dynamic = "force-dynamic";
+
 export default async function AgentAdminPage() {
+  const [{ authOptions }, { prisma }] = await Promise.all([
+    import("@/lib/auth"),
+    import("@/lib/prisma"),
+  ]);
+
   const session = await getServerSession(authOptions);
   if (!session) {
     redirect("/admin/login");

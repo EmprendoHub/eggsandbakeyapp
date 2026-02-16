@@ -1,9 +1,12 @@
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
-import { prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
 
 async function createAdmin(formData: FormData) {
   "use server";
+
+  const { prisma } = await import("@/lib/prisma");
 
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "")
@@ -33,6 +36,7 @@ async function createAdmin(formData: FormData) {
 }
 
 export default async function SetupAdminPage() {
+  const { prisma } = await import("@/lib/prisma");
   const userCount = await prisma.user.count();
   if (userCount > 0) {
     redirect("/admin/login");

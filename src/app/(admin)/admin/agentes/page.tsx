@@ -4,11 +4,13 @@ import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 import AdminShell from "../_components/AdminShell";
 import CreateAgentForm from "./_components/CreateAgentForm";
-import { authOptions } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+
+export const dynamic = "force-dynamic";
 
 async function createAgent(formData: FormData) {
   "use server";
+
+  const { prisma } = await import("@/lib/prisma");
 
   const name = String(formData.get("name") ?? "").trim();
   const email = String(formData.get("email") ?? "")
@@ -39,6 +41,11 @@ async function createAgent(formData: FormData) {
 }
 
 export default async function AdminAgentsPage() {
+  const [{ authOptions }, { prisma }] = await Promise.all([
+    import("@/lib/auth"),
+    import("@/lib/prisma"),
+  ]);
+
   const session = await getServerSession(authOptions);
   if (!session) {
     redirect("/admin/login");

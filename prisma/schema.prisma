@@ -1,0 +1,133 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  AGENTE
+}
+
+enum Cadencia {
+  MENSUAL
+  BIMESTRAL
+  TRIMESTRAL
+}
+
+enum PublicacionTipo {
+  POST
+  HISTORIA
+  REEL
+}
+
+enum PublicacionEstado {
+  PENDIENTE
+  EN_PROCESO
+  COMPLETADA
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  publicacionesAsignadas Publication[] @relation("AssignedPublications")
+  notifications Notification[]
+  publicationHistory PublicationHistory[]
+}
+
+model Client {
+  id           String        @id @default(cuid())
+  name         String
+  contactEmail String?
+  phone        String?
+  notes        String?
+  active       Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  contentPlans ContentPlan[]
+  notifications Notification[]
+}
+
+model ContentPlan {
+  id            String        @id @default(cuid())
+  clientId      String
+  cadence       Cadencia
+  startDate     DateTime
+  durationDays  Int
+  postsCount    Int
+  historiasCount Int
+  reelsCount    Int
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  client        Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  publicaciones Publication[]
+
+  @@index([clientId])
+}
+
+model Publication {
+  id         String             @id @default(cuid())
+  planId     String
+  date       DateTime
+  type       PublicacionTipo
+  status     PublicacionEstado  @default(PENDIENTE)
+  title      String?
+  notes      String?
+  contentUrl String?
+  assignedAgentId String?
+  createdAt  DateTime           @default(now())
+  plan       ContentPlan        @relation(fields: [planId], references: [id], onDelete: Cascade)
+  assignedAgent User?           @relation("AssignedPublications", fields: [assignedAgentId], references: [id])
+  history    PublicationHistory[]
+  notifications Notification[]
+
+  @@index([planId])
+  @@index([date])
+  @@index([assignedAgentId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  clientId  String?
+  publicationId String?
+  message   String
+  createdAt DateTime @default(now())
+  readAt    DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  client Client? @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  publication Publication? @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([clientId])
+  @@index([publicationId])
+}
+
+model PublicationHistory {
+  id             String   @id @default(cuid())
+  publicationId  String
+  userId         String?
+  action         String
+  fromStatus     PublicacionEstado?
+  toStatus       PublicacionEstado?
+  fromAgentId    String?
+  toAgentId      String?
+  contentUrl     String?
+  title          String?
+  createdAt      DateTime @default(now())
+
+  publication Publication @relation(fields: [publicationId], references: [id], onDelete: Cascade)
+  user        User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([publicationId])
+  @@index([userId])
+}

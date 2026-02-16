@@ -16,6 +16,16 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Admin (Marketing CRM)
+
+1. Crea un archivo `.env` basado en `.env.example` y agrega tu `DATABASE_URL`.
+2. Instala dependencias y genera Prisma:
+   - `npm install`
+   - `npx prisma migrate dev --name init`
+   - `npx prisma generate`
+3. Inicia el servidor y abre `http://localhost:3000/admin/setup` para crear el primer administrador.
+4. Luego inicia sesión en `http://localhost:3000/admin`.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

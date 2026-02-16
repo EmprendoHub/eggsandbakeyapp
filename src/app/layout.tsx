@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Menu from "./(home)/_components/Menu";
 import { TransitionProvider } from "@/context/TransitionContext";
+import ConditionalMenu from "./components/ConditionalMenu";
 
 export const metadata: Metadata = {
   title: "Eggs & Bakey Marketing Agency",
@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="overflow-x-hidden">
         <TransitionProvider>
-          <Menu />
+          <ConditionalMenu />
           {children}
         </TransitionProvider>
       </body>

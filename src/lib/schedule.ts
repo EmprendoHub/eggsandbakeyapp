@@ -1,4 +1,4 @@
-export type PublicationType = "POST" | "HISTORIA" | "REEL";
+export type PublicationType = "POST" | "HISTORIA" | "REEL" | "PAUTA";
 
 export interface ScheduleInput {
   startDate: Date;
@@ -6,6 +6,7 @@ export interface ScheduleInput {
   postsCount: number;
   historiasCount: number;
   reelsCount: number;
+  pautasCount: number;
 }
 
 export interface ScheduledPublication {
@@ -14,10 +15,17 @@ export interface ScheduledPublication {
 }
 
 export function generateSchedule(input: ScheduleInput): ScheduledPublication[] {
-  const { startDate, durationDays, postsCount, historiasCount, reelsCount } =
-    input;
+  const {
+    startDate,
+    durationDays,
+    postsCount,
+    historiasCount,
+    reelsCount,
+    pautasCount,
+  } = input;
 
-  const totalPublications = postsCount + historiasCount + reelsCount;
+  const totalPublications =
+    postsCount + historiasCount + reelsCount + pautasCount;
   if (totalPublications === 0 || durationDays <= 0) {
     return [];
   }
@@ -27,6 +35,7 @@ export function generateSchedule(input: ScheduleInput): ScheduledPublication[] {
     ...Array(postsCount).fill("POST"),
     ...Array(historiasCount).fill("HISTORIA"),
     ...Array(reelsCount).fill("REEL"),
+    ...Array(pautasCount).fill("PAUTA"),
   ];
 
   // Shuffle to mix types evenly

@@ -30,12 +30,6 @@ export default function AdminShell({
               <Link className="hover:text-neutral-900" href="/admin">
                 Clientes
               </Link>
-              <Link className="hover:text-neutral-900" href="/admin/agentes">
-                Agentes
-              </Link>
-              <Link className="hover:text-neutral-900" href="/admin/users">
-                Administradores
-              </Link>
             </nav>
             <SignOutButton />
           </div>

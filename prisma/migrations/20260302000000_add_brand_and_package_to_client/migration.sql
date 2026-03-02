@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Client" ADD COLUMN IF NOT EXISTS "brandName" TEXT;
+ALTER TABLE "Client" ADD COLUMN IF NOT EXISTS "packageName" TEXT;

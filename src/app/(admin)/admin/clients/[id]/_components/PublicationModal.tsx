@@ -5,11 +5,12 @@ import HistoryModal from "./HistoryModal";
 
 interface Publication {
   id: string;
-  type: "POST" | "HISTORIA" | "REEL";
+  type: "POST" | "HISTORIA" | "REEL" | "PAUTA";
   title?: string | null;
   notes?: string | null;
   contentUrl?: string | null;
   assignedAgentId?: string | null;
+  monto?: number | null;
 }
 
 interface PublicationModalProps {
@@ -48,6 +49,8 @@ export default function PublicationModal({
         return "Historia";
       case "REEL":
         return "Reel";
+      case "PAUTA":
+        return "Pauta";
     }
   };
 
@@ -91,6 +94,20 @@ export default function PublicationModal({
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
+          {publication.type === "PAUTA" && publication.monto ? (
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3">
+              <p className="text-xs font-semibold uppercase tracking-wide text-amber-600">
+                Monto de pauta
+              </p>
+              <p className="mt-1 text-xl font-bold text-amber-800">
+                $
+                {publication.monto.toLocaleString("es-MX", {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                })}
+              </p>
+            </div>
+          ) : null}
           <label className="block text-sm font-medium text-neutral-700">
             Título
             <input

@@ -14,14 +14,16 @@ enum Role {
 
 enum Cadencia {
   MENSUAL
-  BIMESTRAL
   TRIMESTRAL
+  SEMESTRAL
+  ANUAL
 }
 
 enum PublicacionTipo {
   POST
   HISTORIA
   REEL
+  PAUTA
 }
 
 enum PublicacionEstado {
@@ -44,16 +46,18 @@ model User {
 }
 
 model Client {
-  id           String        @id @default(cuid())
-  name         String
-  contactEmail String?
-  phone        String?
-  notes        String?
-  active       Boolean       @default(true)
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  contentPlans ContentPlan[]
-  notifications Notification[]
+  id              String        @id @default(cuid())
+  name            String
+  brandName       String?
+  packageName     String?
+  contactEmail    String?
+  phone           String?
+  notes           String?
+  active          Boolean       @default(true)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  contentPlans    ContentPlan[]
+  notifications   Notification[]
 }
 
 model ContentPlan {
@@ -65,6 +69,8 @@ model ContentPlan {
   postsCount    Int
   historiasCount Int
   reelsCount    Int
+  pautasCount   Int           @default(0)
+  pautaMonto    Float         @default(0)
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
   client        Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
@@ -82,6 +88,7 @@ model Publication {
   title      String?
   notes      String?
   contentUrl String?
+  monto      Float              @default(0)
   assignedAgentId String?
   createdAt  DateTime           @default(now())
   plan       ContentPlan        @relation(fields: [planId], references: [id], onDelete: Cascade)

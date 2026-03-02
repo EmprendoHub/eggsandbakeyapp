@@ -7,6 +7,8 @@ import { generateSchedule } from "@/lib/schedule";
 import DraggableCalendar from "./_components/DraggableCalendar";
 import DeleteOldPlansButton from "./_components/DeleteOldPlansButton";
 import DeletePlanButton from "./_components/DeletePlanButton";
+import EditClientModal from "./_components/EditClientModal";
+import DeleteClientButton from "./_components/DeleteClientButton";
 
 interface PageProps {
   params: { id: string };
@@ -23,10 +25,12 @@ function getCadenciaLabel(cadencia: Cadencia) {
   switch (cadencia) {
     case "MENSUAL":
       return "Mensual";
-    case "BIMESTRAL":
-      return "Bimestral";
     case "TRIMESTRAL":
       return "Trimestral";
+    case "SEMESTRAL":
+      return "Semestral";
+    case "ANUAL":
+      return "Anual";
     default:
       return cadencia;
   }
@@ -43,6 +47,10 @@ async function createPlan(clientId: string, formData: FormData) {
   const postsCount = Number(formData.get("postsCount") ?? 0);
   const historiasCount = Number(formData.get("historiasCount") ?? 0);
   const reelsCount = Number(formData.get("reelsCount") ?? 0);
+  const pautasCount = Number(formData.get("pautasCount") ?? 0);
+  const pautaMonto = Number(formData.get("pautaMonto") ?? 0);
+  // Monto individual por pauta (mensual ÷ número de pautas al mes)
+  const montoPorPauta = pautasCount > 0 ? pautaMonto / pautasCount : 0;
 
   if (!startDateValue) {
     return;
@@ -50,10 +58,24 @@ async function createPlan(clientId: string, formData: FormData) {
 
   const [year, month, day] = startDateValue.split("-").map(Number);
   const startDate = new Date(year, (month ?? 1) - 1, day ?? 1);
+
+  const monthsToAdd =
+    cadence === "TRIMESTRAL"
+      ? 3
+      : cadence === "SEMESTRAL"
+        ? 6
+        : cadence === "ANUAL"
+          ? 12
+          : 1;
+
+  // Los conteos del formulario son por mes; multiplicar según la cadencia
+  const totalPostsCount = postsCount * monthsToAdd;
+  const totalHistoriasCount = historiasCount * monthsToAdd;
+  const totalReelsCount = reelsCount * monthsToAdd;
+  const totalPautasCount = pautasCount * monthsToAdd;
+
   let durationDays = durationDaysInput;
   if (!durationDays || durationDays <= 0) {
-    const monthsToAdd =
-      cadence === "BIMESTRAL" ? 2 : cadence === "TRIMESTRAL" ? 3 : 1;
     const endDate = new Date(startDate);
     endDate.setMonth(endDate.getMonth() + monthsToAdd);
     const diffMs = endDate.getTime() - startDate.getTime();
@@ -85,9 +107,11 @@ async function createPlan(clientId: string, formData: FormData) {
           cadence,
           startDate,
           durationDays,
-          postsCount,
-          historiasCount,
-          reelsCount,
+          postsCount: totalPostsCount,
+          historiasCount: totalHistoriasCount,
+          reelsCount: totalReelsCount,
+          pautasCount: totalPautasCount,
+          pautaMonto,
         },
       })
     : await prisma.contentPlan.create({
@@ -96,18 +120,21 @@ async function createPlan(clientId: string, formData: FormData) {
           cadence,
           startDate,
           durationDays,
-          postsCount,
-          historiasCount,
-          reelsCount,
+          postsCount: totalPostsCount,
+          historiasCount: totalHistoriasCount,
+          reelsCount: totalReelsCount,
+          pautasCount: totalPautasCount,
+          pautaMonto,
         },
       });
 
   const publications = generateSchedule({
     startDate,
     durationDays,
-    postsCount,
-    historiasCount,
-    reelsCount,
+    postsCount: totalPostsCount,
+    historiasCount: totalHistoriasCount,
+    reelsCount: totalReelsCount,
+    pautasCount: totalPautasCount,
   });
 
   if (existingPlan) {
@@ -122,6 +149,7 @@ async function createPlan(clientId: string, formData: FormData) {
         planId: plan.id,
         date: publication.date,
         type: publication.type as PublicacionTipo,
+        monto: publication.type === "PAUTA" ? montoPorPauta : 0,
       })),
     });
   }
@@ -177,6 +205,14 @@ export default async function ClientDetailPage({
   }
 
   const latestPlan = client.contentPlans[0];
+  const latestPlanMonths =
+    latestPlan?.cadence === "TRIMESTRAL"
+      ? 3
+      : latestPlan?.cadence === "SEMESTRAL"
+        ? 6
+        : latestPlan?.cadence === "ANUAL"
+          ? 12
+          : 1;
   const cutoff = new Date();
   cutoff.setMonth(cutoff.getMonth() - 6);
   const oldPlansCount = client.contentPlans.filter(
@@ -190,14 +226,47 @@ export default async function ClientDetailPage({
   return (
     <AdminShell title={client.name} subtitle="Calendario de contenido">
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-600">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-neutral-600">
+          {client.brandName && (
+            <>
+              <span className="font-medium text-neutral-900">
+                {client.brandName}
+              </span>
+              <span>•</span>
+            </>
+          )}
+          {client.packageName && (
+            <>
+              <span className="rounded-full bg-neutral-100 px-2.5 py-0.5 text-xs font-semibold text-neutral-700">
+                {client.packageName}
+              </span>
+              <span>•</span>
+            </>
+          )}
           <span>{client.contactEmail ?? "Sin email"}</span>
           <span>•</span>
           <span>{client.phone ?? "Sin teléfono"}</span>
           <span>•</span>
-          <span>{client.active ? "Activo" : "Inactivo"}</span>
+          <span
+            className={`font-medium ${
+              client.active ? "text-emerald-600" : "text-red-500"
+            }`}
+          >
+            {client.active ? "Activo" : "Inactivo"}
+          </span>
         </div>
         <div className="flex flex-wrap items-center gap-3">
+          <EditClientModal
+            client={{
+              id: client.id,
+              name: client.name,
+              brandName: client.brandName,
+              packageName: client.packageName,
+              contactEmail: client.contactEmail,
+              phone: client.phone,
+              notes: client.notes,
+            }}
+          />
           <form
             action={toggleClientActive.bind(null, client.id, client.active)}
           >
@@ -217,6 +286,7 @@ export default async function ClientDetailPage({
             clientName={client.name}
             oldPlansCount={oldPlansCount}
           />
+          <DeleteClientButton clientId={client.id} clientName={client.name} />
         </div>
       </div>
 
@@ -229,11 +299,12 @@ export default async function ClientDetailPage({
       <section className="mt-10 grid gap-8 lg:grid-cols-[1.2fr_1fr]">
         <div className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-neutral-900">
-            Generar plan de publicaciones
+            {latestPlan ? "Editar plan" : "Crear plan y calendario"}
           </h2>
           <p className="mt-1 text-sm text-neutral-500">
-            Define la cadencia, fechas y cantidades para distribuir el
-            contenido.
+            {latestPlan
+              ? "Modifica la cadencia, fechas y cantidades del plan activo."
+              : "Define el contrato, fechas y cantidades para distribuir el contenido."}
           </p>
           <form
             action={createPlan.bind(null, client.id)}
@@ -244,83 +315,131 @@ export default async function ClientDetailPage({
               <select
                 name="cadence"
                 className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm"
-                defaultValue="MENSUAL"
+                defaultValue={latestPlan?.cadence ?? "MENSUAL"}
               >
                 <option value="MENSUAL">Mensual</option>
-                <option value="BIMESTRAL">Bimestral</option>
                 <option value="TRIMESTRAL">Trimestral</option>
+                <option value="SEMESTRAL">Semestral</option>
+                <option value="ANUAL">Anual</option>
               </select>
             </label>
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="block text-sm font-medium text-neutral-700">
-                Fecha de inicio
-                <input
-                  name="startDate"
-                  type="date"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm"
-                />
-              </label>
-              <label className="block text-sm font-medium text-neutral-700">
-                Duración (días)
-                <input
-                  name="durationDays"
-                  type="number"
-                  min={1}
-                  className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm"
-                  placeholder="Auto por cadencia"
-                />
-              </label>
+            <label className="block text-sm font-medium text-neutral-700">
+              Fecha de inicio
+              <input
+                name="startDate"
+                type="date"
+                required
+                defaultValue={
+                  latestPlan
+                    ? latestPlan.startDate.toISOString().slice(0, 10)
+                    : undefined
+                }
+                className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm"
+              />
+            </label>
+            <div className="mb-1 text-xs text-neutral-400">
+              Cantidades por mes
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="grid gap-4 md:grid-cols-4">
               <label className="block text-sm font-medium text-neutral-700">
                 Posts
+                <span className="ml-1 text-xs font-normal text-neutral-400">
+                  /mes
+                </span>
                 <input
                   name="postsCount"
                   type="number"
                   min={0}
-                  defaultValue={8}
+                  defaultValue={
+                    latestPlan ? latestPlan.postsCount / latestPlanMonths : 8
+                  }
                   className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm"
                 />
               </label>
               <label className="block text-sm font-medium text-neutral-700">
                 Historias
+                <span className="ml-1 text-xs font-normal text-neutral-400">
+                  /mes
+                </span>
                 <input
                   name="historiasCount"
                   type="number"
                   min={0}
-                  defaultValue={12}
+                  defaultValue={
+                    latestPlan
+                      ? latestPlan.historiasCount / latestPlanMonths
+                      : 12
+                  }
                   className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm"
                 />
               </label>
               <label className="block text-sm font-medium text-neutral-700">
                 Reels
+                <span className="ml-1 text-xs font-normal text-neutral-400">
+                  /mes
+                </span>
                 <input
                   name="reelsCount"
                   type="number"
                   min={0}
-                  defaultValue={4}
+                  defaultValue={
+                    latestPlan ? latestPlan.reelsCount / latestPlanMonths : 4
+                  }
+                  className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm"
+                />
+              </label>
+              <label className="block text-sm font-medium text-neutral-700">
+                Pautas
+                <span className="ml-1 text-xs font-normal text-neutral-400">
+                  /mes
+                </span>
+                <input
+                  name="pautasCount"
+                  type="number"
+                  min={0}
+                  defaultValue={
+                    latestPlan ? latestPlan.pautasCount / latestPlanMonths : 0
+                  }
                   className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm"
                 />
               </label>
             </div>
+            <label className="block text-sm font-medium text-neutral-700">
+              Monto de pauta
+              <span className="ml-1 text-xs font-normal text-neutral-400">
+                (mensual)
+              </span>
+              <div className="relative mt-2">
+                <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center text-sm text-neutral-400">
+                  $
+                </span>
+                <input
+                  name="pautaMonto"
+                  type="number"
+                  min={0}
+                  step={0.01}
+                  defaultValue={latestPlan?.pautaMonto ?? 0}
+                  className="w-full rounded-2xl border border-neutral-200 bg-white py-3 pl-8 pr-4 text-sm"
+                />
+              </div>
+            </label>
             <button
               type="submit"
               className="w-fit rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white"
             >
-              Crear plan y calendario
+              {latestPlan ? "Guardar cambios" : "Crear plan y calendario"}
             </button>
           </form>
         </div>
 
         <div className="rounded-3xl border border-neutral-200 bg-white p-6 shadow-sm">
           <h2 className="text-lg font-semibold text-neutral-900">
-            Planes recientes
+            Paquete Contratado
           </h2>
           <div className="mt-4 space-y-4">
             {client.contentPlans.length === 0 ? (
               <p className="text-sm text-neutral-500">
-                Aún no hay planes creados.
+                Aún no hay Paquete Contratado.
               </p>
             ) : (
               client.contentPlans.map((plan) => {
@@ -349,6 +468,15 @@ export default async function ClientDetailPage({
                         <p className="text-neutral-500">
                           Inicio: {dateFormatter.format(plan.startDate)}
                         </p>
+                        <p className="text-neutral-500">
+                          Fin:{" "}
+                          {dateFormatter.format(
+                            new Date(
+                              plan.startDate.getTime() +
+                                plan.durationDays * 24 * 60 * 60 * 1000,
+                            ),
+                          )}
+                        </p>
                       </Link>
                       <DeletePlanButton
                         planId={plan.id}
@@ -365,6 +493,21 @@ export default async function ClientDetailPage({
                       <span className="rounded-full bg-neutral-100 px-2 py-1">
                         {plan.reelsCount} reels
                       </span>
+                      {plan.pautasCount > 0 && (
+                        <span className="rounded-full bg-neutral-100 px-2 py-1">
+                          {plan.pautasCount} pautas
+                        </span>
+                      )}
+                      {plan.pautaMonto > 0 && (
+                        <span className="rounded-full bg-amber-50 px-2 py-1 text-amber-700">
+                          $
+                          {plan.pautaMonto.toLocaleString("es-MX", {
+                            minimumFractionDigits: 0,
+                            maximumFractionDigits: 2,
+                          })}{" "}
+                          monto pauta
+                        </span>
+                      )}
                     </div>
                     <p className="mt-2 text-xs text-neutral-500">
                       {plan.publicaciones.length} publicaciones programadas
@@ -395,6 +538,7 @@ export default async function ClientDetailPage({
               id: plan.id,
               startDate: plan.startDate,
               durationDays: plan.durationDays,
+              cadence: plan.cadence,
               publications: plan.publicaciones.map((pub) => ({
                 id: pub.id,
                 date: pub.date,
@@ -404,6 +548,7 @@ export default async function ClientDetailPage({
                 notes: pub.notes,
                 contentUrl: pub.contentUrl,
                 assignedAgentId: pub.assignedAgentId,
+                monto: pub.monto,
               })),
             }))}
             initialMonth={initialMonth}

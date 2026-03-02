@@ -127,7 +127,6 @@ export default function GlobalCalendar({
   publications,
   clients,
   selectedClientId,
-  visibleClientIds,
 }: Props) {
   const now = new Date();
   const calendarRef = useRef<HTMLDivElement>(null);

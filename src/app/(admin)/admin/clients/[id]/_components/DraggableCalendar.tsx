@@ -92,7 +92,7 @@ export default function DraggableCalendar({
     }
 
     const findPeriodContaining = (target: Date) =>
-      availableMonths.find((periodStart, i) => {
+      availableMonths.find((periodStart) => {
         const periodEnd = new Date(periodStart);
         periodEnd.setMonth(periodEnd.getMonth() + 1);
         return target >= periodStart && target < periodEnd;

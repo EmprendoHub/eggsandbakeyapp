@@ -2,6 +2,8 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
 import AdminShell from "../_components/AdminShell";
+import EditUserModal from "./_components/EditUserModal";
+import DeleteUserButton from "./_components/DeleteUserButton";
 
 export const dynamic = "force-dynamic";
 
@@ -46,6 +48,7 @@ export default async function AdminUsersPage() {
     redirect("/admin/login");
   }
 
+  const sessionEmail = session.user?.email ?? "";
   const users = await prisma.user.findMany({ orderBy: { createdAt: "desc" } });
 
   return (
@@ -100,12 +103,42 @@ export default async function AdminUsersPage() {
             {users.map((user) => (
               <div
                 key={user.id}
-                className="rounded-2xl border border-neutral-200 px-4 py-3"
+                className="flex items-center justify-between gap-3 rounded-2xl border border-neutral-200 px-4 py-3"
               >
-                <p className="text-sm font-semibold text-neutral-900">
-                  {user.name}
-                </p>
-                <p className="text-xs text-neutral-500">{user.email}</p>
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2">
+                    <p className="text-sm font-semibold text-neutral-900 truncate">
+                      {user.name}
+                    </p>
+                    <span
+                      className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${
+                        user.role === "ADMIN"
+                          ? "bg-neutral-900 text-white"
+                          : "bg-blue-100 text-blue-700"
+                      }`}
+                    >
+                      {user.role === "ADMIN" ? "Admin" : "Agente"}
+                    </span>
+                  </div>
+                  <p className="text-xs text-neutral-500 truncate">
+                    {user.email}
+                  </p>
+                </div>
+                <div className="flex shrink-0 items-center gap-2">
+                  <EditUserModal
+                    user={{
+                      id: user.id,
+                      name: user.name,
+                      email: user.email,
+                      role: user.role,
+                    }}
+                  />
+                  <DeleteUserButton
+                    userId={user.id}
+                    userName={user.name}
+                    isSelf={user.email === sessionEmail}
+                  />
+                </div>
               </div>
             ))}
           </div>

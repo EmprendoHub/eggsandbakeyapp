@@ -3,7 +3,7 @@ import SignOutButton from "./SignOutButton";
 
 interface AdminShellProps {
   title: string;
-  brandName: string | null;
+  brandName?: string | null;
   subtitle?: string;
   children: React.ReactNode;
 }

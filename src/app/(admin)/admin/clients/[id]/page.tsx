@@ -57,7 +57,11 @@ async function createPlan(clientId: string, formData: FormData) {
   }
 
   const [year, month, day] = startDateValue.split("-").map(Number);
-  const startDate = new Date(year, (month ?? 1) - 1, day ?? 1);
+  // Use UTC noon to avoid timezone-shift bugs: any UTC-12..UTC+11 browser
+  // will still show this as the correct local calendar day.
+  const startDate = new Date(
+    Date.UTC(year, (month ?? 1) - 1, day ?? 1, 12, 0, 0),
+  );
 
   const monthsToAdd =
     cadence === "TRIMESTRAL"

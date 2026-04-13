@@ -100,7 +100,8 @@ export function generateSchedule(input: ScheduleInput): ScheduledPublication[] {
         if (offsetDays >= durationDays) break;
 
         const testDate = new Date(startDate);
-        testDate.setDate(testDate.getDate() + offsetDays);
+        testDate.setUTCDate(testDate.getUTCDate() + offsetDays);
+        testDate.setUTCHours(12, 0, 0, 0); // normalize to UTC noon
         const dateKey = testDate.toISOString().split("T")[0];
 
         if (!usedDates.has(dateKey)) {
@@ -119,7 +120,8 @@ export function generateSchedule(input: ScheduleInput): ScheduledPublication[] {
     for (let i = 0; i < totalPublications; i++) {
       const offsetDays = Math.min(durationDays - 1, Math.floor(i * interval));
       const testDate = new Date(startDate);
-      testDate.setDate(testDate.getDate() + offsetDays);
+      testDate.setUTCDate(testDate.getUTCDate() + offsetDays);
+      testDate.setUTCHours(12, 0, 0, 0); // normalize to UTC noon
       publications.push({ date: testDate, type: typeSequence[i] });
     }
   }

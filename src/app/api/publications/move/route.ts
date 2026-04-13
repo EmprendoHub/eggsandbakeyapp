@@ -25,9 +25,13 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
+    // Parse "YYYY-MM-DD" as UTC noon to avoid timezone-shift when stored
+    const [y, m, d] = (newDate as string).split("-").map(Number);
+    const parsedDate = new Date(Date.UTC(y, (m ?? 1) - 1, d ?? 1, 12, 0, 0));
+
     const publication = await prisma.publication.update({
       where: { id: publicationId },
-      data: { date: new Date(newDate) },
+      data: { date: parsedDate },
     });
 
     return NextResponse.json(publication);

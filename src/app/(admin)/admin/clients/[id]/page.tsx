@@ -224,7 +224,11 @@ export default async function ClientDetailPage({
     : null;
 
   return (
-    <AdminShell title={client.name} subtitle="Calendario de contenido">
+    <AdminShell
+      title={client.name}
+      brandName={client.brandName}
+      subtitle="Calendario de contenido"
+    >
       <div className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-neutral-600">
           {client.brandName && (
@@ -553,6 +557,7 @@ export default async function ClientDetailPage({
             }))}
             initialMonth={initialMonth}
             clientName={client.name}
+            clientBrandName={client.brandName}
             agents={agents}
           />
         </section>

@@ -8,6 +8,7 @@ import ClientsFilterPanel from "./ClientsFilterPanel";
 export interface ClientInfo {
   id: string;
   name: string;
+  brandName: string | null;
   active: boolean;
 }
 
@@ -21,6 +22,7 @@ export interface PublicationInfo {
   contentUrl: string | null;
   clientId: string;
   clientName: string;
+  clientBrandName: string | null;
   clientActive: boolean;
 }
 

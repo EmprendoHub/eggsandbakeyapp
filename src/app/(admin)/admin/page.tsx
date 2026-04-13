@@ -43,6 +43,7 @@ export default async function AdminDashboardPage() {
   const clientList: ClientInfo[] = clients.map((c) => ({
     id: c.id,
     name: c.name,
+    brandName: c.brandName ?? null,
     active: c.active,
   }));
 
@@ -58,6 +59,7 @@ export default async function AdminDashboardPage() {
         contentUrl: pub.contentUrl,
         clientId: client.id,
         clientName: client.name,
+        clientBrandName: client.brandName ?? null,
         clientActive: client.active,
       })),
     ),
@@ -69,6 +71,7 @@ export default async function AdminDashboardPage() {
   return (
     <AdminShell
       title="Calendario de contenido"
+      brandName={null}
       subtitle={`${activeCount} cliente${activeCount !== 1 ? "s" : ""} activo${activeCount !== 1 ? "s" : ""} · ${inactiveCount} inactivo${inactiveCount !== 1 ? "s" : ""} · ${allPublications.length} publicaciones totales`}
     >
       <GlobalCalendarView clients={clientList} publications={allPublications} />

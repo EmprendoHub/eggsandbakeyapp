@@ -5,6 +5,7 @@ import Link from "next/link";
 interface Client {
   id: string;
   name: string;
+  brandName: string | null;
   active: boolean;
 }
 
@@ -66,7 +67,9 @@ export default function ClientsSubmenu({
                           isSelected ? "bg-emerald-400" : "bg-emerald-500"
                         }`}
                       />
-                      <span className="truncate">{client.name}</span>
+                      <span className="truncate">
+                        {client.brandName ?? client.name}
+                      </span>
                     </button>
                     <Link
                       href={`/admin/clients/${client.id}`}

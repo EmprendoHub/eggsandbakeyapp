@@ -6,6 +6,7 @@ import Link from "next/link";
 interface Client {
   id: string;
   name: string;
+  brandName: string | null;
   active: boolean;
 }
 
@@ -19,6 +20,7 @@ interface Publication {
   contentUrl: string | null;
   clientId: string;
   clientName: string;
+  clientBrandName: string | null;
   clientActive: boolean;
 }
 
@@ -29,71 +31,19 @@ interface Props {
   visibleClientIds: Set<string>;
 }
 
-// ─── Paleta por cliente ───────────────────────────────────────────────────────
-const PALETTE = [
-  {
-    bg: "bg-blue-100",
-    text: "text-blue-700",
-    dot: "bg-blue-500",
-    ring: "ring-blue-300",
-  },
-  {
-    bg: "bg-violet-100",
-    text: "text-violet-700",
-    dot: "bg-violet-500",
-    ring: "ring-violet-300",
-  },
-  {
-    bg: "bg-orange-100",
-    text: "text-orange-700",
-    dot: "bg-orange-500",
-    ring: "ring-orange-300",
-  },
-  {
-    bg: "bg-teal-100",
-    text: "text-teal-700",
-    dot: "bg-teal-500",
-    ring: "ring-teal-300",
-  },
-  {
-    bg: "bg-pink-100",
-    text: "text-pink-700",
-    dot: "bg-pink-500",
-    ring: "ring-pink-300",
-  },
-  {
-    bg: "bg-amber-100",
-    text: "text-amber-700",
-    dot: "bg-amber-500",
-    ring: "ring-amber-300",
-  },
-  {
-    bg: "bg-indigo-100",
-    text: "text-indigo-700",
-    dot: "bg-indigo-500",
-    ring: "ring-indigo-300",
-  },
-  {
-    bg: "bg-rose-100",
-    text: "text-rose-700",
-    dot: "bg-rose-500",
-    ring: "ring-rose-300",
-  },
-  {
-    bg: "bg-lime-100",
-    text: "text-lime-700",
-    dot: "bg-lime-500",
-    ring: "ring-lime-300",
-  },
-  {
-    bg: "bg-cyan-100",
-    text: "text-cyan-700",
-    dot: "bg-cyan-500",
-    ring: "ring-cyan-300",
-  },
-] as const;
+// ─── Color por tipo de publicación ──────────────────────────────────────────
+const TYPE_COLOR: Record<string, { bg: string; text: string; dot: string }> = {
+  POST: { bg: "bg-blue-100", text: "text-blue-700", dot: "bg-blue-500" },
+  HISTORIA: { bg: "bg-green-100", text: "text-green-700", dot: "bg-green-500" },
+  REEL: { bg: "bg-red-100", text: "text-red-700", dot: "bg-red-500" },
+  PAUTA: { bg: "bg-amber-900/10", text: "text-amber-900", dot: "bg-amber-800" },
+};
 
-type PaletteEntry = (typeof PALETTE)[number];
+const TYPE_COLOR_FALLBACK = {
+  bg: "bg-neutral-100",
+  text: "text-neutral-700",
+  dot: "bg-neutral-400",
+};
 
 // ─── Iconos por tipo ──────────────────────────────────────────────────────────
 const TYPE_LABEL: Record<string, string> = {
@@ -125,7 +75,6 @@ function todayKey() {
 // ─── Componente ───────────────────────────────────────────────────────────────
 export default function GlobalCalendar({
   publications,
-  clients,
   selectedClientId,
 }: Props) {
   const now = new Date();
@@ -161,18 +110,16 @@ export default function GlobalCalendar({
       const pageWidth = pdf.internal.pageSize.getWidth();
       const pageHeight = pdf.internal.pageSize.getHeight();
       const margin = 20;
-      const imgWidth = pageWidth - margin * 2;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let remaining = imgHeight;
-      let pos = margin;
-      pdf.addImage(imgData, "PNG", margin, pos, imgWidth, imgHeight);
-      remaining -= pageHeight - margin * 2;
-      while (remaining > 0) {
-        pdf.addPage();
-        pos = margin - (imgHeight - remaining);
-        pdf.addImage(imgData, "PNG", margin, pos, imgWidth, imgHeight);
-        remaining -= pageHeight - margin * 2;
-      }
+      const maxW = pageWidth - margin * 2;
+      const maxH = pageHeight - margin * 2;
+      // Scale to fit entirely within one page, preserving aspect ratio
+      const ratio = Math.min(maxW / canvas.width, maxH / canvas.height);
+      const imgWidth = canvas.width * ratio;
+      const imgHeight = canvas.height * ratio;
+      // Center on the page
+      const x = margin + (maxW - imgWidth) / 2;
+      const y = margin + (maxH - imgHeight) / 2;
+      pdf.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
       const monthLabel = MONTH_FMT.format(currentMonth).replace(/\s+/g, "-");
       pdf.save(`Calendario-Global-${monthLabel}.pdf`);
     } finally {
@@ -189,12 +136,6 @@ export default function GlobalCalendar({
 
   const year = currentMonth.getFullYear();
   const month = currentMonth.getMonth();
-
-  // Color map por cliente (estable por índice para consistencia visual)
-  const colorMap = new Map<string, PaletteEntry>();
-  clients.forEach((client, idx) => {
-    colorMap.set(client.id, PALETTE[idx % PALETTE.length]!);
-  });
 
   // ── Filtrar publicaciones para el mes y cliente seleccionado ─────────────
   const visiblePubs = publications.filter((pub) => {
@@ -237,8 +178,30 @@ export default function GlobalCalendar({
       ref={calendarRef}
       className="flex-1 min-w-0 rounded-3xl border border-neutral-200 bg-white shadow-sm overflow-hidden"
     >
+      {/* ── Encabezado compacto solo para PDF ───────────────────────── */}
+      {isExporting && (
+        <div className="flex items-center justify-between border-b border-neutral-100 px-4 py-1.5">
+          <span className="text-xs font-bold capitalize text-neutral-900">
+            {MONTH_FMT.format(currentMonth)}
+          </span>
+          <div className="flex items-center gap-2">
+            {Object.entries(TYPE_COLOR).map(([type, color]) => (
+              <span
+                key={type}
+                className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-medium ${color.bg} ${color.text}`}
+              >
+                <span className={`h-1 w-1 rounded-full ${color.dot}`} />
+                {TYPE_LABEL[type] ?? type}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* ── Encabezado ──────────────────────────────────────────────────── */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-neutral-100 px-5 py-4">
+      <div
+        className={`flex flex-wrap items-center justify-between gap-3 border-b border-neutral-100 px-5 py-4 ${isExporting ? "hidden" : ""}`}
+      >
         <div className="flex items-center gap-2">
           <button
             onClick={() => setCurrentMonth(new Date(year, month - 1, 1))}
@@ -350,24 +313,18 @@ export default function GlobalCalendar({
         </div>
       </div>
 
-      {/* ── Leyenda de clientes ──────────────────────────────────────────── */}
-      {!selectedClientId && clients.filter((c) => c.active).length > 0 && (
+      {/* ── Leyenda de tipos ────────────────────────────────────────────── */}
+      {!isExporting && !selectedClientId && (
         <div className="flex flex-wrap gap-2 border-b border-neutral-100 px-5 py-2.5">
-          {clients
-            .filter((c) => c.active)
-            .map((client) => {
-              const color = colorMap.get(client.id)!;
-              return (
-                <Link
-                  key={client.id}
-                  href={`/admin/clients/${client.id}`}
-                  className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[10px] font-medium transition hover:opacity-80 ${color.bg} ${color.text}`}
-                >
-                  <span className={`h-1.5 w-1.5 rounded-full ${color.dot}`} />
-                  {client.name}
-                </Link>
-              );
-            })}
+          {Object.entries(TYPE_COLOR).map(([type, color]) => (
+            <span
+              key={type}
+              className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[10px] font-medium ${color.bg} ${color.text}`}
+            >
+              <span className={`h-1.5 w-1.5 rounded-full ${color.dot}`} />
+              {TYPE_LABEL[type] ?? type}
+            </span>
+          ))}
         </div>
       )}
 
@@ -410,7 +367,7 @@ export default function GlobalCalendar({
                 isExporting ? "" : "min-h-[90px]"
               } ${
                 isToday
-                  ? "bg-neutral-300 text-white"
+                  ? "bg-neutral-300 "
                   : isWeekend
                     ? "bg-neutral-50/70"
                     : "bg-white hover:bg-neutral-50"
@@ -434,29 +391,21 @@ export default function GlobalCalendar({
               {/* Publicaciones */}
               <div className="space-y-0.5">
                 {visiblePubsForDay.map((pub) => {
-                  const color = colorMap.get(pub.clientId);
+                  const color = TYPE_COLOR[pub.type] ?? TYPE_COLOR_FALLBACK;
                   return (
                     <button
                       key={pub.id}
                       onClick={() => setSelectedPub(pub)}
-                      title={`${pub.clientName} · ${TYPE_LABEL[pub.type] ?? pub.type}${pub.title ? ` · ${pub.title}` : ""}`}
+                      title={`${pub.clientBrandName} · ${TYPE_LABEL[pub.type] ?? pub.type}${pub.title ? ` · ${pub.title}` : ""}`}
                       className={`flex w-full items-center rounded-md px-1 py-[2px] text-left font-medium leading-none transition hover:opacity-80 ${
                         isExporting
                           ? "text-[8px]"
                           : "gap-1 truncate text-[10px]"
-                      } ${
-                        isToday
-                          ? "bg-white/20 text-white"
-                          : `${color?.bg ?? "bg-neutral-100"} ${color?.text ?? "text-neutral-700"}`
-                      }`}
+                      } ${color.bg} ${color.text}`}
                     >
                       {!isExporting && (
                         <span
-                          className={`h-1.5 w-1.5 shrink-0 rounded-full ${
-                            isToday
-                              ? "bg-white/80"
-                              : (color?.dot ?? "bg-neutral-400")
-                          }`}
+                          className={`h-1.5 w-1.5 shrink-0 rounded-full ${color.dot}`}
                         />
                       )}
                       <span
@@ -467,7 +416,7 @@ export default function GlobalCalendar({
                         }
                       >
                         {pub.title ??
-                          `${TYPE_LABEL[pub.type] ?? pub.type} · ${pub.clientName}`}
+                          `${TYPE_LABEL[pub.type] ?? pub.type} · ${pub.clientBrandName}`}
                       </span>
                     </button>
                   );
@@ -477,11 +426,7 @@ export default function GlobalCalendar({
                 {pubs.length > 4 && !isExporting && (
                   <button
                     onClick={() => toggleExpand(key)}
-                    className={`w-full text-left px-1.5 text-[10px] font-semibold transition hover:underline ${
-                      isToday
-                        ? "text-white/70"
-                        : "text-neutral-400 hover:text-neutral-600"
-                    }`}
+                    className="w-full text-left px-1.5 text-[10px] font-semibold transition hover:underline text-neutral-500 hover:text-neutral-700"
                   >
                     {isExpanded ? "− Ver menos" : `+${pubs.length - 4} más`}
                   </button>
@@ -528,16 +473,13 @@ export default function GlobalCalendar({
               <div>
                 <div className="flex items-center gap-2">
                   {(() => {
-                    const color = colorMap.get(selectedPub.clientId);
+                    const color =
+                      TYPE_COLOR[selectedPub.type] ?? TYPE_COLOR_FALLBACK;
                     return (
                       <span
-                        className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
-                          color
-                            ? `${color.bg} ${color.text}`
-                            : "bg-neutral-100 text-neutral-700"
-                        }`}
+                        className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${color.bg} ${color.text}`}
                       >
-                        {selectedPub.clientName}
+                        {selectedPub.clientBrandName ?? selectedPub.clientName}
                       </span>
                     );
                   })()}

@@ -26,6 +26,7 @@ interface CalendarProps {
   }>;
   initialMonth?: Date | null;
   clientName: string;
+  clientBrandName: string | null;
   agents: Array<{ id: string; name: string }>;
 }
 
@@ -42,6 +43,7 @@ export default function DraggableCalendar({
   plans,
   initialMonth,
   clientName,
+  clientBrandName,
   agents,
 }: CalendarProps) {
   const router = useRouter();
@@ -406,7 +408,7 @@ export default function DraggableCalendar({
         mode === "month"
           ? monthFormatter.format(currentMonth).replace(/\s+/g, "-")
           : "Completo";
-      pdf.save(`Calendario-${clientName}-${suffix}.pdf`);
+      pdf.save(`Calendario-${clientBrandName}-${clientName}-${suffix}.pdf`);
     } finally {
       setExportMonths(null);
       setIsExporting(false);
@@ -580,13 +582,13 @@ export default function DraggableCalendar({
             <div className="mb-6 flex items-start justify-between gap-4 rounded-2xl bg-neutral-50 px-5 py-4">
               <div className="space-y-1">
                 <p className="text-base font-bold text-neutral-900">
-                  {clientName}
+                  {clientBrandName ? clientBrandName + " - " : clientName}
                 </p>
                 <p className="text-sm text-neutral-600">
                   <span className="font-semibold">Inicio:</span>{" "}
                   {dateFormatter.format(new Date(activePlan.startDate))}
                 </p>
-                <p className="text-sm text-neutral-600">
+                {/* <p className="text-sm text-neutral-600">
                   <span className="font-semibold">Finalización:</span>{" "}
                   {dateFormatter.format(
                     new Date(
@@ -594,7 +596,7 @@ export default function DraggableCalendar({
                         activePlan.durationDays * 24 * 60 * 60 * 1000,
                     ),
                   )}
-                </p>
+                </p> */}
                 <p className="text-sm text-neutral-600">
                   <span className="font-semibold">Paquete:</span>{" "}
                   {activePlan.cadence === "TRIMESTRAL"
@@ -630,7 +632,7 @@ export default function DraggableCalendar({
               })()}
             </h4>
             <p className="mt-1 text-sm font-medium text-neutral-600">
-              {clientName}
+              {clientBrandName ? clientBrandName + " - " : clientName}
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -714,7 +716,7 @@ export default function DraggableCalendar({
             <div className="flex items-start justify-between gap-4 rounded-2xl bg-neutral-50 px-5 py-4">
               <div className="space-y-1">
                 <p className="text-base font-bold text-neutral-900">
-                  {clientName}
+                  {clientBrandName ? clientBrandName + " - " : clientName}
                 </p>
                 {activePlan && (
                   <>
@@ -722,7 +724,7 @@ export default function DraggableCalendar({
                       <span className="font-semibold">Inicio:</span>{" "}
                       {dateFormatter.format(new Date(activePlan.startDate))}
                     </p>
-                    <p className="text-sm text-neutral-600">
+                    {/* <p className="text-sm text-neutral-600">
                       <span className="font-semibold">Finalización:</span>{" "}
                       {dateFormatter.format(
                         new Date(
@@ -730,7 +732,7 @@ export default function DraggableCalendar({
                             activePlan.durationDays * 24 * 60 * 60 * 1000,
                         ),
                       )}
-                    </p>
+                    </p> */}
                     <p className="text-sm text-neutral-600">
                       <span className="font-semibold">Paquete:</span>{" "}
                       {activePlan.cadence === "TRIMESTRAL"

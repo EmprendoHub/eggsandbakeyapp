@@ -3,12 +3,14 @@ import SignOutButton from "./SignOutButton";
 
 interface AdminShellProps {
   title: string;
+  brandName: string | null;
   subtitle?: string;
   children: React.ReactNode;
 }
 
 export default function AdminShell({
   title,
+  brandName,
   subtitle,
   children,
 }: AdminShellProps) {
@@ -20,7 +22,10 @@ export default function AdminShell({
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
               Panel de administración
             </p>
-            <h1 className="text-2xl font-semibold text-neutral-900">{title}</h1>
+            {brandName}
+            <h1 className="text-2xl font-semibold text-neutral-900">
+              {brandName ? `${brandName} - ${title}` : title}
+            </h1>
             {subtitle ? (
               <p className="mt-1 text-sm text-neutral-500">{subtitle}</p>
             ) : null}

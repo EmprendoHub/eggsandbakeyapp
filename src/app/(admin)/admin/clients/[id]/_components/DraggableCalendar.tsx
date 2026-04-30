@@ -588,7 +588,7 @@ export default function DraggableCalendar({
                   <span className="font-semibold">Inicio:</span>{" "}
                   {dateFormatter.format(new Date(activePlan.startDate))}
                 </p>
-                {/* <p className="text-sm text-neutral-600">
+                <p className="text-sm text-neutral-600">
                   <span className="font-semibold">Finalización:</span>{" "}
                   {dateFormatter.format(
                     new Date(
@@ -596,7 +596,7 @@ export default function DraggableCalendar({
                         activePlan.durationDays * 24 * 60 * 60 * 1000,
                     ),
                   )}
-                </p> */}
+                </p>
                 <p className="text-sm text-neutral-600">
                   <span className="font-semibold">Paquete:</span>{" "}
                   {activePlan.cadence === "TRIMESTRAL"
@@ -635,7 +635,7 @@ export default function DraggableCalendar({
               {clientBrandName ? clientBrandName + " - " : clientName}
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
             {days.map((date) => {
               const key = date.toISOString().split("T")[0];
               const entries = publicationsByDate.get(key) ?? [];
@@ -724,7 +724,7 @@ export default function DraggableCalendar({
                       <span className="font-semibold">Inicio:</span>{" "}
                       {dateFormatter.format(new Date(activePlan.startDate))}
                     </p>
-                    {/* <p className="text-sm text-neutral-600">
+                    <p className="text-sm text-neutral-600">
                       <span className="font-semibold">Finalización:</span>{" "}
                       {dateFormatter.format(
                         new Date(
@@ -732,7 +732,7 @@ export default function DraggableCalendar({
                             activePlan.durationDays * 24 * 60 * 60 * 1000,
                         ),
                       )}
-                    </p> */}
+                    </p>
                     <p className="text-sm text-neutral-600">
                       <span className="font-semibold">Paquete:</span>{" "}
                       {activePlan.cadence === "TRIMESTRAL"

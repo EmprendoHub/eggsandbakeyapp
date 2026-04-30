@@ -9,10 +9,11 @@ import DeleteOldPlansButton from "./_components/DeleteOldPlansButton";
 import DeletePlanButton from "./_components/DeletePlanButton";
 import EditClientModal from "./_components/EditClientModal";
 import DeleteClientButton from "./_components/DeleteClientButton";
+import SubmitPlanButton from "./_components/SubmitPlanButton";
 
 interface PageProps {
   params: { id: string };
-  searchParams?: { month?: string };
+  searchParams?: { month?: string; saved?: string };
 }
 
 const dateFormatter = new Intl.DateTimeFormat("es-ES", {
@@ -158,7 +159,7 @@ async function createPlan(clientId: string, formData: FormData) {
     });
   }
 
-  redirect(`/admin/clients/${clientId}`);
+  redirect(`/admin/clients/${clientId}?saved=1`);
 }
 
 async function toggleClientActive(clientId: string, currentActive: boolean) {
@@ -226,6 +227,8 @@ export default async function ClientDetailPage({
   const initialMonth = searchParams?.month
     ? new Date(`${searchParams.month}-01T00:00:00`)
     : null;
+
+  const justSaved = searchParams?.saved === "1";
 
   return (
     <AdminShell
@@ -299,8 +302,8 @@ export default async function ClientDetailPage({
       </div>
 
       {client.notes ? (
-        <p className="mt-4 max-w-3xl rounded-2xl border border-neutral-200 bg-white p-4 text-sm text-neutral-600">
-          {client.notes}
+        <p className="mt-4 max-w-3xl rounded-2xl border border-neutral-200 bg-orange-600 p-4 text-sm text-neutral-100">
+          NOTA: {client.notes}
         </p>
       ) : null}
 
@@ -431,12 +434,19 @@ export default async function ClientDetailPage({
                 />
               </div>
             </label>
-            <button
-              type="submit"
-              className="w-fit rounded-full bg-neutral-900 px-5 py-3 text-sm font-semibold text-white"
-            >
-              {latestPlan ? "Guardar cambios" : "Crear plan y calendario"}
-            </button>
+            <SubmitPlanButton isExisting={!!latestPlan} />
+            {justSaved && latestPlan && (
+              <p className="flex items-center gap-1.5 text-xs font-medium text-emerald-600">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="h-3.5 w-3.5 shrink-0">
+                  <path fillRule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clipRule="evenodd" />
+                </svg>
+                Cambios guardados el{" "}
+                {new Intl.DateTimeFormat("es-ES", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                }).format(latestPlan.updatedAt)}
+              </p>
+            )}
           </form>
         </div>
 

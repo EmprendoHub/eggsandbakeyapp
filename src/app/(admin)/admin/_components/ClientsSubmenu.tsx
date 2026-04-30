@@ -74,7 +74,7 @@ export default function ClientsSubmenu({
                     <Link
                       href={`/admin/clients/${client.id}`}
                       title="Ver detalle"
-                      className={`shrink-0 rounded-lg p-1 text-neutral-300 opacity-0 group-hover:opacity-100 hover:text-neutral-700 hover:bg-neutral-100 transition ${
+                      className={`shrink-0 rounded-lg p-1 bg-blue-500 text-neutral-300 opacity-0 group-hover:opacity-100 hover:text-neutral-100 hover:bg-blue-600 transition ${
                         isSelected ? "text-white opacity-100" : ""
                       }`}
                     >
@@ -154,10 +154,10 @@ export default function ClientsSubmenu({
       <div className="border-t border-neutral-100 px-3 py-2">
         <button
           onClick={onClear}
-          className={`w-full flex items-center justify-center gap-1.5 rounded-xl py-1.5 text-xs font-semibold transition ${
+          className={`w-full flex items-center justify-center gap-1.5 rounded-xl py-1.5 text-xs font-semibold transition bg-blue-500 ${
             selectedClientId
-              ? "text-neutral-900 hover:bg-neutral-100"
-              : "text-neutral-400 hover:bg-neutral-50"
+              ? "text-neutral-100 hover:bg-blue-700"
+              : "text-neutral-100 hover:bg-blue-700"
           }`}
         >
           <svg

@@ -96,11 +96,29 @@ export default function GlobalCalendar({
         import("html2canvas"),
         import("jspdf"),
       ]);
-      const canvas = await html2canvas(calendarRef.current, {
+
+      // Force a wide render so the 7 columns have plenty of horizontal space
+      const EXPORT_WIDTH = 2100;
+      const el = calendarRef.current;
+      const prevWidth = el.style.width;
+      const prevMinWidth = el.style.minWidth;
+      el.style.width = `${EXPORT_WIDTH}px`;
+      el.style.minWidth = `${EXPORT_WIDTH}px`;
+      // Let the browser reflow before capturing
+      await new Promise((r) => setTimeout(r, 80));
+
+      const canvas = await html2canvas(el, {
         scale: 2,
         backgroundColor: "#ffffff",
         useCORS: true,
+        windowWidth: EXPORT_WIDTH,
+        width: EXPORT_WIDTH,
       });
+
+      // Restore original width
+      el.style.width = prevWidth;
+      el.style.minWidth = prevMinWidth;
+
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF({
         orientation: "landscape",
@@ -146,12 +164,25 @@ export default function GlobalCalendar({
   });
 
   // ── Agrupar por fecha ─────────────────────────────────────────────────────
+  const TYPE_ORDER: Record<string, number> = {
+    POST: 0,
+    HISTORIA: 1,
+    REEL: 2,
+    PAUTA: 3,
+  };
+
   const byDate = new Map<string, Publication[]>();
   visiblePubs.forEach((pub) => {
     const key = new Date(pub.date).toISOString().slice(0, 10);
     const list = byDate.get(key) ?? [];
     list.push(pub);
     byDate.set(key, list);
+  });
+  // Sort each day's publications: POST → HISTORIA → REEL → PAUTA
+  byDate.forEach((list) => {
+    list.sort(
+      (a, b) => (TYPE_ORDER[a.type] ?? 99) - (TYPE_ORDER[b.type] ?? 99),
+    );
   });
 
   // ── Construir grilla del mes (semanas lunes→domingo) ──────────────────────
@@ -363,8 +394,8 @@ export default function GlobalCalendar({
           return (
             <div
               key={key}
-              className={`relative p-1.5 transition ${
-                isExporting ? "" : "min-h-[90px]"
+              className={`relative p-2 transition ${
+                isExporting ? "min-h-0" : "min-h-[90px]"
               } ${
                 isToday
                   ? "bg-neutral-300 "

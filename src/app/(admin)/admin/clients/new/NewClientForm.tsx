@@ -80,6 +80,7 @@ export default function NewClientForm() {
           Nombre del cliente
           <input
             name="name"
+            autoComplete="off"
             required
             className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900"
             placeholder="Nombre del cliente"
@@ -89,6 +90,7 @@ export default function NewClientForm() {
           Nombre de la marca
           <input
             name="brandName"
+            autoComplete="off"
             className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900"
             placeholder="Ej. EggsandBakey"
           />
@@ -106,6 +108,7 @@ export default function NewClientForm() {
           <input
             name="contactEmail"
             type="email"
+            autoComplete="off"
             className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900"
             placeholder="contacto@cliente.com"
           />
@@ -114,6 +117,7 @@ export default function NewClientForm() {
           Teléfono
           <input
             name="phone"
+            autoComplete="off"
             className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900"
             placeholder="+52 55 0000 0000"
           />
@@ -123,6 +127,7 @@ export default function NewClientForm() {
           <textarea
             name="notes"
             rows={4}
+            autoComplete="off"
             className="mt-2 w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-900"
             placeholder="Información relevante del cliente"
           />

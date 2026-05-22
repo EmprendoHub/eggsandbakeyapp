@@ -63,14 +63,17 @@ export async function PATCH(request: NextRequest) {
 
     // Auto-advance status based on filled fields (only when status not explicitly set)
     if (status === undefined && previous) {
-      const effectiveTitle   = data.title     !== undefined ? data.title     : previous.title;
-      const effectiveNotes   = data.notes     !== undefined ? data.notes     : previous.notes;
-      const effectiveUrl     = data.contentUrl !== undefined ? data.contentUrl : previous.contentUrl;
-      const currentStatus    = previous.status;
+      const effectiveTitle =
+        data.title !== undefined ? data.title : previous.title;
+      const effectiveNotes =
+        data.notes !== undefined ? data.notes : previous.notes;
+      const effectiveUrl =
+        data.contentUrl !== undefined ? data.contentUrl : previous.contentUrl;
+      const currentStatus = previous.status;
 
       const hasTitle = Boolean(effectiveTitle);
       const hasNotes = Boolean(effectiveNotes);
-      const hasUrl   = Boolean(effectiveUrl);
+      const hasUrl = Boolean(effectiveUrl);
 
       if (hasTitle && hasNotes && hasUrl) {
         data.status = "COMPLETADA";

@@ -131,7 +131,8 @@ export default function AssignedPublications({
 
     try {
       const newStatus = await updatePublication({ publicationId, contentUrl });
-      if (newStatus) setStatusById((prev) => ({ ...prev, [publicationId]: newStatus }));
+      if (newStatus)
+        setStatusById((prev) => ({ ...prev, [publicationId]: newStatus }));
     } catch (error) {
       setErrorById((prev) => ({
         ...prev,
@@ -152,8 +153,13 @@ export default function AssignedPublications({
     setErrorById((prev) => ({ ...prev, [publicationId]: "" }));
 
     try {
-      const newStatus = await updatePublication({ publicationId, title, notes });
-      if (newStatus) setStatusById((prev) => ({ ...prev, [publicationId]: newStatus }));
+      const newStatus = await updatePublication({
+        publicationId,
+        title,
+        notes,
+      });
+      if (newStatus)
+        setStatusById((prev) => ({ ...prev, [publicationId]: newStatus }));
     } catch (error) {
       setErrorById((prev) => ({
         ...prev,

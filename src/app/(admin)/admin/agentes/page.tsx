@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import bcrypt from "bcryptjs";
 import AdminShell from "../_components/AdminShell";
 import CreateAgentForm from "./_components/CreateAgentForm";
+import ResetPasswordButton from "./_components/ResetPasswordButton";
 
 export const dynamic = "force-dynamic";
 
@@ -78,6 +79,7 @@ export default async function AdminAgentsPage() {
                   {agent.name}
                 </p>
                 <p className="text-xs text-neutral-500">{agent.email}</p>
+                <ResetPasswordButton agentId={agent.id} />
               </div>
             ))}
           </div>

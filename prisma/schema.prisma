@@ -43,6 +43,7 @@ model User {
   publicacionesAsignadas Publication[] @relation("AssignedPublications")
   notifications Notification[]
   publicationHistory PublicationHistory[]
+  workOrders WorkOrder[] @relation("AgentWorkOrders")
 }
 
 model Client {
@@ -58,6 +59,7 @@ model Client {
   updatedAt       DateTime      @updatedAt
   contentPlans    ContentPlan[]
   notifications   Notification[]
+  workOrders      WorkOrder[]
 }
 
 model ContentPlan {
@@ -137,4 +139,30 @@ model PublicationHistory {
 
   @@index([publicationId])
   @@index([userId])
+}
+
+enum WorkOrderStatus {
+  PENDIENTE
+  EN_PROCESO
+  COMPLETADA
+}
+
+model WorkOrder {
+  id              String          @id @default(cuid())
+  title           String
+  agentId         String
+  clientId        String
+  publicationType PublicacionTipo
+  startDate       DateTime
+  dueDate         DateTime
+  status          WorkOrderStatus @default(PENDIENTE)
+  notes           String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  agent  User   @relation("AgentWorkOrders", fields: [agentId], references: [id], onDelete: Cascade)
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  @@index([agentId])
+  @@index([clientId])
 }

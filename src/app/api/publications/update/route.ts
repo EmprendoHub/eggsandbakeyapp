@@ -33,6 +33,7 @@ export async function PATCH(request: NextRequest) {
         status: true,
         contentUrl: true,
         title: true,
+        notes: true,
       },
     });
 
@@ -58,6 +59,24 @@ export async function PATCH(request: NextRequest) {
     }
     if (status !== undefined) {
       data.status = status;
+    }
+
+    // Auto-advance status based on filled fields (only when status not explicitly set)
+    if (status === undefined && previous) {
+      const effectiveTitle   = data.title     !== undefined ? data.title     : previous.title;
+      const effectiveNotes   = data.notes     !== undefined ? data.notes     : previous.notes;
+      const effectiveUrl     = data.contentUrl !== undefined ? data.contentUrl : previous.contentUrl;
+      const currentStatus    = previous.status;
+
+      const hasTitle = Boolean(effectiveTitle);
+      const hasNotes = Boolean(effectiveNotes);
+      const hasUrl   = Boolean(effectiveUrl);
+
+      if (hasTitle && hasNotes && hasUrl) {
+        data.status = "COMPLETADA";
+      } else if (hasTitle && hasNotes && currentStatus === "PENDIENTE") {
+        data.status = "EN_PROCESO";
+      }
     }
 
     const publication = await prisma.publication.update({
@@ -104,6 +123,47 @@ export async function PATCH(request: NextRequest) {
           message: "Tienes una nueva publicación asignada.",
         },
       });
+    }
+
+    // Auto-complete work order when all its publications are COMPLETADA
+    if (publication.status === "COMPLETADA" && publication.assignedAgentId) {
+      const fullPub = await prisma.publication.findUnique({
+        where: { id: publicationId },
+        select: { type: true, plan: { select: { clientId: true } } },
+      });
+
+      if (fullPub) {
+        // Find any non-completed work order for this agent + client + type
+        const matchingOrders = await prisma.workOrder.findMany({
+          where: {
+            agentId: publication.assignedAgentId,
+            clientId: fullPub.plan.clientId,
+            publicationType: fullPub.type,
+            status: { not: "COMPLETADA" },
+          },
+          select: { id: true },
+        });
+
+        for (const order of matchingOrders) {
+          // Check if all publications for this order are now COMPLETADA
+          const sibling = await prisma.publication.findFirst({
+            where: {
+              assignedAgentId: publication.assignedAgentId,
+              type: fullPub.type,
+              plan: { clientId: fullPub.plan.clientId },
+              status: { not: "COMPLETADA" },
+            },
+            select: { id: true },
+          });
+
+          if (!sibling) {
+            await prisma.workOrder.update({
+              where: { id: order.id },
+              data: { status: "COMPLETADA" },
+            });
+          }
+        }
+      }
     }
 
     return NextResponse.json(publication);

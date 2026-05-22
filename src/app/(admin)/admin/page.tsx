@@ -33,6 +33,7 @@ export default async function AdminDashboardPage() {
               title: true,
               notes: true,
               contentUrl: true,
+              assignedAgent: { select: { name: true } },
             },
           },
         },
@@ -61,6 +62,7 @@ export default async function AdminDashboardPage() {
         clientName: client.name,
         clientBrandName: client.brandName ?? null,
         clientActive: client.active,
+        assignedAgentName: pub.assignedAgent?.name ?? null,
       })),
     ),
   );

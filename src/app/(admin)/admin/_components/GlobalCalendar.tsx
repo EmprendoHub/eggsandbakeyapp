@@ -22,6 +22,7 @@ interface Publication {
   clientName: string;
   clientBrandName: string | null;
   clientActive: boolean;
+  assignedAgentName?: string | null;
 }
 
 interface Props {
@@ -561,6 +562,18 @@ export default function GlobalCalendar({
                     : "Pendiente"}
               </span>
             </div>
+
+            {/* Agente asignado */}
+            {selectedPub.assignedAgentName && (
+              <div className="mb-3 flex items-center gap-2 text-sm text-neutral-600">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-neutral-400">
+                  Agente
+                </span>
+                <span className="font-medium">
+                  {selectedPub.assignedAgentName}
+                </span>
+              </div>
+            )}
 
             {/* Notas */}
             {selectedPub.notes && (

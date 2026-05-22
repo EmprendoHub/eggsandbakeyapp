@@ -9,8 +9,13 @@ const adminOnlyPaths = [
   "/admin/clients",
   "/admin/agentes",
   "/admin/users",
+  "/admin/ordenes",
 ];
-const agentAllowedPaths = ["/admin/agente", "/admin/agente/clientes"];
+const agentAllowedPaths = [
+  "/admin/agente",
+  "/admin/agente/clientes",
+  "/admin/agente/ordenes",
+];
 const publicAdminPaths = ["/admin/login", "/admin/setup"];
 
 export async function middleware(request: NextRequest) {
@@ -28,7 +33,11 @@ export async function middleware(request: NextRequest) {
       return NextResponse.redirect(loginUrl);
     }
 
-    if (agentAllowedPaths.some((path) => pathname.startsWith(path))) {
+    if (
+      agentAllowedPaths.some(
+        (path) => pathname === path || pathname.startsWith(path + "/"),
+      )
+    ) {
       if (token.role !== "AGENTE") {
         return NextResponse.redirect(new URL("/admin", request.url));
       }

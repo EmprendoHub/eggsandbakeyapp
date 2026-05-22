@@ -1,9 +1,30 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import Link from "next/link";
+import LogoutButton from "./_components/LogoutButton";
 
 const dateFormatter = new Intl.DateTimeFormat("es-ES", { dateStyle: "medium" });
 
 export const dynamic = "force-dynamic";
+
+const STATUS_LABEL: Record<string, string> = {
+  PENDIENTE: "Pendiente",
+  EN_PROCESO: "En proceso",
+  COMPLETADA: "Completada",
+};
+
+const STATUS_COLOR: Record<string, string> = {
+  PENDIENTE: "bg-yellow-100 text-yellow-800",
+  EN_PROCESO: "bg-orange-100 text-orange-800",
+  COMPLETADA: "bg-green-100 text-green-800",
+};
+
+const TYPE_LABEL: Record<string, string> = {
+  POST: "Post",
+  HISTORIA: "Historia",
+  REEL: "Reel",
+  PAUTA: "Pauta",
+};
 
 export default async function AgentAdminPage() {
   const [{ authOptions }, { prisma }] = await Promise.all([
@@ -20,26 +41,53 @@ export default async function AgentAdminPage() {
     redirect("/admin");
   }
 
+  const workOrders = await prisma.workOrder.findMany({
+    where: { agentId: session.user.id },
+    orderBy: { dueDate: "asc" },
+    include: {
+      client: { select: { id: true, name: true, brandName: true } },
+    },
+  });
+
+  // Auto-advance PENDIENTE work orders to EN_PROCESO when any matching
+  // publication (same client + type) is already EN_PROCESO.
   const publications = await prisma.publication.findMany({
     where: { assignedAgentId: session.user.id },
-    orderBy: { date: "asc" },
-    include: { plan: { include: { client: true } } },
+    select: { status: true, type: true, plan: { select: { clientId: true } } },
   });
 
-  const notifications = await prisma.notification.findMany({
-    where: { userId: session.user.id, readAt: null, clientId: { not: null } },
-    select: { clientId: true },
+  // Build map of clientId|type → statuses from publications
+  const pubsByClientType = new Map<string, string[]>();
+  publications.forEach((pub) => {
+    const clientId = pub.plan?.clientId;
+    if (!clientId) return;
+    const key = `${clientId}|${pub.type}`;
+    const existing = pubsByClientType.get(key) ?? [];
+    existing.push(pub.status);
+    pubsByClientType.set(key, existing);
   });
 
-  const unreadByClient = notifications.reduce<Record<string, number>>(
-    (acc, item) => {
-      if (item.clientId) {
-        acc[item.clientId] = (acc[item.clientId] || 0) + 1;
-      }
-      return acc;
-    },
-    {},
-  );
+  const ordersToAdvance = workOrders
+    .filter((order) => {
+      if (order.status !== "PENDIENTE") return false;
+      const statuses =
+        pubsByClientType.get(`${order.clientId}|${order.publicationType}`) ??
+        [];
+      return statuses.includes("EN_PROCESO");
+    })
+    .map((o) => o.id);
+
+  if (ordersToAdvance.length > 0) {
+    await prisma.workOrder.updateMany({
+      where: { id: { in: ordersToAdvance } },
+      data: { status: "EN_PROCESO" },
+    });
+    // Reflect in local array so the page renders the updated status
+    ordersToAdvance.forEach((id) => {
+      const order = workOrders.find((o) => o.id === id);
+      if (order) order.status = "EN_PROCESO";
+    });
+  }
 
   return (
     <div className="min-h-screen bg-neutral-50">
@@ -53,64 +101,69 @@ export default async function AgentAdminPage() {
               Hola, {session.user.name}
             </h1>
           </div>
+          <LogoutButton />
         </div>
       </header>
       <main className="mx-auto max-w-6xl px-6 py-8">
-        <section className="mt-6">
+        {/* ── Work Orders ── */}
+        <section>
           <h2 className="text-lg font-semibold text-neutral-900">
-            Clientes asignados
+            Mis órdenes de trabajo
           </h2>
           <p className="mt-1 text-sm text-neutral-500">
-            Selecciona un cliente para ver sus publicaciones asignadas.
+            Órdenes asignadas a ti. Actualiza el estado conforme avances.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {(() => {
-              const clientMap = new Map<
-                string,
-                { name: string; count: number; lastDate?: Date }
-              >();
 
-              publications.forEach((pub) => {
-                const client = pub.plan.client;
-                if (!client) return;
-                const entry = clientMap.get(client.id) ?? {
-                  name: client.name,
-                  count: 0,
-                  lastDate: undefined,
-                };
-                entry.count += 1;
-                entry.lastDate = pub.date;
-                clientMap.set(client.id, entry);
-              });
-
-              return Array.from(clientMap.entries()).map(([clientId, data]) => (
-                <a
-                  key={clientId}
-                  href={`/admin/agente/clientes/${clientId}`}
-                  className="rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="text-lg font-semibold text-neutral-900">
-                      {data.name}
-                    </h3>
-                    {unreadByClient[clientId] ? (
-                      <span className="rounded-full bg-emerald-100 px-2 py-1 text-[10px] font-semibold text-emerald-700">
-                        {unreadByClient[clientId]}
-                      </span>
-                    ) : null}
+          {workOrders.length === 0 ? (
+            <p className="mt-6 text-sm text-neutral-400">
+              No tienes órdenes de trabajo asignadas por ahora.
+            </p>
+          ) : (
+            <div className="mt-6 space-y-3">
+              {workOrders.map((order) => {
+                return (
+                  <div
+                    key={order.id}
+                    className="flex flex-col gap-3 rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:flex-row sm:items-center sm:justify-between"
+                  >
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-semibold text-neutral-900">
+                          {order.title}
+                        </span>
+                        <span
+                          className={`rounded-full px-2 py-0.5 text-xs font-semibold ${STATUS_COLOR[order.status] ?? ""}`}
+                        >
+                          {STATUS_LABEL[order.status] ?? order.status}
+                        </span>
+                        <span className="rounded-full bg-neutral-100 px-2 py-0.5 text-xs text-neutral-600">
+                          {TYPE_LABEL[order.publicationType] ??
+                            order.publicationType}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-sm text-neutral-500">
+                        {order.client.brandName ?? order.client.name}
+                      </p>
+                      <p className="mt-0.5 text-xs text-neutral-400">
+                        Entrega: {dateFormatter.format(order.dueDate)}
+                      </p>
+                      {order.notes ? (
+                        <p className="mt-1 text-xs text-neutral-500 italic">
+                          {order.notes}
+                        </p>
+                      ) : null}
+                    </div>
+                    <Link
+                      href={`/admin/agente/ordenes/${order.id}`}
+                      className="rounded-xl border border-neutral-200 px-4 py-2 text-sm font-medium text-neutral-700 hover:bg-neutral-50 transition"
+                    >
+                      Ver
+                    </Link>
                   </div>
-                  <p className="mt-1 text-sm text-neutral-500">
-                    {data.count} publicación(es) asignadas
-                  </p>
-                  {data.lastDate ? (
-                    <p className="mt-2 text-xs text-neutral-400">
-                      Última fecha: {dateFormatter.format(data.lastDate)}
-                    </p>
-                  ) : null}
-                </a>
-              ));
-            })()}
-          </div>
+                );
+              })}
+            </div>
+          )}
         </section>
       </main>
     </div>

@@ -24,6 +24,7 @@ export interface PublicationInfo {
   clientName: string;
   clientBrandName: string | null;
   clientActive: boolean;
+  assignedAgentName?: string | null;
 }
 
 interface Props {

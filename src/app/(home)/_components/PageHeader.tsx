@@ -23,8 +23,6 @@ const PageHeader = ({
 
   // Ensure timeline exists before using it
   if (!context) {
-    console.log("context", context);
-
     throw new Error("Acerca must be used within a TransitionProvider");
   }
 

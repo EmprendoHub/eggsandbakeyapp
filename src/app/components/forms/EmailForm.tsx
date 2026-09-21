@@ -49,9 +49,8 @@ const EmailForm: React.FC<EmailFormProps> = ({ cookie }) => {
     }
 
     if (!executeRecaptcha) {
-      console.log("Execute recaptcha not available yet");
       setNotification(
-        "Execute recaptcha not available yet likely meaning key not recaptcha key not set"
+        "Execute recaptcha not available yet likely meaning key not recaptcha key not set",
       );
       return;
     }
@@ -105,7 +104,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ cookie }) => {
     if (inputPhone.length <= 10) {
       formattedPhone = inputPhone.replace(
         /(\d{3})(\d{0,3})(\d{0,4})/,
-        "$1$2$3"
+        "$1$2$3",
       );
     } else {
       // If the phone number exceeds 10 digits, truncate it

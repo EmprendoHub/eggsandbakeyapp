@@ -41,6 +41,12 @@ export default function AdminShell({
               <Link className="hover:text-neutral-900" href="/admin/agentes">
                 Agentes
               </Link>
+              <Link
+                className="hover:text-neutral-900"
+                href="/admin/notificaciones"
+              >
+                Notificaciones
+              </Link>
             </nav>
             <SignOutButton />
           </div>
